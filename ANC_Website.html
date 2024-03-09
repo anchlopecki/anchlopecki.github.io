@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loads Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Manrope">
+
+    <style>
+
+      html * {
+        background-color: rgb(255,255,255); /* color is white */
+        font-family: 'Manrope', monospace;
+        padding-top: 0.625em;
+        line-height: 2;
+        color: rgb(60, 60, 60); /* color is dark gray */
+      }
+
+      h1 {
+        margin: 0;
+        padding-bottom: 0;
+      }
+
+      h3 {
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        padding: 0;
+      }
+
+      a:link, a:visited {
+        cursor: pointer;
+        color: rgb(169, 169, 169); /* color is light gray */
+      }
+
+      a:hover {
+        transition: .5s;
+        color: rgb(146, 159, 187); /* color is cool gray */
+      }
+
+      .main_tab {
+        overflow: hidden;
+        padding-top: 0.15625em;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+      }
+
+      .main_tab button {
+        background-color: rgb(255, 255, 255);
+        border: none;
+        padding-left: 2%;
+        padding-right: 2%;
+        font-family: 'Playfair Display';
+        font-size: 1.375em;
+        cursor: pointer;
+        transition: .5s;
+      }
+
+      .main_tab button:hover {
+        color: rgb(146, 159, 187);
+      }
+
+      /* when clicked on, etc. */
+      .main_tab button:active {
+        color: rgb(169, 169, 169);
+      }
+
+      /* active class */
+      .main_tab button.active {
+        color: rgb(169, 169, 169);
+      }
+
+      .main_tab_buttons {
+      }
+
+      .page_content {
+        display: none;
+        padding-top: 4.375em;
+      }
+
+      .home_image {
+        width: 45%;
+        padding-right: 5%;
+        float: left;
+        text-align: right;
+      }
+
+      .home_text {
+        width: 40%;
+        float: left;
+        text-align: left;
+      }
+
+      .one_column {
+        width: 40%;
+        margin: auto;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+      <h1 style="font-size: 3.75em;
+                text-align: center;
+                font-family: 'Playfair Display';
+                letter-spacing: 1.25mm;">
+                ANNA NATALIE CHLOPECKI
+      </h1>
+
+      <!-- Menu Buttons -->
+      <div class="main_tab">
+        <button id="open_default" class="main_tab_buttons" onclick="open_page(event, 'Home')">Home</button>
+        <button class="main_tab_buttons" onclick="open_page(event, 'Research')">Research</button>
+        <!-- <button onclick="open_page('Projects')">Projects</button> -->
+        <button class="main_tab_buttons" onclick="open_page(event, 'Involvement')">Involvement</button>
+      </div>
+
+      <!-- Home Content -->
+      <div id="Home" class="page_content">
+
+        <div class="home_image">
+          <img style="width: 50%;" src="ANC_2018.jpg">
+        </div>
+
+        <div class="home_text">
+          <br>
+          <br>
+          <br>
+          <h3>About Me</h3>
+          <p>
+            My name is Anna Natalie Chlopecki (she/her), and I am a mathematics graduate student at Purdue University.
+            I grew up in the Chicago Metropolitan Area of Illinois.
+            In 2020, I graduated from the University of Illinois at Urbana-Champaign with a BS in Mathematics and a
+            minor in Criminology, Law, and Society.
+            Currently, I am interested in topics within the intersection of Algebraic Geometry, Combinatorics, and Commutative Algebra, and I am working under the guidance of <a href="https://www.math.purdue.edu/~walther/">Uli Walther</a>.
+            In my free time, I enjoy playing tennis and reading books.
+          </p>
+          <br>
+          <h3>Contact Information</h3>
+          <p>
+            Email: achlopec@purdue.edu
+            <br>
+            Address: Mathematical Sciences Building, 150 N. University Street, Office G142, West Lafayette, IN
+          </p>
+          <br>
+          <h3>
+            <a href="https://drive.google.com/file/d/1QTk5I0LOZulyOkzo_Iw6AnzUm5jHQn84/view?usp=share_link">
+              Curriculum Vitae
+            </a>
+          </h3>
+          <p>
+
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Tab Content
+      <div id="Bottom" class="bottom_tab">
+        <p>Last Updated March 2024. Built by Anna.</p>
+      </div> -->
+
+      <!-- Research Content -->
+      <div id="Research" class="page_content">
+        <p style="text-align: center;">
+          In progress.
+        </p>
+      </div>
+
+      <!-- Projects Content -->
+      <div id="Projects" class="page_content">
+
+        <div class="one_column">
+          <p style="text-align: center;">
+            In progress.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Involvement Content -->
+      <div id="Involvement" class="page_content">
+
+        <div class="one_column">
+          <h3>Student Colloquium Seminar</h3>
+          <p>
+            The purpose of this seminar is to provide graduate students a space to present mathematics which they deem interesting to their peers.
+            For the '23-24 school year, I am co-organizing Student Colloquium with <a href="https://www.math.purdue.edu/people/grad/index.html?student=garner54">Julia Garner</a>.
+            For scheduling information, consult the <a href="https://www.math.purdue.edu/calendar/">Purdue Math Department Calendar</a>.
+            Please reach out if you are interested in speaking at the seminar or would like to be added to the mailing list.
+          </p>
+          <br>
+          <h3>Mathematics Graduate Representatives</h3>
+          <p>
+            For the '23-24 school year, I am one of four <a href="https://sites.google.com/site/pumareps/?_ga=2.179054765.864959178.1691004656-811240410.1687798540">Purdue Mathematics Department Graduate Representatives</a>,
+            acting as a liaison between the Math Department and its graduate students.
+          <p>
+        </div>
+
+      </div>
+
+
+    <script>
+
+      /* Function controls which page is displayed once a button from the main tab is clicked */
+      function open_page(event, page_name) {
+        var i, page_content_elements_array, main_tab_buttons_array;
+        /* Puts elements from page_content class into array */
+        page_content_elements_array = document.getElementsByClassName("page_content");
+        /* Sets each pages display to none */
+        for (i = 0 ; i < page_content_elements_array.length ; i++) {
+          page_content_elements_array[i].style.display = "none";
+        }
+        /* Puts elements from main_tab_buttons class into array */
+        main_tab_buttons_array = document.getElementsByClassName("main_tab_buttons");
+        /* Sets each button to "not active" */
+        for (i = 0 ; i < main_tab_buttons_array.length ; i++) {
+          main_tab_buttons_array[i].className = main_tab_buttons_array[i].className.replace(" active", "");
+        }
+        document.getElementById(page_name).style.display = "block";
+        event.currentTarget.className += " active";
+        document.title = "Anna Natalie Chlopecki | " + page_name;
+      }
+
+      document.getElementById("open_default").click();
+
+    </script>
+
+  </body>
+
+</html>
