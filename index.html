@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loads Google Fonts -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Manrope"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Manrope">
+
+    <style>
+
+      :root {
+        --main-color: rgb(109, 118, 139); /* main color */
+        --accent-color: rgb(146, 159, 187); /* color is cool gray */
+        --back-color: rgb(235, 233, 237); /* background color */
+      }
+
+      html * {
+        background-color: var(--back-color);
+        font-family: 'Manrope', monospace;
+        /* padding-top: 0.625em; */
+        line-height: 2;
+        color: rgb(60, 60, 60); /* color is dark gray */
+      }
+
+      h1 {
+        margin: 0;
+        padding-bottom: 0;
+      }
+
+      h3 {
+        margin-bottom: -.5em;
+        color: var(--main-color);
+      }
+
+      /* p {
+        padding: 0;
+      } */
+
+      .hl {
+        color: var(--accent-color);
+      }
+
+      a:link, a:visited {
+        cursor: pointer;
+        color: var(--accent-color);
+      }
+
+      a:hover {
+        transition: .5s;
+        color: var(--main-color);
+      }
+
+      .main_tab {
+        overflow: hidden;
+        padding-top: 0.15625em;
+        background-color: var(--back-color);
+        text-align: center;
+      }
+
+      .main_tab button {
+        background-color: var(--back-color);
+        border: none;
+        padding-left: 2%;
+        padding-right: 2%;
+        font-family: 'Playfair Display';
+        font-size: 1.375em;
+        cursor: pointer;
+        transition: .5s;
+      }
+
+      .main_tab button:hover {
+        color: var(--main-color);
+      }
+
+      /* when clicked on, etc. */
+      .main_tab button:active {
+        color: var(--main-color);
+      }
+
+      /* active class */
+      .main_tab button.active {
+        color: var(--main-color);
+      }
+
+      .main_tab_buttons {
+      }
+
+      .page_content {
+        display: none;
+        padding-top: 3%;
+      }
+
+      .home_container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 5%;
+      }
+
+      .home_image {
+        width: 30%;
+        /* padding-left: 5%;
+        float: left;
+        text-align: right; */
+      }
+
+      .home_text {
+        width: 45%;
+        /* padding-right: 5%;
+        float: right;
+        text-align: left; */
+      }
+
+      .one_column {
+        width: 45%;
+        margin: auto;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+      <h1 style="font-size: 3.75em;
+                text-align: center;
+                font-family: 'Playfair Display';
+                letter-spacing: 1.25mm;">
+                ANNA NATALIE CHLOPECKI
+      </h1>
+
+      <!-- Menu Buttons -->
+      <div class="main_tab">
+        <button id="open_default" class="main_tab_buttons" onclick="open_page(event, 'Home')">Home</button>
+        <button class="main_tab_buttons" onclick="open_page(event, 'Research')">Research</button>
+        <button class="main_tab_buttons" onclick="open_page(event, 'Teaching')">Teaching</button>
+        <!-- <button class="main_tab_buttons" onclick="open_page(event, 'Coding')">Coding</button> -->
+        <button class="main_tab_buttons" onclick="open_page(event, 'Involvement')">Involvement</button>
+      </div>
+
+      <!-- Home Content -->
+      <!-- <div id="Home" class="page_content"> -->
+      <div id="Home" class="page_content home_container">
+
+        <!-- <div class="home_image">
+          <img style="width: 55%;" src="ANC_2018.jpg">
+        </div> -->
+        <img src="ANC_2018.jpg" class="home_image">
+
+        <div class="home_text">
+          <h3>About Me</h3>
+          <p>
+            My name is Anna Natalie Chlopecki (she/her), and I am a mathematics graduate student at Purdue University.
+            I grew up in the Chicago Metropolitan Area of Illinois.
+            In 2020, I graduated from the University of Illinois at Urbana-Champaign with a BS in Mathematics and a minor in Criminology, Law, and Society.
+            My research interests are rooted in combinatorial commutative algebra and computational algebraic geometry. 
+            I am advised by <a href="https://www.math.purdue.edu/~walther/">Uli Walther</a> and co-advised by <a href="https://www.math.purdue.edu/~esampert/">Eric Samperton</a>.
+            In my free time, I enjoy playing tennis and pickleball, as well as running.
+          </p>
+          <h3>Contact Information</h3>
+          <p>
+            Email: achlopec@purdue.edu
+            <br>
+            Address: Mathematical Sciences Building, 150 N. University Street, Office 1047, West Lafayette, IN
+          </p>
+          <h3>
+            <a href="https://drive.google.com/file/d/1JqWuHe5faZ_18R7758oi9vPIF_CWp9J4/view?usp=sharing">
+              Curriculum Vitae
+            </a>
+          </h3>
+          <p>
+
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom Tab Content
+      <div id="Bottom" class="bottom_tab">
+        <p>Last Updated March 2024. Built by Anna.</p>
+      </div> -->
+
+      <!-- Research Content -->
+      <div id="Research" class="page_content">
+
+        <div class="one_column">
+          <!-- <h3>Ongoing Interests</h3> -->
+          <h3>Combinatorial Commutative Algebra</h3>
+          <p>
+            I am investigating determinantal ideals of matrices of linear forms. 
+            Currently, I am studying a special case stemming from graphs, hoping to identify a criterion as to when the associated ideal is Hilbertian, i.e. its Hilbert function and polynomial agree for all non-negative integer inputs.
+          </p>
+          <!-- <h3>Computational Algebraic Geometry</h3> -->
+          <h3>Mentorship</h3>
+          <p>
+            During the spring of 2025, I was the graduate student mentor for an undergraduate research project through the <a href="https://www.math.purdue.edu/pxml/index.html">Purdue Experimental Mathematics Lab</a>.
+            Under the guidance of Eric Samperton and myself, undergraduates <a href="https://www.linkedin.com/in/shannon-cheng-527608204/">Shannon Cheng</a> and <a href="https://www.linkedin.com/in/saarah-nazar/">Saarah Nazar</a> developed an interactive <a href="https://trivial-sublink-git-main-shannonc8s-projects.vercel.app">applet</a> to illustrate a reduction from the Independent Set Problem to the Trivial Sublink Problem. <br>
+            <!-- As of present, our group is interested in determining the computational complexity of a counting problem related to -->
+          </p>
+          <h3>Preprints</h3>
+          <p>
+            (2) <a href="https://arxiv.org/abs/2509.13120">An elementary proof that linking problems are hard</a>. 
+            With Shannon Cheng, Saarah Nazar, and Eric Samperton.
+            Submitted 2025. <br>
+            (1) <a href="https://arxiv.org/abs/1910.12928">Permutation polynomials: iteration of shift and inversion maps over finite fields</a>.
+            With Juliano Levier-Gomes, Wayne Peng, Alex Shearer, and Adam Towsley.
+            2021.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Teaching Content -->
+      <div id="Teaching" class="page_content">
+
+        <div class="one_column">
+          <!-- <p style="text-align: center;">
+            In progress.
+          </p> -->
+          <h3>Instructor of Record</h3>
+          <p>
+            Applied Calculus I (MA 16010), Fall 2024  
+          </p>
+          <h3>Recitation Instructor</h3>
+          <p>
+            Multivariate Calculus (MA 26100), Fall 2022 and Summer 2024 <br>
+            Analytic Geometry and Calculus I (MA 16500), Fall 2020
+          </p>
+          <h3>Grader</h3>
+          <p>
+            Elements of Algebra I (MA 45300), Spring 2023, 2024, 2025 <br>
+            Linear Algebra II (MA 35301), Fall 2023 <br>
+            An Intro to Proof through Real Analysis (MA 30100), Fall 2023 <br>
+            Diff. Eq. and Partial Diff. Eq. for Engineering and the Sciences (MA 30300), Summer 2022
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Coding Content 
+      <div id="Coding" class="page_content">
+
+        <div class="one_column">
+          <p style="text-align: center;">
+            In progress.
+          </p>
+        </div>
+
+      </div> -->
+
+      <!-- Involvement Content -->
+      <div id="Involvement" class="page_content">
+
+        <div class="one_column">
+          <!-- <h3>Current</h3> -->
+          Below are the initiatives I am currently a part of. For prior involvement, please consult my CV.
+          <h3>Bridge to Research</h3>
+          <p>
+            <i>Co-organizer (with <a href="https://www.math.purdue.edu/people/grad/index.html?student=jmojsilo">Jelena Mojsilovic</a> and <a href="https://benjaminmudrak.github.io">Benjamin Mudrak</a>)</i> <br>
+            Graduate student seminar which offers Purdue Math Department faculty the space to provide an introduction into their research area.
+            Especially useful for those in search of a research advisor or direction.
+          </p>
+          <h3>Association for Women in Mathematics</h3>
+          <p>
+            <i>Vice President</i> <br>
+            Focused on supporting women in the Purdue Math Department via social and professional development events.
+            Notable efforts include the Math Mentor Program for first-year graduate students and the Purdue Annual AWM Symposium, a "mini conference" for gender minorities to showcase their research.
+            For further information, please visit our <a href="https://sites.google.com/site/awmpurduechapter">webpage</a>.
+          </p>
+        </div>
+
+      </div>
+
+
+    <script>
+
+      /* Function controls which page is displayed once a button from the main tab is clicked */
+      function open_page(event, page_name) {
+        var i, page_content_elements_array, main_tab_buttons_array;
+        /* Puts elements from page_content class into array */
+        page_content_elements_array = document.getElementsByClassName("page_content");
+        /* Sets each pages display to none */
+        for (i = 0 ; i < page_content_elements_array.length ; i++) {
+          page_content_elements_array[i].style.display = "none";
+        }
+        /* Puts elements from main_tab_buttons class into array */
+        main_tab_buttons_array = document.getElementsByClassName("main_tab_buttons");
+        /* Sets each button to "not active" */
+        for (i = 0 ; i < main_tab_buttons_array.length ; i++) {
+          main_tab_buttons_array[i].className = main_tab_buttons_array[i].className.replace(" active", "");
+        }
+        document.getElementById(page_name).style.display = "flex"; /* Switched from block display. */
+        event.currentTarget.className += " active";
+        document.title = "Anna Natalie Chlopecki | " + page_name;
+      }
+
+      document.getElementById("open_default").click();
+
+    </script>
+
+  </body>
+
+</html>
