@@ -1,0 +1,407 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 1: Review</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(109, 118, 139); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(109, 118, 139); 
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 179, 112);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(245, 245, 245);
+            padding: 12px;
+            border-left: 4px solid rgb(143, 143, 143);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(214, 214, 214);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h3>Applied Calculus I - Lesson 1: Review</h3>
+
+<p>This lesson reviews fundamental mathematical concepts that form the foundation for calculus, including exponential functions, logarithms, and trigonometry.</p>
+
+<h3>Exponentials</h3>
+
+<p>Let \(a\), \(m\), and \(n\) be real numbers. The properties of exponential functions govern how we manipulate expressions involving powers and exponents.</p>
+
+<div class="theorem">
+    <p><strong>Properties of Exponentials:</strong></p>
+    <ul>
+        <li>\(a^m \cdot a^n = a^{m+n}\)</li>
+        <li>\(\frac{a^m}{a^n} = a^{m-n}\)</li>
+        <li>\((a^m)^n = a^{mn}\)</li>
+        <li>\(a^{-m} = \frac{1}{a^m}\)</li>
+        <li>\(a^0 = 1\), if \(a \neq 0\)</li>
+    </ul>
+</div>
+
+<h3>Logarithms</h3>
+
+<p>Let \(a\) and \(b\) be real numbers, and let \(c > 0\). The logarithm function with base \(c\), denoted \(\log_c(x)\), is the inverse of the exponential function with base \(c\).</p>
+
+<div class="theorem">
+    <p><strong>Properties of Logarithms:</strong></p>
+    <ul>
+        <li>\(\log_c(ab) = \log_c(a) + \log_c(b)\)</li>
+        <li>\(\log_c\left(\frac{a}{b}\right) = \log_c(a) - \log_c(b)\)</li>
+        <li>\(\log_c(a^b) = b \log_c(a)\)</li>
+        <li>\(\log_c(c) = 1\)</li>
+        <li>\(\log_c(1) = 0\)</li>
+    </ul>
+</div>
+
+<h4>Natural Logarithm</h4>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The natural logarithm function is defined as \(\log_e(x) = \ln(x)\), where \(e\) is Euler's number (approximately 2.71828).</p>
+</div>
+
+<p>Applying the general logarithm properties to the natural logarithm yields:</p>
+
+<ul>
+    <li>\(\ln(ab) = \ln(a) + \ln(b)\)</li>
+    <li>\(\ln\left(\frac{a}{b}\right) = \ln(a) - \ln(b)\)</li>
+    <li>\(\ln(a^b) = b \ln(a)\)</li>
+    <li>\(\ln(e) = 1\)</li>
+    <li>\(\ln(1) = 0\)</li>
+</ul>
+
+<div class="important">
+    <p><strong>Important:</strong> In this course, we will primarily be using the natural logarithm function. Note that \(e^{\ln(x)} = x\) and \(\ln(e^x)=x\).</p>
+</div>
+
+<h3>Trigonometry</h3>
+
+<h4>Useful Trigonometric Function Values</h4>
+
+<p>The following table presents key values of the sine and cosine functions at commonly used angles.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>\(\theta\)</th>
+            <th>\(\sin(\theta)\)</th>
+            <th>\(\cos(\theta)\)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>\(0\)</td>
+            <td>\(0\)</td>
+            <td>\(1\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{6}\)</td>
+            <td>\(\frac{1}{2}\)</td>
+            <td>\(\frac{\sqrt{3}}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{4}\)</td>
+            <td>\(\frac{\sqrt{2}}{2}\)</td>
+            <td>\(\frac{\sqrt{2}}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{3}\)</td>
+            <td>\(\frac{\sqrt{3}}{2}\)</td>
+            <td>\(\frac{1}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{2}\)</td>
+            <td>\(1\)</td>
+            <td>\(0\)</td>
+        </tr>
+        <tr>
+            <td>\(\pi\)</td>
+            <td>\(0\)</td>
+            <td>\(-1\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{3\pi}{2}\)</td>
+            <td>\(-1\)</td>
+            <td>\(0\)</td>
+        </tr>
+        <tr>
+            <td>\(2\pi\)</td>
+            <td>\(0\)</td>
+            <td>\(1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Useful Identities</h4>
+
+<p>The following identities relate the six fundamental trigonometric functions:</p>
+
+<div class="theorem">
+    <p><strong>Trigonometric Identities:</strong></p>
+    <ul>
+        <li>\(\tan(x) = \frac{\sin(x)}{\cos(x)}\)</li>
+        <li>\(\cot(x) = \frac{\cos(x)}{\sin(x)}\)</li>
+        <li>\(\sec(x) = \frac{1}{\cos(x)}\)</li>
+        <li>\(\csc(x) = \frac{1}{\sin(x)}\)</li>
+        <li>\(\sin^2(x) + \cos^2(x) = 1\)</li>
+    </ul>
+</div>
+
+<h3>Practice Problems</h3>
+
+<div class="example">
+    <h5>Problem 1: Simplify the following expressions.</h5>
+    
+    <p>(a) \(e^2 \cdot e^3\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> Using the property \(a^m \cdot a^n = a^{m+n}\), we have:</p>
+        \[e^2 \cdot e^3 = e^{2+3} = e^5\]
+    </div>
+    
+    <p>(b) \((e^2)^3\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> Using the property \((a^m)^n = a^{mn}\), we have:</p>
+        \[(e^2)^3 = e^{2 \cdot 3} = e^6\]
+    </div>
+    
+    <p>(c) \(e^{-8} \cdot e^m\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> Using the property \(a^m \cdot a^n = a^{m+n}\), we have:</p>
+        \[e^{-8} \cdot e^m = e^{-8+m} = e^{m-8}\]
+    </div>
+    
+    <p>(d) \(\frac{e^{2x} \cdot e^y}{e^z}\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> First, combine the numerator using \(a^m \cdot a^n = a^{m+n}\), then apply \(\frac{a^m}{a^n} = a^{m-n}\):</p>
+        \[\frac{e^{2x} \cdot e^y}{e^z} = \frac{e^{2x+y}}{e^z} = e^{2x+y-z}\]
+    </div>
+    
+    <p>(e) \(e^{\ln(5x)}\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> Since \(e^{\ln(x)} = x\), we have:</p>
+        \[e^{\ln(5x)} = 5x\]
+    </div>
+    
+    <p>(f) \(e^{10-2\ln(5)}\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> We can rewrite this using properties of exponents and logarithms:</p>
+        \[e^{10-2\ln(5)} = e^{10} \cdot e^{-2\ln(5)} = e^{10} \cdot e^{\ln(5^{-2})} = e^{10} \cdot 5^{-2} = \frac{e^{10}}{25}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 2: Solve for x.</h5>
+    
+    <p>Solve the following equation for \(x\):</p>
+    \[\ln(x^2) = 20\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong> We note the following trick:</p>
+        \[e^{\ln(x^2)}=e^{20}\]
+        
+        <p>Using the fact that \(e^{\ln(x)}=x\):</p>
+        \[x^2=e^{20}\]
+        
+        <p>Taking the square root of both sides:</p>
+        \[x=\pm \sqrt{e^{20}}=\pm (e^{20})^{1/2}=\pm e^{10}\]
+        
+        <!-- <p>Therefore:</p> 
+        \[x = e^{10}\] -->
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 3: Express as sums, differences, and multiples of basic logarithms.</h5>
+    
+    <p>(a) \(\ln\left(\frac{xy}{z}\right)\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> Using logarithm properties:</p>
+        \[\ln\left(\frac{xy}{z}\right) = \ln(xy) - \ln(z) = \ln(x) + \ln(y) - \ln(z)\]
+    </div>
+    
+    <p>(b) \(\ln\left(\frac{x^2}{y\sqrt{z}}\right)\)</p>
+    <div class="solution">
+        <p><strong>Solution:</strong> First, rewrite \(\sqrt{z} = z^{1/2}\), then apply logarithm properties:</p>
+        \[\ln\left(\frac{x^2}{y\sqrt{z}}\right) = \ln(x^2) - \ln(y\sqrt{z}) = \ln(x^2) - \ln(y) - \ln(z^{1/2}) = 2\ln(x) - \ln(y) - \frac{1}{2}\ln(z)\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 4: Find the trigonometric values from the given information.</h5>
+    
+    <p>Suppose \(\cos(\theta) = \frac{2}{3}\), and \(\theta\) is in the fourth quadrant. Compute \(\sin(\theta)\), \(\cot(\theta)\), and \(\sec(\theta)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong> We use the Pythagorean identity \(\sin^2(\theta) + \cos^2(\theta) = 1\) to find \(\sin(\theta)\):</p>
+        \[\sin^2(\theta) + \left(\frac{2}{3}\right)^2 = 1\]
+        \[\sin^2(\theta) + \frac{4}{9} = 1\]
+        \[\sin^2(\theta) = 1 - \frac{4}{9} = \frac{5}{9}\]
+        \[\sin(\theta) = \pm\frac{\sqrt{5}}{3}\]
+        
+        <p>Since \(\theta\) is in the fourth quadrant where sine is negative:</p>
+        \[\sin(\theta) = -\frac{\sqrt{5}}{3}\]
+        
+        <p>Now we can find \(\cot(\theta)\) using \(\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)}\):</p>
+        \[\cot(\theta) = \frac{\frac{2}{3}}{-\frac{\sqrt{5}}{3}} = -\frac{2}{\sqrt{5}}\]
+        
+        <p>Finally, we find \(\sec(\theta)\) using \(\sec(\theta) = \frac{1}{\cos(\theta)}\):</p>
+        \[\sec(\theta) = \frac{1}{\frac{2}{3}} = \frac{3}{2}\]
+    </div>
+</div>
+
+</body>
+</html>
