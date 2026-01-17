@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(248, 246, 250);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 190, 133);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(224, 184, 209);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(248, 246, 250);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(248, 246, 250);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 1: Review of Precalculus Concepts</h3>
+
+<p>This lesson reviews essential precalculus concepts including exponential functions, logarithms, and trigonometry that will serve as the foundation for calculus. Mastery of these topics is critical for success in differential and integral calculus.</p>
+
+<!-- Exponentials Section -->
+<h3>Exponentials</h3>
+
+<p>The properties of exponential functions form the basis for many calculus operations, particularly when working with derivatives and integrals involving exponential expressions. Let \(a\), \(m\), and \(n\) be real numbers. The fundamental exponential properties are as follows.</p>
+
+<div class="theorem">
+    <p><strong>Exponential Properties:</strong></p>
+    <p>For real numbers \(a\), \(m\), and \(n\), the following properties hold:</p>
+    \[a^m \cdot a^n = a^{m+n}\]
+    \[\frac{a^m}{a^n} = a^{m-n}\]
+    \[(a^m)^n = a^{mn}\]
+    \[a^{-m} = \frac{1}{a^m}\]
+    \[a^0 = 1, \text{ if } a \neq 0\]
+</div>
+
+<p>These properties allow us to manipulate exponential expressions algebraically. The product rule states that when multiplying exponentials with the same base, we add the exponents. The quotient rule indicates that when dividing, we subtract exponents. The power rule shows that raising a power to another power results in multiplying the exponents.</p>
+
+<div class="important" role="note">
+    <p><strong>Important:</strong> The zero exponent rule \(a^0 = 1\) is only valid when \(a \neq 0\), as \(0^0\) is undefined.</p>
+</div>
+
+<!-- Logarithms Section -->
+<h3>Logarithms</h3>
+
+<p>Logarithms are the inverse functions of exponentials and play a crucial role in calculus, particularly in solving exponential equations and computing derivatives of logarithmic functions. The logarithm function with base \(c\), denoted \(\log_c(x)\), satisfies \(c^{\log_c(x)} = x\) for \(x > 0\).</p>
+
+<div class="theorem">
+    <p><strong>Logarithm Properties:</strong></p>
+    <p>Let \(a\) and \(b\) be real numbers, and let \(c > 0\). The logarithm function \(\log_c(x)\) satisfies:</p>
+    \[\log_c(ab) = \log_c(a) + \log_c(b)\]
+    \[\log_c\left(\frac{a}{b}\right) = \log_c(a) - \log_c(b)\]
+    \[\log_c(a^b) = b\log_c(a)\]
+    \[\log_c(c) = 1\]
+    \[\log_c(1) = 0\]
+</div>
+
+<p>These properties mirror the exponential properties due to the inverse relationship between logarithms and exponentials. The product property states that the logarithm of a product equals the sum of the logarithms. The quotient property indicates that the logarithm of a quotient equals the difference of logarithms. The power property allows us to bring exponents out as coefficients.</p>
+
+<h4>The Natural Logarithm</h4>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The natural logarithm function is defined as \(\ln(x) = \log_e(x)\), where \(e \approx 2.71828\) is Euler's number.</p>
+</div>
+
+<p>In calculus, we primarily work with the natural logarithm due to its unique properties when taking derivatives. The natural logarithm inherits all the properties of general logarithms with base \(e\).</p>
+
+<div class="theorem">
+    <p><strong>Natural Logarithm Properties:</strong></p>
+    \[\ln(ab) = \ln(a) + \ln(b)\]
+    \[\ln\left(\frac{a}{b}\right) = \ln(a) - \ln(b)\]
+    \[\ln(a^b) = b\ln(a)\]
+    \[\ln(e) = 1\]
+    \[\ln(1) = 0\]
+</div>
+
+<div class="important" role="note">
+    <p><strong>Important:</strong> The inverse relationship between the exponential and natural logarithm is expressed by the identity \(e^{\ln(x)} = x\) for all \(x > 0\). Also, \(\ln(e^x)=x\).</p>
+</div>
+
+<!-- Trigonometry Section -->
+<h3>Trigonometry</h3>
+
+<p>Trigonometric functions are essential in calculus for modeling periodic phenomena and for integration techniques. Understanding the basic values and identities of these functions is crucial.</p>
+
+<h4>Common Trigonometric Values</h4>
+
+<p>The following table presents the values of sine and cosine at commonly used angles. These values should be memorized as they appear frequently in calculus problems.</p>
+
+<table>
+    <caption>Trigonometric Function Values at Standard Angles</caption>
+    <thead>
+        <tr>
+            <th scope="col">Angle \(\theta\)</th>
+            <th scope="col">\(\sin(\theta)\)</th>
+            <th scope="col">\(\cos(\theta)\)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>\(0\)</td>
+            <td>\(0\)</td>
+            <td>\(1\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{6}\)</td>
+            <td>\(\frac{1}{2}\)</td>
+            <td>\(\frac{\sqrt{3}}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{4}\)</td>
+            <td>\(\frac{\sqrt{2}}{2}\)</td>
+            <td>\(\frac{\sqrt{2}}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{3}\)</td>
+            <td>\(\frac{\sqrt{3}}{2}\)</td>
+            <td>\(\frac{1}{2}\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{\pi}{2}\)</td>
+            <td>\(1\)</td>
+            <td>\(0\)</td>
+        </tr>
+        <tr>
+            <td>\(\pi\)</td>
+            <td>\(0\)</td>
+            <td>\(-1\)</td>
+        </tr>
+        <tr>
+            <td>\(\frac{3\pi}{2}\)</td>
+            <td>\(-1\)</td>
+            <td>\(0\)</td>
+        </tr>
+        <tr>
+            <td>\(2\pi\)</td>
+            <td>\(0\)</td>
+            <td>\(1\)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Fundamental Trigonometric Identities</h4>
+
+<p>The following identities define the remaining trigonometric functions in terms of sine and cosine, and establish fundamental relationships between them.</p>
+
+<div class="theorem">
+    <p><strong>Trigonometric Identities:</strong></p>
+    \[\tan(x) = \frac{\sin(x)}{\cos(x)}\]
+    \[\cot(x) = \frac{\cos(x)}{\sin(x)}\]
+    \[\sec(x) = \frac{1}{\cos(x)}\]
+    \[\csc(x) = \frac{1}{\sin(x)}\]
+    \[\sin^2(x) + \cos^2(x) = 1\]
+</div>
+
+<p>The Pythagorean identity \(\sin^2(x) + \cos^2(x) = 1\) is particularly important and will be used extensively in calculus for simplifying expressions and solving equations involving trigonometric functions.</p>
+
+<!-- Practice Problems Section -->
+<h3>Practice Problems</h3>
+
+<div class="example">
+    <h5>Problem 1: Simplify Exponential Expressions</h5>
+    <p>Simplify the following expressions using the exponential properties.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p>(a) \(e^2 \cdot e^3\)</p>
+        <p>Using the product rule for exponentials, we add the exponents:</p>
+        \[e^2 \cdot e^3 = e^{2+3} = e^5\]
+        
+        <p>(b) \((e^2)^3\)</p>
+        <p>Using the power rule for exponentials, we multiply the exponents:</p>
+        \[(e^2)^3 = e^{2 \cdot 3} = e^6\]
+        
+        <p>(c) \(e^{-8} \cdot e^m\)</p>
+        <p>Using the product rule:</p>
+        \[e^{-8} \cdot e^m = e^{-8+m} = e^{m-8}\]
+        
+        <p>(d) \(\frac{e^{2x} \cdot e^y}{e^z}\)</p>
+        <p>First apply the product rule to the numerator, then the quotient rule:</p>
+        \[\frac{e^{2x} \cdot e^y}{e^z} = \frac{e^{2x+y}}{e^z} = e^{2x+y-z}\]
+        
+        <p>(e) \(e^{\ln(5x)}\)</p>
+        <p>Using the inverse property of exponentials and logarithms:</p>
+        \[e^{\ln(5x)} = 5x\]
+        
+        <p>(f) \(e^{10-2\ln(5)}\)</p>
+        <p>Note that \(2\ln(5) = \ln(5^2) = \ln(25)\). Rewrite using logarithm properties:</p>
+        \[e^{10-2\ln(5)} = e^{10-\ln(25)} = e^{10} \cdot e^{-\ln(25)} = \frac{e^{10}}{e^{\ln(25)}} = \frac{e^{10}}{25}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 2: Solve a Logarithmic Equation</h5>
+    <p>Solve the following equation for \(x\): \(\ln(x^2) = 20\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use the following trick:</p>
+        \[e^{\ln(x^2)} = e^{20}\]
+        <p>Because \(e^{\ln(x)}=x\), then:</p>
+        \[x^2=e^{20}\]
+        <p>Taking the square root of both sides:</p>
+        \[x=\pm\sqrt{e^{20}}=\pm (e^{20})^{1/2}=\pm e^{10}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 3: Expand Logarithmic Expressions</h5>
+    <p>Express the following as sums, differences, and multiples of basic logarithmic functions such as \(\ln(x)\), \(\ln(y)\), and \(\ln(z)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p>(a) \(\ln\left(\frac{xy}{z}\right)\)</p>
+        <p>First apply the quotient rule, then the product rule:</p>
+        \[\ln\left(\frac{xy}{z}\right) = \ln(xy) - \ln(z) = \ln(x) + \ln(y) - \ln(z)\]
+        
+        <p>(b) \(\ln\left(\frac{x^2}{y\sqrt{z}}\right)\)</p>
+        <p>Note that \(\sqrt{z} = z^{1/2}\). Apply the quotient rule, product rule, and power rule:</p>
+        \[\ln\left(\frac{x^2}{y\sqrt{z}}\right) = \ln(x^2) - \ln(y\sqrt{z})
+        = \ln(x^2) - \ln(y) - \ln(z^{1/2})
+        = 2\ln(x) - \ln(y) - \frac{1}{2}\ln(z)\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 4: Compute Trigonometric Values</h5>
+    <p>Suppose \(\cos(\theta) = \frac{2}{3}\), and \(\theta\) is in the fourth quadrant. Compute \(\sin(\theta)\), \(\cot(\theta)\), and \(\sec(\theta)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p>We begin by finding \(\sin(\theta)\) using the Pythagorean identity:</p>
+        \[\sin^2(\theta) + \cos^2(\theta) = 1\]
+        \[\sin^2(\theta) = 1 - \cos^2(\theta) = 1 - \left(\frac{2}{3}\right)^2 = 1 - \frac{4}{9} = \frac{5}{9}\]
+        \[\sin(\theta) = \pm\frac{\sqrt{5}}{3}\]
+        
+        <p>Since \(\theta\) is in the fourth quadrant, where sine is negative:</p>
+        \[\sin(\theta) = -\frac{\sqrt{5}}{3}\]
+        
+        <p>Now we compute \(\cot(\theta)\) using the definition:</p>
+        \[\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)} = \frac{\frac{2}{3}}{-\frac{\sqrt{5}}{3}} = -\frac{2}{\sqrt{5}}\]
+        
+        <p>Finally, we compute \(\sec(\theta)\):</p>
+        \[\sec(\theta) = \frac{1}{\cos(\theta)} = \frac{1}{\frac{2}{3}} = \frac{3}{2}\]
+    </div>
+</div>
+
+<div class="important" role="note">
+    <p><strong>Important:</strong> When using the Pythagorean identity to find sine or cosine values, always consider the quadrant to determine the correct sign of the result. In the fourth quadrant, cosine is positive and sine is negative.</p>
+</div>
+
+</main>
+</body>
+</html>
