@@ -165,6 +165,12 @@
             top: 0;
         }
 
+        /* PLUS general focus indicators */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -341,33 +347,33 @@
 
 <div class="example">
     <h5>Problem 1: Simplify Exponential Expressions</h5>
-    <p>Simplify the following expressions using the exponential properties.</p>
+    <p>Simplify the following expressions using the exponential properties:</p>
+    <p>(a) \(e^2 \cdot e^3\)</p>
+    <p>(b) \((e^2)^3\)</p>
+    <p>(c) \(e^{-8} \cdot e^m\)</p>
+    <p>(d) \(\frac{e^{2x} \cdot e^y}{e^z}\)</p>
+    <p>(e) \(e^{\ln(5x)}\)</p>
+    <p>(f) \(e^{10-2\ln(5)}\)</p>
     
     <div class="solution">
         <p><strong>Solution:</strong></p>
         
-        <p>(a) \(e^2 \cdot e^3\)</p>
-        <p>Using the product rule for exponentials, we add the exponents:</p>
+        <p>(a) Using the product rule for exponentials, we add the exponents:</p>
         \[e^2 \cdot e^3 = e^{2+3} = e^5\]
         
-        <p>(b) \((e^2)^3\)</p>
-        <p>Using the power rule for exponentials, we multiply the exponents:</p>
+        <p>(b) Using the power rule for exponentials, we multiply the exponents:</p>
         \[(e^2)^3 = e^{2 \cdot 3} = e^6\]
         
-        <p>(c) \(e^{-8} \cdot e^m\)</p>
-        <p>Using the product rule:</p>
+        <p>(c) Using the product rule:</p>
         \[e^{-8} \cdot e^m = e^{-8+m} = e^{m-8}\]
         
-        <p>(d) \(\frac{e^{2x} \cdot e^y}{e^z}\)</p>
-        <p>First apply the product rule to the numerator, then the quotient rule:</p>
+        <p>(d) First apply the product rule to the numerator, then the quotient rule:</p>
         \[\frac{e^{2x} \cdot e^y}{e^z} = \frac{e^{2x+y}}{e^z} = e^{2x+y-z}\]
         
-        <p>(e) \(e^{\ln(5x)}\)</p>
-        <p>Using the inverse property of exponentials and logarithms:</p>
+        <p>(e) Using the inverse property of exponentials and logarithms:</p>
         \[e^{\ln(5x)} = 5x\]
         
-        <p>(f) \(e^{10-2\ln(5)}\)</p>
-        <p>Note that \(2\ln(5) = \ln(5^2) = \ln(25)\). Rewrite using logarithm properties:</p>
+        <p>(f) Note that \(2\ln(5) = \ln(5^2) = \ln(25)\). Rewriting using logarithm properties:</p>
         \[e^{10-2\ln(5)} = e^{10-\ln(25)} = e^{10} \cdot e^{-\ln(25)} = \frac{e^{10}}{e^{\ln(25)}} = \frac{e^{10}}{25}\]
     </div>
 </div>
@@ -389,17 +395,17 @@
 
 <div class="example">
     <h5>Problem 3: Expand Logarithmic Expressions</h5>
-    <p>Express the following as sums, differences, and multiples of basic logarithmic functions such as \(\ln(x)\), \(\ln(y)\), and \(\ln(z)\).</p>
-    
+    <p>Express the following as sums, differences, and multiples of basic logarithmic functions such as \(\ln(x)\), \(\ln(y)\), and \(\ln(z)\):</p>
+    <p>(a) \(\ln\left(\frac{xy}{z}\right)\)</p>
+    <p>(b) \(\ln\left(\frac{x^2}{y\sqrt{z}}\right)\)</p>
+
     <div class="solution">
         <p><strong>Solution:</strong></p>
         
-        <p>(a) \(\ln\left(\frac{xy}{z}\right)\)</p>
-        <p>First apply the quotient rule, then the product rule:</p>
+        <p>(a) First apply the quotient rule, then the product rule:</p>
         \[\ln\left(\frac{xy}{z}\right) = \ln(xy) - \ln(z) = \ln(x) + \ln(y) - \ln(z)\]
         
-        <p>(b) \(\ln\left(\frac{x^2}{y\sqrt{z}}\right)\)</p>
-        <p>Note that \(\sqrt{z} = z^{1/2}\). Apply the quotient rule, product rule, and power rule:</p>
+        <p>(b) Note that \(\sqrt{z} = z^{1/2}\). Apply the quotient rule, product rule, and power rule:</p>
         \[\ln\left(\frac{x^2}{y\sqrt{z}}\right) = \ln(x^2) - \ln(y\sqrt{z})
         = \ln(x^2) - \ln(y) - \ln(z^{1/2})
         = 2\ln(x) - \ln(y) - \frac{1}{2}\ln(z)\]

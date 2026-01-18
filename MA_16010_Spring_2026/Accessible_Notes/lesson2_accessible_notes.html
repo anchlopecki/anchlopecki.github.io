@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(248, 246, 250);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 190, 133);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(224, 184, 209);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+        
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(248, 246, 250);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(248, 246, 250);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 2: Finding Limits Numerically; One-sided Limits; Finding Limits Graphically</h3>
+
+<!-- Section 1: Introduction to Limits -->
+<h3>Limits</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The limit of a function \(f(x)\) is the value that \(f(x)\) approaches as \(x\) approaches a particular value. If \(f(x)\) approaches \(L\) as \(x\) approaches \(c\), we say that the limit of \(f(x)\) as \(x\) approaches \(c\) is \(L\), denoted by</p>
+    \[\lim_{x \to c} f(x) = L.\]
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> The function \(f(x)\) does not need to be defined at \(x = c\) for the limit to exist. The limit describes the behavior of the function as we approach a point, not necessarily the value at that point.</p>
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> If \(f(x)\) increases or decreases without bound as \(x\) approaches \(c\), then \(\lim_{x \to c} f(x)\) is an infinite limit. If \(f(x)\) increases without bound, \(\lim_{x \to c} f(x) = \infty\). If \(f(x)\) decreases without bound, \(\lim_{x \to c} f(x) = -\infty\).</p>
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> A limit does not need to exist. That is, a limit can evaluate to DNE (does not exist). This happens when \(f(x)\) does not approach a concrete value as \(x\) approaches \(c\).</p>
+</div>
+
+<!-- Section 2: Finding Limits Numerically -->
+<h3>Finding Limits Numerically</h3>
+
+<p>The fundamental idea behind finding limits numerically is to estimate \(\lim_{x \to c} f(x)\) by evaluating \(f(x)\) at values of \(x\) which get closer and closer to \(c\). We approach from both sides of \(c\) and observe the pattern in the function values.</p>
+
+<div class="example">
+    <h5>Example 1: Basic Limit of a Linear Function</h5>
+    <p>Evaluate the following limit numerically:</p>
+    \[\lim_{x \to 1} (x + 3)\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We construct a table of values approaching \(x = 1\) from both the left and right sides:</p>
+        
+        <table>
+            <caption>Values of \(f(x) = x + 3\) as \(x\) approaches 1</caption>
+            <thead>
+                <tr>
+                    <th>\(x\)</th>
+                    <th>0.9</th>
+                    <th>0.99</th>
+                    <th>0.999</th>
+                    <th>0.9999</th>
+                    <th>1</th>
+                    <th>1.0001</th>
+                    <th>1.001</th>
+                    <th>1.01</th>
+                    <th>1.1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(f(x)\)</td>
+                    <td>3.9</td>
+                    <td>3.99</td>
+                    <td>3.999</td>
+                    <td>3.9999</td>
+                    <td>&mdash;</td>
+                    <td>4.0001</td>
+                    <td>4.001</td>
+                    <td>4.01</td>
+                    <td>4.1</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>As \(x\) approaches 1 from both sides, the function values approach 4. Therefore,</p>
+        \[\lim_{x \to 1} (x + 3) = 4.\]
+        Notice that when we directly substitute \(x = 1\), we get \(1 + 3 = 4\). 
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Limit Where Function is Undefined at the Point</h5>
+    <p>Evaluate the following limit numerically:</p>
+    \[\lim_{x \to 2} \frac{x^2 - 2x}{x - 2}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We construct a table of values approaching \(x = 2\) from both sides:</p>
+        
+        <table>
+            <caption>Values of \(f(x) = \frac{x^2 - 2x}{x - 2}\) as \(x\) approaches 2</caption>
+            <thead>
+                <tr>
+                    <th>\(x\)</th>
+                    <th>1.9</th>
+                    <th>1.99</th>
+                    <th>1.999</th>
+                    <th>1.9999</th>
+                    <th>2</th>
+                    <th>2.0001</th>
+                    <th>2.001</th>
+                    <th>2.01</th>
+                    <th>2.1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(f(x)\)</td>
+                    <td>1.9</td>
+                    <td>1.99</td>
+                    <td>1.999</td>
+                    <td>1.9999</td>
+                    <td>&mdash;</td>
+                    <td>2.0001</td>
+                    <td>2.001</td>
+                    <td>2.01</td>
+                    <td>2.1</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Notice that \(\frac{x^2 - 2x}{x - 2}\) is not defined at \(x = 2\) because the denominator becomes zero. However, as \(x\) approaches 2 from both sides, the function values approach 2. Therefore,</p>
+        \[\lim_{x \to 2} \frac{x^2 - 2x}{x - 2} = 2.\]
+        
+        <p>This example illustrates that even when a function is undefined at a point, the limit can still exist at that point.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Infinite Limit</h5>
+    <p>Evaluate the following limit numerically:</p>
+    \[\lim_{x \to -4} \frac{8}{(x + 4)^2}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We construct a table of values approaching \(x = -4\) from both sides:</p>
+        
+        <table>
+            <caption>Values of \(f(x) = \frac{8}{(x + 4)^2}\) as \(x\) approaches -4</caption>
+            <thead>
+                <tr>
+                    <th>\(x\)</th>
+                    <th>-4.1</th>
+                    <th>-4.01</th>
+                    <th>-4.001</th>
+                    <th>-4.0001</th>
+                    <th>-4</th>
+                    <th>-3.9999</th>
+                    <th>-3.999</th>
+                    <th>-3.99</th>
+                    <th>-3.9</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(f(x)\)</td>
+                    <td>800</td>
+                    <td>80000</td>
+                    <td>8000000</td>
+                    <td>800000000</td>
+                    <td>&mdash;</td>
+                    <td>800000000</td>
+                    <td>8000000</td>
+                    <td>80000</td>
+                    <td>800</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>Notice that \(\frac{8}{(x + 4)^2}\) is not defined at \(x = -4\). As \(x\) approaches -4 from both sides, the function values increase without bound. Therefore,</p>
+        \[\lim_{x \to -4} \frac{8}{(x + 4)^2} = \infty.\]
+        
+        <p>This is an example of an infinite limit, where the function grows arbitrarily large near the point of interest.</p>
+    </div>
+</div>
+
+<!-- Section 3: One-sided Limits -->
+<h3>One-sided Limits</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A one-sided limit is the value a function \(f(x)\) approaches as \(x\) approaches a particular value from the left or right.</p>
+</div>
+
+<div class="definition">
+    <p><strong>Definition (Left-sided Limit):</strong> If \(f(x)\) approaches \(L\) as \(x\) approaches \(c\) from the left, we write</p>
+    \[\lim_{x \to c^-} f(x) = L.\]
+</div>
+
+<div class="definition">
+    <p><strong>Definition (Right-sided Limit):</strong> If \(f(x)\) approaches \(L\) as \(x\) approaches \(c\) from the right, we write</p>
+    \[\lim_{x \to c^+} f(x) = L.\]
+</div>
+
+<div class="example">
+    <h5>Example 4: Piecewise Function with Different One-sided Limits</h5>
+    <p>Suppose</p>
+    \[f(x) = \begin{cases} 5 & \text{if } x > 1, \\ x & \text{if } x \leq 1. \end{cases}\]
+    <p>Evaluate the following limits numerically:</p>
+    \[\lim_{x \to 1^-} f(x) \qquad\qquad\qquad
+    \lim_{x \to 1^+} f(x) \qquad\qquad\qquad
+    \lim_{x \to 1} f(x)
+    \]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We construct a table of values approaching \(x = 1\) from both sides:</p>
+        
+        <table>
+            <caption>Values of piecewise function \(f(x)\) as \(x\) approaches 1</caption>
+            <thead>
+                <tr>
+                    <th>\(x\)</th>
+                    <th>0.9</th>
+                    <th>0.99</th>
+                    <th>0.999</th>
+                    <th>0.9999</th>
+                    <th>1</th>
+                    <th>1.0001</th>
+                    <th>1.001</th>
+                    <th>1.01</th>
+                    <th>1.1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(f(x)\)</td>
+                    <td>0.9</td>
+                    <td>0.99</td>
+                    <td>0.999</td>
+                    <td>0.9999</td>
+                    <td>&mdash;</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>From the table, we can determine the one-sided limits.</p>
+        <p>The left-sided limit: \(\lim_{x \to 1^-} f(x) = 1\) (approaching from values less than 1, we use the rule \(f(x) = x\))</p>
+        <p>The right-sided limit: \(\lim_{x \to 1^+} f(x) = 5\) (approaching from values greater than 1, we use the rule \(f(x) = 5\))</p>
+        <p>The two-sided limit: \(\lim_{x \to 1} f(x) = \text{DNE}\) (does not exist, because the left and right limits are different)</p>
+    </div>
+</div>
+
+<div class="theorem">
+    <p><strong>Theorem:</strong> The two-sided limit exists if and only if both one-sided limits exist and are equal. That is,</p>
+    \[\lim_{x \to c} f(x) = L \text{ if and only if } \lim_{x \to c^-} f(x) = L = \lim_{x \to c^+} f(x)\]
+    <p>Note that we allow \(L = \pm\infty\).</p>
+</div>
+
+<!-- Section 4: Finding Limits Graphically -->
+<h3>Finding Limits Graphically</h3>
+
+<p>When finding limits graphically, we examine the portion of the curve of \(f(x)\) near \(x = c\) and observe what the function value approaches as \(x\) gets closer to \(c\) from both the left and right. This visual approach complements the numerical method and helps develop intuition about limit behavior.</p>
+
+<div class="example">
+    <h5>Example 5: Multiple Limits from a Single Graph</h5>
+    
+    <div class="visual-desc">
+        <p><strong>Graph Description:</strong> The graph shows a piecewise continuous function with several notable features. 
+            At \(x = -4\), there is an open circle at \(y=4\) and a solid dot at \(y = 3\). 
+            At \(x = -1\), there is an open circle at \(y = 2\) and a solid dot at \(y = -1\), with the curve approaching \(y = 2\) from both sides. 
+            At \(x = 3\), there is an open circle at \(y=-3\) and a solid dot at \(y=-2\).</p>
+    </div>
+    
+    <p>Compute the following using the graph of \(f(x)\) described above:</p>
+    \[\lim_{x \to -4^-} f(x) \qquad\qquad\qquad
+    \lim_{x \to -1^-} f(x) \qquad\qquad\qquad
+    \lim_{x \to 3^-} f(x)
+    \]
+    \[\lim_{x \to -4^+} f(x) \qquad\qquad\qquad
+    \lim_{x \to -1^+} f(x) \qquad\qquad\qquad
+    \lim_{x \to 3^+} f(x)
+    \]
+    \[\lim_{x \to -4} f(x) \qquad\qquad\qquad
+    \lim_{x \to -1} f(x) \qquad\qquad\qquad
+    \lim_{x \to 3} f(x)
+    \]
+    \[f(-4) \qquad\qquad\qquad\qquad
+    f(-1) \qquad\qquad\qquad\qquad
+    f(3)
+    \]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p>For \(c = -4\):</p>
+        <ul>
+            <li>\(\lim_{x \to -4^-} f(x) = 3\) (approaching from the left, the curve approaches the point at height 3)</li>
+            <li>\(\lim_{x \to -4^+} f(x) = 4\) (approaching from the right, the curve approaches the point at height 4)</li>
+            <li>\(\lim_{x \to -4} f(x) = \text{DNE}\) (since one-sided limits do not equal)</li>
+            <li>\(f(-4) = 3\) (the solid dot indicates the function is defined at this point with value 3)</li>
+        </ul>
+        
+        <p>For \(c = -1\):</p>
+        <ul>
+            <li>\(\lim_{x \to -1^-} f(x) = 2\) (approaching from the left, the curve approaches height 2)</li>
+            <li>\(\lim_{x \to -1^+} f(x) = 2\) (approaching from the right, the curve approaches height 2)</li>
+            <li>\(\lim_{x \to -1} f(x) = 2\) (both one-sided limits equal 2, so the limit exists and equals 2)</li>
+            <li>\(f(-1) = -1\) (the solid dot at \(y = -1\) shows the actual function value, which differs from the limit)</li>
+        </ul>
+        
+        <p>For \(c = 3\):</p>
+        <ul>
+            <li>\(\lim_{x \to 3^-} f(x) = -3\) (approaching from the left, the curve approaches height -3)</li>
+            <li>\(\lim_{x \to 3^+} f(x) = -2\) (approaching from the right, the curve approaches height -2)</li>
+            <li>\(\lim_{x \to 3} f(x) = \text{DNE}\) (the one-sided limits are different, so the two-sided limit does not exist)</li>
+            <li>\(f(3) = -2\) (the solid dot indicates the function is defined at this point with value -2)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 6: Limit at a Jump Discontinuity</h5>
+    
+    <div class="visual-desc">
+        <p><strong>Graph Description:</strong> As \(x\) approaches 0 from the left, the function decreases without bound. 
+            As \(x\) approaches 0 from the right, the function increases without bound. 
+            The function is not defined at \(x = 0\).</p>
+    </div>
+    
+    <p>Compute the following using the graph of \(f(x)\) described above:</p>
+    \[\lim_{x \to 0^-} f(x) \qquad\qquad\qquad
+    \lim_{x \to 0^+} f(x) \qquad\qquad\qquad
+    \lim_{x \to 0} f(x) \qquad\qquad\qquad
+    f(0)
+    \]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <ul>
+            <li>\(\lim_{x \to 0^-} f(x) = -\infty\) (approaching from the left, the curve decreases without bound)</li>
+            <li>\(\lim_{x \to 0^+} f(x) = \infty\) (approaching from the right, the curve increases without bound)</li>
+            <li>\(\lim_{x \to 0} f(x) = \text{DNE}\) (the left and right limits are different, so the two-sided limit does not exist)</li>
+            <li>\(f(0) = \text{undefined}\) (by given)</li>
+        </ul>
+        
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaway:</strong> When evaluating limits graphically, pay careful attention to open circles (which indicate points where the function is not defined) versus solid dots (which show actual function values). The limit depends on where the curve is heading, not necessarily where any dots are placed. A function can have a limit at a point even when it is not defined there, or the limit can differ from the actual function value at that point.</p>
+</div>
+
+</main>
+</body>
+</html>
