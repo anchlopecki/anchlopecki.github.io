@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(248, 246, 250);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 190, 133);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(224, 184, 209);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+        
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(248, 246, 250);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(248, 246, 250);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 3: Finding Limits Analytically</h3>
+
+<!-- Section 1: Finding Limits Analytically -->
+<h3>Finding Limits Analytically</h3>
+
+<p>To find \(\lim_{x \to c} f(x)\) analytically, we consider \(f(c)\), that is, we plug \(x = c\) into \(f(x)\). The result of this substitution determines which approach we must use to evaluate the limit. We will examine three possible scenarios based on what happens when we substitute \(x = c\) into the function.</p>
+
+<h4>Case 1: Direct Substitution Yields a Number</h4>
+
+<div class="important">
+    <p><strong>Case 1:</strong> If \(f(c)\) returns a number (note that 0 is acceptable), then \(\lim_{x \to c} f(x) = f(c)\).</p>
+</div>
+
+<p>This is the simplest case. When direct substitution produces a real number, that number is the limit. This property holds for all continuous functions at points where they are defined.</p>
+
+<div class="example">
+    <h5>Example 1: Direct Substitution</h5>
+    <p>Evaluate the following limit analytically:</p>
+    \[\lim_{x \to 3} (2x^2 + 7)\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We substitute \(x = 3\) directly into the function \(2x^2+7\):</p>
+        \[2(3)^2 + 7 = 2(9) + 7 = 18 + 7 = 25\]
+        <p>Since this produces a real number, we have:</p>
+        \[\lim_{x \to 3} (2x^2 + 7) = 25\]
+    </div>
+</div>
+
+<h4>Case 2: Nonzero Number Over Zero</h4>
+
+<div class="important">
+    <p><strong>Case 2:</strong> If \(f(c) = \frac{\text{nonzero number}}{0}\), then \(f(x)\) has a vertical asymptote at \(x = c\). Therefore, \(\lim_{x \to c} f(x)\) can be equal to \(\infty\), \(-\infty\), or DNE. We need to evaluate the left-sided and right-sided limits to determine \(\lim_{x \to c} f(x)\).</p>
+</div>
+
+<p>When substitution yields a nonzero number divided by zero, the function has a vertical asymptote at that point. The behavior of the function as it approaches the asymptote from each side determines whether the limit is infinite or does not exist.</p>
+
+<div class="example">
+    <h5>Example 2: Vertical Asymptote with Same-Signed Limits</h5>
+    <p>Evaluate the following limit analytically:</p>
+    \[\lim_{x \to -1} \frac{10}{(x + 1)^2}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we attempt direct substitution:</p>
+        \[\frac{10}{(-1 + 1)^2} = \frac{10}{0}\]
+        <p>This is a nonzero number divided by zero, indicating a vertical asymptote at \(x = -1\). We must examine the one-sided limits.</p>
+        
+        <p>For \(x\) slightly less than \(-1\) (approaching from the left): \(x + 1\) is a small negative number, so \((x + 1)^2\) is a small positive number. Therefore, \(\frac{10}{(x + 1)^2}\) approaches \(+\infty\).</p>
+        
+        <p>For \(x\) slightly greater than \(-1\) (approaching from the right): \(x + 1\) is a small positive number, so \((x + 1)^2\) is a small positive number. Therefore, \(\frac{10}{(x + 1)^2}\) approaches \(+\infty\).</p>
+        
+        <p>Since both one-sided limits are equal:</p>
+        \[\lim_{x \to -1} \frac{10}{(x + 1)^2} = \infty\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Vertical Asymptote with Different-Signed Limits</h5>
+    <p>Evaluate the following limit analytically:</p>
+    \[\lim_{x \to 3} \frac{1}{x - 3}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we attempt direct substitution:</p>
+        \[\frac{1}{3 - 3} = \frac{1}{0}\]
+        <p>This is a nonzero number divided by zero, indicating a vertical asymptote at \(x = 3\). We examine the one-sided limits.</p>
+        
+        <p>For \(x\) slightly less than 3 (approaching from the left): \(x - 3\) is a small negative number. Therefore, \(\frac{1}{x - 3}\) approaches \(-\infty\).</p>
+        
+        <p>For \(x\) slightly greater than 3 (approaching from the right): \(x - 3\) is a small positive number. Therefore, \(\frac{1}{x - 3}\) approaches \(+\infty\).</p>
+        
+        <p>Since the one-sided limits are different:</p>
+        \[\lim_{x \to 3} \frac{1}{x - 3} = \text{DNE}\]
+    </div>
+</div>
+
+<h4>Case 3: Zero Over Zero (Indeterminate Form)</h4>
+
+<div class="important">
+    <p><strong>Case 3:</strong> If \(f(c) = \frac{0}{0}\), then \(f(x)\) has a hole or vertical asymptote at \(x = c\). We need to manipulate \(f(x)\) using algebra so that \(f(c)\) returns a number or \(\frac{\text{nonzero number}}{0}\), that is, case 1 or case 2.</p>
+</div>
+
+<p>The indeterminate form \(\frac{0}{0}\) indicates that both the numerator and denominator have a factor that becomes zero at \(x = c\). We must simplify the expression algebraically, typically by factoring and canceling common factors, to reveal the true behavior of the limit.</p>
+
+<div class="example">
+    <h5>Example 4: Removable Discontinuity (Hole)</h5>
+    <p>Evaluate the following limit analytically:</p>
+    \[\lim_{x \to 0} \frac{x^3 - 6x^2}{x^3 + 3x^2}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we attempt direct substitution:</p>
+        \[\frac{0^3 - 6(0)^2}{0^3 + 3(0)^2} = \frac{0}{0}\]
+        <p>This is the indeterminate form, so we must factor and simplify. We factor out the greatest common factor from both the numerator and denominator:</p>
+        \[\frac{x^3 - 6x^2}{x^3 + 3x^2} = \frac{x^2(x - 6)}{x^2(x + 3)}\]
+        <p>Cancel the common factor \(x^2\) (valid for \(x \neq 0\)):</p>
+        \[\frac{x^2(x - 6)}{x^2(x + 3)} = \frac{x - 6}{x + 3}\]
+        <p>Now substitute \(x = 0\) into the simplified expression:</p>
+        \[\frac{0 - 6}{0 + 3} = \frac{-6}{3} = -2\]
+        <p>Therefore:</p>
+        \[\lim_{x \to 0} \frac{x^3 - 6x^2}{x^3 + 3x^2} = -2\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5: Indeterminate Form Leading to Vertical Asymptote</h5>
+    <p>Evaluate the following limit analytically:</p>
+    \[\lim_{x \to 1} \frac{x^2 - x}{(x - 1)^2}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we attempt direct substitution:</p>
+        \[\frac{1^2 - 1}{(1 - 1)^2} = \frac{0}{0}\]
+        <p>This is the indeterminate form, so we factor the numerator:</p>
+        \[\frac{x^2 - x}{(x - 1)^2} = \frac{x(x - 1)}{(x - 1)^2}\]
+        <p>Cancel the common factor \((x - 1)\) (valid for \(x \neq 1\)):</p>
+        \[\frac{x(x - 1)}{(x - 1)^2} = \frac{x}{x - 1}\]
+        <p>Now substitute \(x = 1\) into the simplified expression:</p>
+        \[\frac{1}{1 - 1} = \frac{1}{0}\]
+        <p>This is a nonzero number over zero (case 2), indicating a vertical asymptote. We examine the one-sided limits.</p>
+        
+        <p>For \(x\) slightly less than 1: \(x\) is close to 1 (positive), and \(x - 1\) is a small negative number. Therefore, \(\frac{x}{x - 1}\) approaches \(-\infty\).</p>
+        
+        <p>For \(x\) slightly greater than 1: \(x\) is close to 1 (positive), and \(x - 1\) is a small positive number. Therefore, \(\frac{x}{x - 1}\) approaches \(+\infty\).</p>
+        
+        <p>Since the one-sided limits are different:</p>
+        \[\lim_{x \to 1} \frac{x^2 - x}{(x - 1)^2} = \text{DNE}\]
+    </div>
+</div>
+
+<h4>Limits of Piecewise Functions</h4>
+
+<p>We can also find limits of piecewise functions analytically. For piecewise functions, we must carefully consider which piece of the function applies as we approach the point from each direction.</p>
+
+<div class="example">
+    <h5>Example 6: Limits of a Piecewise Function</h5>
+    <p>Suppose</p>
+    \[f(x) = \begin{cases} x + 3 & \text{if } x \leq 0, \\ x^2 + 3 & \text{if } 0 < x < 1, \\ 2x^2 + 1 & \text{if } x \geq 1. \end{cases}\]
+    <p>Evaluate the following limits analytically:</p>
+    \[\lim_{x \to 0^-}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1^-}f(x)\] 
+    \[\lim_{x \to 0^+}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1^+}f(x)\] 
+    \[\lim_{x \to 0}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1}f(x)\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        
+        <p>For \(x \to 0\):</p>
+        <p>Left-sided limit: As \(x\) approaches 0 from the left, we use the first piece \(f(x) = x + 3\).</p>
+        \[\lim_{x \to 0^-} f(x) = \lim_{x \to 0^-} (x + 3) = 0 + 3 = 3\]
+        
+        <p>Right-sided limit: As \(x\) approaches 0 from the right, we use the second piece \(f(x) = x^2 + 3\).</p>
+        \[\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} (x^2+3) = 0^2 + 3 = 3\]
+        
+        <p>Two-sided limit: Since the one-sided limits are equal,</p>
+        \[\lim_{x \to 0} f(x) = 3.\]
+        
+        <p>For \(x \to 1\):</p>
+        <p>Left-sided limit: As \(x\) approaches 1 from the left, we use the second piece \(f(x) = x^2 + 3\).</p>
+        \[\lim_{x \to 1^-} f(x) = \lim_{x \to 1^-} (x^2 + 3) = 1^2 + 3 = 4\]
+        
+        <p>Right-sided limit: As \(x\) approaches 1 from the right, we use the third piece \(f(x) = 2x^2 + 1\).</p>
+        \[\lim_{x \to 1^+} f(x) = \lim_{x \to 1^+} (2x^2 + 1) = 2(1)^2 + 1 = 2 + 1 = 3\]
+        
+        <p>Two-sided limit: Since the one-sided limits are different,</p>
+        \[\lim_{x \to 1} f(x) = \text{DNE}.\]
+    </div>
+</div>
+
+<!-- Section 2: Limit Properties -->
+<h3>Limit Properties</h3>
+
+<p>The following properties allow us to break down complex limit problems into simpler components. These properties are fundamental tools for analytical limit computation.</p>
+
+<div class="theorem">
+    <p><strong>Limit Properties:</strong></p>
+    <p>Let \(c\), \(k\), \(L\), and \(M\) be real numbers, and let \(n\) be a positive integer. If \(\lim_{x \to c} f(x) = L\) and \(\lim_{x \to c} g(x) = M\), then the following properties hold:</p>
+    \[\lim_{x \to c} [kf(x)] = kL\]
+    \[\lim_{x \to c} [f(x) \pm g(x)] = L \pm M\]
+    \[\lim_{x \to c} [f(x)g(x)] = LM\]
+    \[\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{L}{M}, \quad \text{if \(M \neq 0\)}\]
+    \[\lim_{x \to c} [f(x)]^n = L^n\]
+</div>
+
+<p>These properties allow us to evaluate limits of combinations of functions by working with the limits of individual components. The constant multiple rule states that we can factor constants out of limits. The sum and difference rules allow us to split limits across addition and subtraction. The product and quotient rules extend these operations to multiplication and division, with the quotient rule requiring that the denominator's limit is nonzero. The power rule extends limits through exponentiation.</p>
+
+<div class="example">
+    <h5>Example 7: Applying Limit Properties</h5>
+    <p>Suppose \(\lim_{x \to 1} f(x) = 2\) and \(\lim_{x \to 1} g(x) = 4\). Evaluate</p>
+    \[\lim_{x \to 1} \left[5f(x) - g(x)^2 + 7\right]\]
+    <p>using the limit properties above.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We apply the limit properties step by step. First, use the sum/difference rule to separate the limit into three parts:</p>
+        \[\lim_{x \to 1} \left[5f(x) - g(x)^2 + 7\right] = \lim_{x \to 1} [5f(x)] - \lim_{x \to 1} [g(x)^2] + \lim_{x \to 1} 7\]
+        
+        <p>Apply the constant multiple rule to the first term, the power rule to the second term, and recognize that the limit of a constant is that constant:</p>
+        \[\lim_{x \to 1} [5f(x)] - \lim_{x \to 1} [g(x)^2] + \lim_{x \to 1} 7 = 5 \cdot \lim_{x \to 1} f(x) - \left[\lim_{x \to 1} g(x)\right]^2 + 7\]
+        
+        <p>Substitute the given limit values:</p>
+        \[5 \cdot \lim_{x \to 1} f(x) - \left[\lim_{x \to 1} g(x)\right]^2 + 7= 5\cdot 2 - (4)^2 + 7= 10 -16+7=1\]
+        
+        <p>Therefore:</p>
+        \[\lim_{x \to 1} \left[5f(x) - \frac{g(x)}{2} + 7\right] = 1\]
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaway:</strong> When evaluating limits analytically, always begin by attempting direct substitution. The result of this substitution determines which case applies and guides the appropriate method for finding the limit. Understanding these three cases and the limit properties provides a systematic approach to analytical limit evaluation.</p>
+</div>
+
+</main>
+</body>
+</html>
