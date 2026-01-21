@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 4</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(248, 246, 250);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 190, 133);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(224, 184, 209);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+        
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(248, 246, 250);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(248, 246, 250);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 4: Continuity</h3>
+
+<!-- Section 1: Continuity -->
+<h3>Continuity</h3>
+
+<p>The concept of continuity formalizes the intuitive idea that a function's graph can be drawn without lifting the pen from the paper. A continuous function has no breaks, jumps, or holes at a given point.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f(x)\) is continuous at \(x = c\) if the following three conditions hold:</p>
+    <ul>
+        <li>\(f(c)\) is defined</li>
+        <li>\(\lim_{x \to c} f(x)\) exists</li>
+        <li>\(\lim_{x \to c} f(x) = f(c)\)</li>
+    </ul>
+    <p>If any of the above conditions fail, we say \(f(x)\) is discontinuous at \(x = c\).</p>
+</div>
+
+<p>Each of these three conditions is necessary for continuity. The first condition requires that the function has a defined value at the point. The second condition requires that the function approaches a specific value as we get arbitrarily close to the point from both sides. The third condition requires that the limit value matches the actual function value, ensuring there are no jumps or holes.</p>
+
+<!-- Section 2: Types of Discontinuities -->
+<h3>Types of Discontinuities</h3>
+
+<p>When a function is not continuous at a point, we can classify the type of discontinuity. Understanding these classifications helps us analyze the behavior of functions and identify where they fail to be continuous.</p>
+
+<h4>Vertical Asymptote</h4>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f(x)\) has a vertical asymptote at \(x = c\) if \(\lim_{x \to c^-} f(x) = \pm\infty\) and/or \(\lim_{x \to c^+} f(x) = \pm\infty\).</p>
+</div>
+
+<p>Using terminology from lesson 3, a function has a vertical asymptote at \(x = c\) when \(\lim_{x \to c} f(x)\) is either a "case 2" limit or a "case 3" limit that becomes a "case 2" limit when \(f(x)\) is simplified using algebraic manipulation. At a vertical asymptote, the function values grow without bound as we approach the point.</p>
+
+<h4>Hole</h4>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f(x)\) has a hole at \(x = c\) if</p>
+    \[\lim_{x \to c^-} f(x) = \lim_{x \to c^+} f(x) = \lim_{x \to c} f(x) = L < \infty\]
+    <p>and \(f(c) \neq L\).</p>
+</div>
+
+<p>Note that \(f(c)\) can be undefined. Using terminology from lesson 3, holes can show up as "case 3" limits that become "case 1" limits. At a hole, the limit exists and is finite, but either the function is not defined at that point or the function value does not equal the limit.</p>
+
+<h4>Jump Discontinuity</h4>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f(x)\) has a jump discontinuity at \(x = c\) if \(\lim_{x \to c^-} f(x) = L\) and \(\lim_{x \to c^+} f(x) = M\), where \(L, M < \infty\) and \(L \neq M\).</p>
+</div>
+
+<p>At a jump discontinuity, both one-sided limits exist and are finite, but they are not equal to each other. This causes the function to "jump" from one value to another at the point of discontinuity.</p>
+
+<!-- Examples Section -->
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 1: Identifying Discontinuities from a Graph</h5>
+    <p>Given the graph of \(f(x)\) below, find the \(x\) values where \(f(x)\) is discontinuous. Classify the discontinuities.</p>
+    
+    <div class="visual-desc">
+        <p><strong>Graph Description:</strong> The graph shows a function with several discontinuities. There is a solid dot at \((-5,3)\) and an open circle at \((-5,2)\). 
+        As \(x\) approaches \(-5\) from the left, \(f(x)\) approaches \(3\).
+        As \(x\) approaches \(-5\) from the right, \(f(x)\) approaches \(2\).
+        There is an open circle at \(x=-2\).
+        As \(x\) approaches \(-2\), \(f(x)\) approaches \(-1\).
+        There is a solid dot at \((1,5)\) and an open circle at \((1,-1)\).
+        As \(x\) approaches \(1\) from the left, \(f(x)\) approaches \(5\).
+        As \(x\) approaches \(1\) from the right, \(f(x)\) approaches \(-1\).
+        As \(x\) approaches \(3\) from the left, \(f(x)\) approaches \(-\infty\).
+        As \(x\) approaches \(3\) from the right, \(f(x)\) approaches \(\infty\).
+        </p>
+    </div>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>There is a jump at \(x=-5\) and \(x=1\). There is a hole at \(x=-2\). There is a vertical asymptote at \(x=3\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Classifying Discontinuities Analytically</h5>
+    <p>Classify the discontinuities, if any, of the following function:</p>
+    \[f(x) = \frac{x^2 - 5x}{x^2 + 3x}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we identify where the function might be discontinuous by finding where the denominator equals zero:</p>
+        \[x^2 + 3x = 0\]
+        <p>Therefore, \(x(x + 3) = 0\), and so \(x = 0\) or \(x = -3\).</p>
+
+        <p>At \(x = -3\): Plugging in \(x=-3\) into \(f(x)\), we obtain \(\frac{24}{0}\), a case 2 limit, implying that there is a vertical asymptote at \(x=-3\).</p>
+        
+        <p>At \(x = 0\): Note that when we plug in \(x=0\) into \(f(x)\), we obtain \(\frac{0}{0}\), a case 3 limit. Let's factor the function to analyze the behavior:</p>
+        \[f(x) = \frac{x^2 - 5x}{x^2 + 3x} = \frac{x(x - 5)}{x(x + 3)} = \frac{x - 5}{x + 3} \quad\text{ for } x \neq 0\]
+        <p>The simplified function gives:</p>
+        \[\lim_{x \to 0} f(x) = \frac{0 - 5}{0 + 3} = \frac{-5}{3}\]
+        <p>Since the limit exists and is finite, but \(f(0)\) is undefined, \(f(x)\) has a hole at \(x = 0\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Polynomial Function Continuity</h5>
+    <p>Classify the discontinuities, if any, of the following function:</p>
+    \[g(x) = x^4 + 11x^2 - 8x + 22\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>This function is a polynomial. Polynomial functions are continuous everywhere on their domain, which is all real numbers. Since there are no values of \(x\) where \(g(x)\) is undefined, and polynomials satisfy all three continuity conditions at every point, \(g(x)\) has no discontinuities.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4: Piecewise Function with Potential Hole</h5>
+    <p>Classify the discontinuities, if any, of the following function:</p>
+    \[h(x) = \begin{cases} 7x + 1 & \text{if } x \neq 1, \\ 6 & \text{if } x = 1. \end{cases}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We check continuity at \(x = 1\), since this is where the function definition changes.</p>
+        
+        <p>First, \(h(1) = 6\) is defined.</p>
+        
+        <p>Next, we find the limit as \(x\) approaches 1. For all values of \(x\) near 1 (but not equal to 1), we use the formula \(h(x) = 7x + 1\):</p>
+        \[\lim_{x \to 1} h(x) = \lim_{x \to 1} (7x + 1) = 7(1) + 1 = 8\]
+        
+        <p>Since \(\lim_{x \to 1} h(x) = 8\) but \(h(1) = 6\), we have \(\lim_{x \to 1} h(x) \neq h(1)\).</p>
+        
+        <p>Therefore, \(h(x)\) has a hole at \(x = 1\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5: Piecewise Function with Multiple Discontinuities</h5>
+    <p>Classify the discontinuities, if any, of the following function:</p>
+    \[f(x) = \begin{cases} 8x^2 + 2 & \text{if } x \leq 0, \\ 3x + 2 & \text{if } 0 < x < 1, \\ x + 9 & \text{if } x \geq 1. \end{cases}\]
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We check for discontinuities at the boundary points \(x = 0\) and \(x = 1\).</p>
+        
+        <p>At \(x = 0\):</p>
+        <p>The function value is \(f(0) = 8(0)^2 + 2 = 2\).</p>
+        
+        <p>Left-sided limit: Using the first piece,</p>
+        \[\lim_{x \to 0^-} f(x) = \lim_{x \to 0^-} (8x^2 + 2) = 8(0)^2 + 2 = 2\]
+        
+        <p>Right-sided limit: Using the second piece,</p>
+        \[\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} (3x + 2) = 3(0) + 2 = 2\]
+        
+        <p>Since \(\lim_{x \to 0} f(x) = 2 = f(0)\), the function is continuous at \(x = 0\).</p>
+        
+        <p>At \(x = 1\):</p>
+        <p>The function value is \(f(1) = 1 + 9 = 10\).</p>
+        
+        <p>Left-sided limit: Using the second piece,</p>
+        \[\lim_{x \to 1^-} f(x) = \lim_{x \to 1^-} (3x + 2) = 3(1) + 2 = 5\]
+        
+        <p>Right-sided limit: Using the third piece,</p>
+        \[\lim_{x \to 1^+} f(x) = \lim_{x \to 1^+} (x + 9) = 1 + 9 = 10\]
+        
+        <p>Since \(\lim_{x \to 1^-} f(x) = 5\) and \(\lim_{x \to 1^+} f(x) = 10\), we have \(\lim_{x \to 1^-} f(x) \neq \lim_{x \to 1^+} f(x)\).</p>
+        
+        <p>Therefore, \(f(x)\) has a jump discontinuity at \(x = 1\).</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaway:</strong> To determine if a function is continuous at a point, verify that all three conditions are met: the function must be defined at the point, the limit must exist, and the limit must equal the function value. When discontinuities occur, classify them by examining the behavior of the one-sided limits and the function value to determine whether the discontinuity is a vertical asymptote, hole, or jump.</p>
+</div>
+
+</main>
+</body>
+</html>
