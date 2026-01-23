@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 5</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(248, 246, 250);
+            /* background-color: rgb(235, 233, 237); */
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(237, 205, 90);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(237, 205, 90);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(135, 165, 192);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(135, 165, 192);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(190, 196, 171);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(190, 196, 171);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(255, 190, 133);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(255, 190, 133);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(244, 119, 102);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(244, 119, 102);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(224, 184, 209);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(143, 143, 143);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+        
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(248, 246, 250);
+                /* background-color: rgb(235, 233, 237); */
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(248, 246, 250);
+                /* background-color: rgb(235, 233, 237); */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 5: The Derivative</h3>
+
+<!-- Section 1: Secant and Tangent Lines -->
+<h3>Secant and Tangent Lines</h3>
+
+<p>Before introducing the derivative, we must understand two fundamental types of lines associated with functions: secant lines and tangent lines. These concepts provide the geometric foundation for understanding derivatives.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A secant line of a function \(f(x)\) is a line that passes through two distinct points of \(f(x)\).</p>
+</div>
+
+<p>Secant lines represent the average rate of change of a function between two points. If we have two points \((x_1, f(x_1))\) and \((x_2, f(x_2))\) on the graph of \(f(x)\), the secant line connects these points and has slope equal to the average rate of change over that interval.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The tangent line to a function \(f(x)\) at the point \(x = c\) is the line that touches the graph of \(f(x)\) at the point \((c, f(c))\). We can think of this as taking the slope of the graph at the point \((c, f(c))\) and extending it into a line with the same slope.</p>
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> The slope of the tangent line to \(f(x)\) at \(x = c\) is the slope of the graph of \(f(x)\) at the point \((c, f(c))\).</p>
+</div>
+
+<p>The tangent line represents the instantaneous rate of change of the function at a specific point. Unlike the secant line which connects two points, the tangent line just touches the curve at a single point and indicates the direction the function is heading at that exact location.</p>
+
+<!-- Section 2: Finding the Slope of the Tangent Line -->
+<h3>Finding the Slope of the Tangent Line Using Slopes of Secant Lines</h3>
+
+<p>The key insight in calculus is that we can find the slope of a tangent line by examining secant lines and letting the two points get closer and closer together. This limit process transforms the average rate of change into an instantaneous rate of change.</p>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> The diagram shows a curve representing \(f(x)\) with a point labeled \((x, f(x))\) and another point to its right labeled \((x+h, f(x+h))\). A secant line passes through both points. The horizontal distance between the points is labeled \(h\), and the vertical distance is labeled \(f(x+h) - f(x)\). This illustrates how the secant line connects two points on the curve separated by a horizontal distance of \(h\).</p>
+</div>
+
+<p>The slope of the secant line shown in the diagram is calculated using the slope formula:</p>
+\[\text{Slope of secant line} = \frac{f(x+h) - f(x)}{h}\]
+
+<p>This formula gives the average rate of change of \(f(x)\) over the interval from \(x\) to \(x+h\). We call it the difference quotient. As we make \(h\) smaller and smaller, the secant line approaches the tangent line, and the average rate of change approaches the instantaneous rate of change.</p>
+
+<p>To find the slope of the tangent line, we take the limit as \(h\) approaches 0:</p>
+\[\text{Slope of tangent line} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+
+<p>This limit, when it exists, gives us the exact slope of the curve at the point \((x, f(x))\).</p>
+
+<!-- Section 3: The Derivative -->
+<h3>The Derivative</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The derivative of a function \(f(x)\) at the point \(x\) is the slope of the tangent line to \(f(x)\) at the point \(x\). We write</p>
+    \[f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+</div>
+
+<p>The derivative \(f'(x)\) is itself a function that tells us the slope of the tangent line to \(f(x)\) at any value of \(x\). When we evaluate \(f'(c)\) for a specific value \(c\), we get the slope of the tangent line at that particular point.</p>
+
+<h4>Notation</h4>
+
+<div class="important">
+    <p><strong>Notation:</strong> If \(y = f(x)\), then we can write the derivative using any of the following equivalent notations:</p>
+    \[y' = f'(x) = \frac{dy}{dx} = \frac{d}{dx}f(x)\]
+</div>
+
+<p>The notation \(f'(x)\) is called Lagrange notation, while \(\frac{dy}{dx}\) and \(\frac{d}{dx}f(x)\) are called Leibniz notation. The Leibniz notation emphasizes that the derivative is a limit of ratios of differences, while the prime notation is more compact for computation.</p>
+
+<h4>Geometric Interpretation</h4>
+
+<div class="important">
+    <p><strong>Geometric Interpretation:</strong> The slope of the tangent line to \(f(x)\) at the point \(x = c\) is equal to the derivative of \(f(x)\) at the point \(x = c\). That is, \(f'(c)\) is the slope of the tangent line to \(f(x)\) at \(x = c\).</p>
+</div>
+
+<p>This geometric interpretation connects the algebraic definition of the derivative (as a limit) with its visual meaning (as the slope of a tangent line). It allows us to interpret derivatives in terms of rates of change and provides intuition for understanding what derivatives tell us about functions.</p>
+
+<!-- Examples Section -->
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 1: Derivative of a Linear Function</h5>
+    <p>Suppose \(f(x) = x + 5\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use the limit definition of the derivative:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+        
+        <p>First, we find \(f(x+h)\):</p>
+        \[f(x+h) = (x+h) + 5 = x + h + 5\]
+        
+        <p>Now we substitute into the limit definition:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{(x + h + 5) - (x + 5)}{h}\]
+        
+        <p>Simplify the numerator:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{x + h + 5 - x - 5}{h} = \lim_{h \to 0} \frac{h}{h}\]
+        
+        <p>Cancel the \(h\) (valid since \(h \neq 0\) in the limit):</p>
+        \[f'(x) = \lim_{h \to 0} 1 = 1\]
+        
+        <p>Therefore, \(f'(x) = 1\).</p>
+        
+        <p>This result makes sense: the function \(f(x) = x + 5\) is a line with slope 1, so its derivative (the slope of the tangent line) is constantly 1 everywhere.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Derivative of a Quadratic Function</h5>
+    <p>Suppose \(f(x) = 3x^2 + 1\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use the limit definition of the derivative:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+        
+        <p>First, we find \(f(x+h)\):</p>
+        \[f(x+h) = 3(x+h)^2 + 1 = 3(x^2 + 2xh + h^2) + 1 = 3x^2 + 6xh + 3h^2 + 1\]
+        
+        <p>Now we substitute into the limit definition:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{(3x^2 + 6xh + 3h^2 + 1) - (3x^2 + 1)}{h}\]
+        
+        <p>Simplify the numerator:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{3x^2 + 6xh + 3h^2 + 1 - 3x^2 - 1}{h} = \lim_{h \to 0} \frac{6xh + 3h^2}{h}\]
+        
+        <p>Factor out \(h\) from the numerator:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{h(6x + 3h)}{h}\]
+        
+        <p>Cancel the \(h\) (valid since \(h \neq 0\) in the limit):</p>
+        \[f'(x) = \lim_{h \to 0} (6x + 3h)\]
+        
+        <p>Take the limit as \(h\) approaches 0:</p>
+        \[f'(x) = 6x + 3\cdot 0 = 6x\]
+        
+        <p>Therefore, \(f'(x) = 6x\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Finding the Equation of a Tangent Line</h5>
+    <p>Find the equation of the tangent line to the graph of \(f(x) = 3x^2 + 1\) at the point \(x = 2\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>To find the equation of the tangent line, we need a point and a slope. We already know the point of tangency occurs at \(x = 2\), and we found in example 2 above that \(f'(x) = 6x\).</p>
+        
+        <p>First, find the \(y\)-coordinate of the point of tangency:</p>
+        \[f(2) = 3\cdot 2^2 + 1 = 3\cdot 4 + 1 = 12 + 1 = 13\]
+        <p>So, the point of tangency is \((2, 13)\).</p>
+        
+        <p>Next, find the slope of the tangent line at \(x = 2\):</p>
+        \[f'(2) = 6\cdot 2 = 12\]
+        
+        <p>Now, we use the point-slope form of a line: \(y - y_1 = m(x - x_1)\), where \(m\) is the slope and \((x_1, y_1)\) is the point.</p>
+        \[y - 13 = 12(x - 2)\]
+        
+        <p>Simplify to get the equation in slope-intercept form:</p>
+        \[y - 13 = 12x - 24\]
+        \[y = 12x - 24 + 13\]
+        \[y = 12x - 11\]
+        
+        <p>Therefore, the equation of the tangent line is \(y = 12x - 11\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4: Working Backwards from the Derivative</h5>
+    <p>The derivative of a function \(f(x)\) is found by computing</p>
+    \[f'(x) = \lim_{h \to 0} \frac{\sqrt{(x+h)^3 + 2} - \sqrt{x^3 + 2}}{h}\]
+    <p>What is \(f(x)\)?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Recall that the definition of the derivative is:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}\]
+        
+        <p>Comparing this with the given expression:</p>
+        \[f'(x) = \lim_{h \to 0} \frac{\sqrt{(x+h)^3 + 2} - \sqrt{x^3 + 2}}{h}\]
+        
+        <p>We can identify that:</p>
+        \[f(x+h) = \sqrt{(x+h)^3 + 2}\]
+        \[f(x) = \sqrt{x^3 + 2}\]
+        
+        <p>Therefore, \(f(x) = \sqrt{x^3 + 2}\).</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaway:</strong> The derivative is defined as the limit of the difference quotient and represents the instantaneous rate of change of a function. Geometrically, it gives the slope of the tangent line at any point on the curve. To find derivatives from the definition, we must carefully substitute, simplify, factor, and then take the limit as \(h\) approaches 0.</p>
+</div>
+
+</main>
+</body>
+</html>
