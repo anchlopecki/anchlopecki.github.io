@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applied Calculus I - Lesson 3</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
     <script>
         MathJax = {
             tex: {
@@ -12,7 +12,16 @@
                 displayMath: [['\\[', '\\]']]
             }
         };
+    </script> -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -357,9 +366,9 @@
     <p>Suppose</p>
     \[f(x) = \begin{cases} x + 3 & \text{if } x \leq 0, \\ x^2 + 3 & \text{if } 0 < x < 1, \\ 2x^2 + 1 & \text{if } x \geq 1. \end{cases}\]
     <p>Evaluate the following limits analytically:</p>
-    \[\lim_{x \to 0^-}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1^-}f(x)\] 
-    \[\lim_{x \to 0^+}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1^+}f(x)\] 
-    \[\lim_{x \to 0}f(x) \qquad\qquad\qquad\qquad \lim_{x \to 1}f(x)\]
+    \[\begin{align}&\lim_{x \to 0^-}f(x) \qquad &\lim_{x \to 1^-}f(x)\\ 
+    &\lim_{x \to 0^+}f(x) \qquad &\lim_{x \to 1^+}f(x)\\
+    &\lim_{x \to 0}f(x) \qquad &\lim_{x \to 1}f(x)\end{align}\]
     
     <div class="solution">
         <p><strong>Solution:</strong></p>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 6</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script> -->
+    <!-- <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script> -->
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(60, 60, 60);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 6: Basic Rules of Differentiation; Derivatives of Sine and Cosine; Natural Exponential Function</h3>
+
+<!-- Section 1: Basic Rules of Differentiation -->
+<h3>6.1 Basic Rules of Differentiation</h3>
+
+<div class="theorem">
+    <p><strong>Constant Rule:</strong> For any constant \(c\),</p>
+    \[\frac{d}{dx}(c) = 0\]
+</div>
+
+<div class="theorem">
+    <p><strong>Power Rule:</strong> For any real number \(n\),</p>
+    \[\frac{d}{dx}(x^n) = nx^{n-1}\]
+</div>
+
+<div class="theorem">
+    <p><strong>Constant Multiple Rule:</strong> Let \(c\) be a constant and \(f(x)\) differentiable. Then,</p>
+    \[\frac{d}{dx}(cf(x)) = c\frac{d}{dx}(f(x))\]
+</div>
+
+<div class="theorem">
+    <p><strong>Sum/Difference Rule:</strong> Suppose \(f(x)\) and \(g(x)\) are differentiable. Then,</p>
+    \[\frac{d}{dx}(f(x) \pm g(x)) = \frac{d}{dx}(f(x)) \pm \frac{d}{dx}(g(x))\]
+</div>
+
+<h4>Proof of the Constant Rule</h4>
+
+<p>Let's use the definition of a derivative from lesson 5. Let \(f(x) = c\). Then,</p>
+
+\[\frac{d}{dx}(c) = f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} = \lim_{h \to 0} \frac{c - c}{h} = \lim_{h \to 0} 0 = 0\]
+
+<div class="important">
+    <p><strong>Important:</strong> Recall that \(x^{-n} = \frac{1}{x^n}\) and \(x^{n/m} = \sqrt[m]{x^n}\).</p>
+</div>
+
+<div class="example">
+    <h5>Example 1: Finding Derivatives Using Basic Rules</h5>
+    <p>Find the derivatives of the following functions.</p>
+    
+    <p><strong>(a)</strong> \(f(x) = 75\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the constant rule:</p>
+        \[f'(x) = \frac{d}{dx}(75) = 0\]
+    </div>
+    
+    <p><strong>(b)</strong> \(f(x) = x^3\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the power rule:</p>
+        \[f'(x) = \frac{d}{dx}(x^3) = 3x^{3-1} = 3x^2\]
+    </div>
+    
+    <p><strong>(c)</strong> \(f(x) = \frac{1}{x^4}\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, rewrite as \(f(x) = x^{-4}\). Then, using the power rule:</p>
+        \[f'(x) = \frac{d}{dx}(x^{-4}) = -4x^{-4-1} = -4x^{-5} = -\frac{4}{x^5}\]
+    </div>
+    
+    <p><strong>(d)</strong> \(f(x) = \sqrt[3]{x^2}\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, rewrite as \(f(x) = x^{2/3}\). Then, using the power rule:</p>
+        \[f'(x) = \frac{d}{dx}(x^{2/3}) = \frac{2}{3}x^{2/3-1} = \frac{2}{3}x^{-1/3} = \frac{2}{3x^{1/3}} = \frac{2}{3\sqrt[3]{x}}\]
+    </div>
+    
+    <p><strong>(e)</strong> \(f(x) = 4x^3\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the constant multiple rule and power rule:</p>
+        \[f'(x) = \frac{d}{dx}(4x^3) = 4\frac{d}{dx}(x^3) = 4\cdot 3x^{3-1} = 4 \cdot 3x^2 = 12x^2\]
+    </div>
+    
+    <p><strong>(f)</strong> \(f(x) = x^5 + 2x - 3\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the sum/difference rule, power rule, and constant rule:</p>
+        \[f'(x) = \frac{d}{dx}(x^5 + 2x - 3) = \frac{d}{dx}(x^5) + \frac{d}{dx}(2x) - \frac{d}{dx}(3)= 5x^4 + 2 \cdot 1 - 0 = 5x^4 + 2\]
+    </div>
+</div>
+
+<!-- Section 2: Sine and Cosine -->
+<h3>6.2 Derivatives of Sine and Cosine</h3>
+
+<div class="theorem">
+    <p><strong>Derivatives of Trigonometric Functions:</strong> We note that</p>
+    \[\frac{d}{dx}\sin(x) = \cos(x) \quad \text{and} \quad \frac{d}{dx}\cos(x) = -\sin(x)\]
+</div>
+
+<div class="example">
+    <h5>Example 2: Derivative of a Trigonometric Function</h5>
+    <p>Suppose \(f(x) = 2\sin(x) - 3\cos(x)\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the sum/difference rule and constant multiple rule:</p>
+        \[\begin{align}f'(x) &= \frac{d}{dx}(2\sin(x) - 3\cos(x))\\
+        &= \frac{d}{dx}(2\sin(x)) - \frac{d}{dx}(3\cos(x))\\
+        &= 2\frac{d}{dx}(\sin(x)) - 3\frac{d}{dx}(\cos(x))\\
+        &= 2\cos(x) - 3\cdot (-\sin(x))\\
+        &= 2\cos(x) + 3\sin(x)\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Equation of a Tangent Line</h5>
+    <p>Find the equation of the tangent line to \(f(x) = 2\sin(x) - 3\cos(x)\) at \(x = \frac{\pi}{2}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>From example 2, we know that \(f'(x) = 2\cos(x) + 3\sin(x)\).</p>
+        
+        <p>The slope of the tangent line at \(x = \frac{\pi}{2}\) is:</p>
+        \[f'\left(\frac{\pi}{2}\right) = 2\cos\left(\frac{\pi}{2}\right) + 3\sin\left(\frac{\pi}{2}\right) = 2\cdot 0 + 3\cdot 1 = 3\]
+        
+        <p>The point on the tangent line is \(\left(\frac{\pi}{2}, f\left(\frac{\pi}{2}\right)\right)\):</p>
+        \[f\left(\frac{\pi}{2}\right) = 2\sin\left(\frac{\pi}{2}\right) - 3\cos\left(\frac{\pi}{2}\right) = 2\cdot 1 - 3\cdot 0 = 2\]
+        
+        <p>So the point is \(\left(\frac{\pi}{2}, 2\right)\).</p>
+        
+        <p>Using the point-slope form \(y - y_1 = m(x - x_1)\):</p>
+        \[y - 2 = 3\left(x - \frac{\pi}{2}\right)\]
+        \[y = 3x - \frac{3\pi}{2} + 2\]
+        \[y = 3x + \frac{4 - 3\pi}{2}\]
+    </div>
+</div>
+
+<!-- Section 3: Exponential Function -->
+<h3>6.3 Derivative of the Natural Exponential Function</h3>
+
+<div class="theorem">
+    <p><strong>Derivative of the Exponential Function:</strong> We note that</p>
+    \[\frac{d}{dx}(e^x) = e^x\]
+</div>
+
+<div class="example">
+    <h5>Example 4: Derivative of an Exponential Function</h5>
+    <p>Suppose \(f(x) = 7e^x\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the constant multiple rule:</p>
+        \[f'(x) = \frac{d}{dx}(7e^x) = 7\frac{d}{dx}(e^x) = 7e^x\]
+    </div>
+</div>
+
+<!-- Section 4: Practice Problems -->
+<h3>6.4 Practice Problems</h3>
+
+<div class="example">
+    <h5>Practice Problem 1</h5>
+    <p>Suppose \(f(x) = (x-1)(x+3)\). Find all the values of \(x\) so that \(f'(x) = 1\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, expand the function:</p>
+        \[f(x) = x^2 + 3x - x - 3 = x^2 + 2x - 3\]
+        
+        <p>Find the derivative:</p>
+        \[f'(x) = 2x + 2\]
+        
+        <p>Set the derivative equal to 1 and solve:</p>
+        \[2x + 2 = 1\]
+        \[2x = -1\]
+        \[x = -\frac{1}{2}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Practice Problem 2</h5>
+    <p>Suppose \(f(x) = \frac{x^2 - 2x^{3/2}}{\sqrt{x}}\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, simplify by dividing each term by \(\sqrt{x} = x^{1/2}\):</p>
+        \[f(x) = \frac{x^2}{\sqrt{x}} - \frac{2x^{3/2}}{\sqrt{x}} = \frac{x^2}{x^{1/2}} - \frac{2x^{3/2}}{x^{1/2}}= x^{2-1/2} - 2x^{3/2-1/2} = x^{3/2} - 2x\]
+        
+        <p>Now find the derivative using the power rule:</p>
+        \[f'(x) = \frac{d}{dx}(x^{3/2} - 2x) = \frac{3}{2}x^{3/2-1} - 2= \frac{3}{2}x^{1/2} - 2 = \frac{3\sqrt{x}}{2} - 2\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
