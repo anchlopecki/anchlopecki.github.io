@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 7</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(60, 60, 60);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 7: Instantaneous Rates of Change</h3>
+
+<!-- Section 1: Instantaneous Rates of Change -->
+<h3>7.1 Instantaneous Rates of Change</h3>
+
+<div class="visual-desc">
+    <p><strong>Graph Description:</strong> A coordinate plane showing a curved function \(f(x)\) that increases from left to right with decreasing steepness. Two points are marked on the curve: \((x, f(x))\) at the lower left and \((x+h, f(x+h))\) at the upper right. A secant line connects these two points, showing the average rate of change over the interval from \(x\) to \(x+h\). The graph illustrates the geometric interpretation of the average rate of change formula.</p>
+</div>
+
+<p>Recall that the slope of the secant line to \(f(x)\) at the points \(x\) and \(x + h\) is</p>
+
+\[\frac{f(x + h) - f(x)}{h}\]
+
+<div class="definition">
+    <p><strong>Definition:</strong> The <strong>average rate of change</strong> of the function \(f(x)\) over the interval \([x, x + h]\) is</p>
+    \[\frac{f(x + h) - f(x)}{h}\]
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The <strong>(instantaneous) rate of change</strong> of the function \(f(x)\) at the point \(x\) is</p>
+    \[\lim_{h \to 0} \frac{f(x + h) - f(x)}{h} = f'(x)\]
+</div>
+
+<div class="example">
+    <h5>Example 1: Bacterial Population Growth</h5>
+    <p>The population of a culture of bacteria is given by \(p(t) = 5t^2 + 9t + 1\), where \(t\) is time in hours.</p>
+    
+    <p><strong>(a)</strong> Find the equation for the rate of change of the population after \(t\) hours.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The rate of change of the population is the derivative of \(p(t)\):</p>
+        \[p'(t) = \frac{d}{dt}(5t^2 + 9t + 1) = 10t + 9\]
+    </div>
+    
+    <p><strong>(b)</strong> What is the rate of change after 3 hours?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Evaluate \(p'(t)\) at \(t = 3\):</p>
+        \[p'(3) = 10\cdot 3 + 9 = 30 + 9 = 39\]
+        <p>The population is increasing at a rate of 39 bacteria per hour after 3 hours.</p>
+    </div>
+</div>
+
+<!-- Section 2: Velocity -->
+<h3>7.2 Velocity</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The <strong>velocity</strong> is the rate of change of the position.</p>
+</div>
+
+<div class="important">
+    <p><strong>Notation:</strong> If \(s(t)\) is a function giving the position of an object at time \(t\), then the velocity of that object at time \(t\) is \(v(t) = s'(t)\).</p>
+</div>
+
+<div class="example">
+    <h5>Example 2: Velocity of a Thrown Ball</h5>
+    <p>The height of a ball \(t\) seconds after being thrown into the air is given by \(s(t) = -10t^2 + 60t\).</p>
+    
+    <p><strong>(a)</strong> Find the velocity function \(v(t)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The velocity is the derivative of the position function:</p>
+        \[v(t) = s'(t) = \frac{d}{dt}(-10t^2 + 60t) = -20t + 60\]
+    </div>
+    
+    <p><strong>(b)</strong> What is the velocity of the ball when \(t = 4\)?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Evaluate \(v(t)\) at \(t = 4\):</p>
+        \[v(4) = -20\cdot 4 + 60 = -80 + 60 = -20\]
+        <p>The velocity is \(-20\) meters per second. The negative sign indicates the ball is moving downward at this time.</p>
+    </div>
+</div>
+
+<!-- Section 3: Practice Problems -->
+<h3>7.3 Practice Problems</h3>
+
+<div class="example">
+    <h5>Practice Problem 1: Rock Thrown on Mars</h5>
+    <p>If a rock is thrown upward on Mars, its height (in meters) after \(t\) seconds is given by \(s(t) = -1.86t^2 + 16t\). At what time is the velocity of the rock equal to -2.6 meters per second?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, find the velocity function:</p>
+        \[v(t) = s'(t) = \frac{d}{dt}(-1.86t^2 + 16t) = -3.72t + 16\]
+        
+        <p>Set the velocity function equal to -2.6 and solve for \(t\):</p>
+        \[-3.72t + 16 = -2.6\]
+        \[-3.72t = -18.6\]
+        \[t = \frac{-18.6}{-3.72} = 5\]
+        
+        <p>The velocity of the rock is -2.6 meters per second at \(t = 5\) seconds.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Practice Problem 2: Rate of Change of Volume of a Cube</h5>
+    <p>Find the rate of change of the volume of a cube with respect to the length of a side \(s\). What is the rate of change of the volume when \(s = 3\)?</p>
+    
+    <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A three-dimensional cube with side length \(s\) marked on each visible edge. The cube is drawn in perspective to show its three-dimensional nature, with edges labeled to indicate that all sides have equal length \(s\).</p>
+    </div>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>The volume of a cube with side length \(s\) is:</p>
+        \[V(s) = s^3\]
+        
+        <p>The rate of change of the volume with respect to the side length is:</p>
+        \[V'(s) = \frac{d}{ds}(s^3) = 3s^2\]
+        
+        <p>When \(s = 3\):</p>
+        \[V'(3) = 3\cdot 3^2 = 3\cdot 9 = 27\]
+        
+        <p>The rate of change of the volume when the side length is 3 is 27 cubic units per unit of side length.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Practice Problem 3: Population Growth Rate</h5>
+    <p>The population of a town since the year 2000 can be given by \(p(t) = 200t^2 - 100t + 70000\), where \(t = 0\) corresponds to the year 2000. In which year is the population increasing at the rate of 2300 people per year?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, find the rate of change of the population:</p>
+        \[p'(t) = \frac{d}{dt}(200t^2 - 100t + 70000) = 400t - 100\]
+        
+        <p>Set the rate of change equal to 2300 and solve for \(t\):</p>
+        \[400t - 100 = 2300\]
+        \[400t = 2400\]
+        \[t = 6\]
+        
+        <p>Since \(t = 0\) corresponds to the year 2000, we have:</p>
+        \[2000 + t = 2000 + 6 = 2006\]
+        
+        <p>The population is increasing at a rate of 2300 people per year in the year 2006.</p>
+    </div>
+</div>
+
+</main>
+</body>
+</html>
