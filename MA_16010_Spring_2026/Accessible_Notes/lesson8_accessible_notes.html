@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 8</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(60, 60, 60);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 8: The Product Rule</h3>
+
+<!-- Section 1: The Product Rule -->
+<h3>8.1 The Product Rule</h3>
+
+<div class="example">
+    <h5>Example 1: Motivating the Product Rule</h5>
+    <p>Suppose \(f(x) = 3x^3(5x^2 + 7x)\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution (by expanding first):</strong></p>
+        <p>First, expand the product:</p>
+        \[f(x) = 3x^3(5x^2 + 7x) = 15x^5 + 21x^4\]
+        
+        <p>Then, take the derivative:</p>
+        \[f'(x) = 75x^4 + 84x^3\]
+    </div>
+</div>
+
+<h4>Why We Need the Product Rule</h4>
+
+<p>What happens if we take the derivative of each factor and multiply them together?</p>
+
+<div class="warning">
+    <p><strong>Warning:</strong> The derivative of a product is NOT the product of the derivatives!</p>
+    <p>If we incorrectly tried to find the derivative by taking \(f'(x) = 9x^2(10x + 7)\), we would get \(90x^3 + 63x^2\), which is wrong.</p>
+    \[\frac{d}{dx}[f(x)g(x)] \neq \left[\frac{d}{dx}f(x)\right]\left[\frac{d}{dx}g(x)\right]\]
+</div>
+
+<div class="theorem">
+    <p><strong>The Product Rule:</strong> Using the limit definition of a derivative (and some cleverness), we can show that</p>
+    \[\frac{d}{dx}[f(x)g(x)] = \left[\frac{d}{dx}f(x)\right]g(x) + \left[\frac{d}{dx}g(x)\right]f(x)\]
+    <p>Or more simply: \((fg)' = f'g + g'f\)</p>
+</div>
+
+<!-- Proof of the Product Rule -->
+<h3>Proof of the Product Rule</h3>
+
+<div class="theorem">
+    <p><strong>Proof:</strong> We will use the limit definition of the derivative along with some algebraic manipulation.</p>
+    
+    <p>Starting with the definition:</p>
+    \[\frac{d}{dx}(f(x)g(x)) = \lim_{h \to 0} \frac{f(x+h)g(x+h) - f(x)g(x)}{h}\]
+    
+    <p>The key insight is to add and subtract \(f(x+h)g(x)\) in the numerator (adding zero in a clever way):</p>
+    \[\lim_{h \to 0} \frac{f(x+h)g(x+h) - f(x)g(x)}{h}=\lim_{h \to 0} \frac{f(x+h)g(x+h) - f(x+h)g(x) + f(x+h)g(x) - f(x)g(x)}{h}\]
+    
+    <p>Rearranging and factoring, we get that:</p>
+    \[\frac{d}{dx}(f(x)g(x)) =\lim_{h \to 0} \frac{f(x+h)g(x+h) - f(x+h)g(x)}{h} + \lim_{h \to 0} \frac{f(x+h)g(x) - f(x)g(x)}{h}\]
+    
+    <p>Factoring out common terms:</p>
+    \[\frac{d}{dx}(f(x)g(x)) = \lim_{h \to 0} f(x+h) \left[\frac{g(x+h) - g(x)}{h}\right] + \lim_{h \to 0} g(x) \left[\frac{f(x+h) - f(x)}{h}\right]\]
+    
+    <p>Using limit properties:</p>
+    \[\frac{d}{dx}(f(x)g(x)) = \lim_{h \to 0} f(x+h) \cdot \lim_{h \to 0} \left[\frac{g(x+h) - g(x)}{h}\right] + g(x) \cdot \lim_{h \to 0} \left[\frac{f(x+h) - f(x)}{h}\right]\]
+    
+    <p>Recognizing the derivative definition:</p>
+    \[\frac{d}{dx}(f(x)g(x)) = f(x) \cdot g'(x) + g(x) \cdot f'(x)\]
+    
+    <p>Therefore:</p>
+    \[\frac{d}{dx}[f(x)g(x)] = f(x)g'(x) + g(x)f'(x)\]
+</div>
+
+<div class="example">
+    <h5>Example 1 (revisited): Using the Product Rule</h5>
+    <p>Suppose \(y = 3x^3(5x^2 + 7x)\). Find \(y'\) using the product rule.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 3x^3\) and \(g(x) = 5x^2 + 7x\). Then:</p>
+        \[f'(x) = 9x^2\]
+        \[g'(x) = 10x + 7\]
+        
+        <p>Using the product rule \(y' = f'(x)g(x) + g'(x)f(x)\):</p>
+        \[\begin{align} y' &= 9x^2(5x^2 + 7x) + (10x + 7)(3x^3)\\
+        &= 45x^4 + 63x^3 + 30x^4 + 21x^3\\
+        &= 75x^4 + 84x^3\end{align}\]
+        
+        <p>This matches our result from expanding first!</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Product Rule with Exponential and Trigonometric Functions</h5>
+    <p>Find the derivative of \(y = 3e^x\cos(x)\) at \(x = \pi\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 3e^x\) and \(g(x) = \cos(x)\). Then:</p>
+        \[f'(x) = 3e^x\]
+        \[g'(x) = -\sin(x)\]
+        
+        <p>Using the product rule:</p>
+        \[\begin{align}y' &= f'(x)g(x) + g'(x)f(x)\\
+        &= 3e^x\cos(x) + (-\sin(x))(3e^x)\\
+        &= 3e^x\cos(x) - 3e^x\sin(x)\\
+        &= 3e^x(\cos(x) - \sin(x))\end{align}\]
+        
+        <p>Now, evaluate at \(x = \pi\):</p>
+        \[y'(\pi) = 3e^\pi(\cos(\pi) - \sin(\pi)) = 3e^\pi(-1 - 0) = -3e^\pi\]
+    </div>
+</div>
+
+<!-- Section 2: Practice Problems -->
+<h3>8.2 Practice Problems</h3>
+
+<div class="example">
+    <h5>Practice Problem 1: Finding Horizontal Tangent Lines</h5>
+    <p>Find the \(x\)-values at which \(y = 6x^8e^x\) has a horizontal tangent line.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>A horizontal tangent line occurs where the derivative equals zero. Let \(f(x) = 6x^8\) and \(g(x) = e^x\). Then:</p>
+        \[f'(x) = 48x^7\]
+        \[g'(x) = e^x\]
+        
+        <p>Using the product rule:</p>
+        \[\begin{align}y' &= f'(x)g(x) + g'(x)f(x)\\
+        &= 48x^7e^x + e^x \cdot 6x^8\\
+        &= 48x^7e^x + 6x^8e^x\\
+        &= 6x^7e^x(8 + x)\end{align}\]
+        
+        <p>Set the derivative equal to zero and solve:</p>
+        \[6x^7e^x(8 + x) = 0\]
+        
+        <p>Since \(e^x\) is never zero, we need:</p>
+        \[6x^7(8 + x) = 0\]
+        
+        <p>This gives us:</p>
+        \[x = 0 \quad \text{or} \quad x = -8\]
+        
+        <p>The function has horizontal tangent lines at \(x = 0\) and \(x = -8\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Practice Problem 2: Equation of a Tangent Line</h5>
+    <p>Find the equation of the tangent line to the curve of \(y = 7x\sin(x)\) at \(x = \pi\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 7x\) and \(g(x) = \sin(x)\). Then:</p>
+        \[f'(x) = 7\]
+        \[g'(x) = \cos(x)\]
+        
+        <p>Using the product rule:</p>
+        \[\begin{align} y' &= f'(x)g(x) + g'(x)f(x)\\ 
+        &=7\sin(x) + \cos(x) \cdot 7x\\
+        &= 7\sin(x) + 7x\cos(x)\end{align}\]
+        
+        <p>The slope of the tangent line at \(x = \pi\) is:</p>
+        \[y'(\pi) = 7\sin(\pi) + 7\pi\cos(\pi) = 7\cdot 0 + 7\pi\cdot -1 = -7\pi\]
+        
+        <p>The point on the curve at \(x = \pi\) is:</p>
+        \[y(\pi) = 7\pi\sin(\pi) = 7\pi\cdot 0 = 0\]
+        
+        <p>So, a point on the tangent line is \((\pi, 0)\).</p>
+        
+        <p>Using the point-slope form, namely \(y - y_1 = m(x - x_1)\):</p>
+        \[y - 0 = -7\pi(x - \pi)\]
+        \[y = -7\pi x + 7\pi^2\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
