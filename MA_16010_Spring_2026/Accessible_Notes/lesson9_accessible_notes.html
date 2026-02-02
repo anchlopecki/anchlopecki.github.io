@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 9</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(60, 60, 60);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 9: The Quotient Rule and Other Trigonometric Derivatives</h3>
+
+<!-- Section 1: The Quotient Rule -->
+<h3>9.1 The Quotient Rule</h3>
+
+<div class="theorem">
+    <p><strong>The Quotient Rule:</strong> For differentiable functions \(f(x)\) and \(g(x)\) where \(g(x) \neq 0\),</p>
+    \[\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x) - g'(x)f(x)}{(g(x))^2}\]
+    <p>Or more compactly: \(\left(\frac{f}{g}\right)' = \frac{f'g - g'f}{g^2}\)</p>
+</div>
+
+<div class="example">
+    <h5>Example 1: Quotient Rule with Polynomial and Trigonometric Functions</h5>
+    <p>Suppose \(y = \frac{4x - \cos(x)}{9x + 2}\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 4x - \cos(x)\) and \(g(x) = 9x + 2\). Then:</p>
+        \[f'(x) = 4 + \sin(x)\]
+        \[g'(x) = 9\]
+        
+        <p>Using the quotient rule:</p>
+        \[\begin{align}y' &= \frac{f'(x)g(x) - g'(x)f(x)}{(g(x))^2}\\
+        &= \frac{(4 + \sin(x))(9x + 2) - 9(4x - \cos(x))}{(9x + 2)^2} \end{align}\]
+        
+        <p>Expanding the numerator:</p>
+        \[y'= \frac{36x + 8 + 9x\sin(x) + 2\sin(x) - 36x + 9\cos(x)}{(9x + 2)^2}\]
+        
+        <p>Simplifying:</p>
+        \[y'= \frac{8 + \sin(x)(9x + 2) + 9\cos(x)}{(9x + 2)^2}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Quotient Rule with Radicals and Exponentials</h5>
+    <p>Suppose \(y = \frac{a\sqrt[3]{x}}{a^2e^x + ax}\), where \(a\) is a constant. Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, rewrite using exponent notation: \(y = \frac{ax^{1/3}}{a^2e^x + ax}\)</p>
+        
+        <p>Let \(f(x) = ax^{1/3}\) and \(g(x) = a^2e^x + ax\). Then:</p>
+        \[f'(x) = \frac{a}{3}x^{-2/3} = \frac{a}{3x^{2/3}}\]
+        \[g'(x) = a^2e^x + a\]
+        
+        <p>Using the quotient rule:</p>
+        \[y' = \frac{\frac{a}{3x^{2/3}}(a^2e^x + ax) - (a^2e^x + a)(ax^{1/3})}{(a^2e^x + ax)^2}\]
+        
+        <p>Factor and simplify the numerator:</p>
+        \[\begin{align}y'&= \frac{\frac{a^3e^x}{3x^{2/3}} + \frac{a^2x}{3x^{2/3}} - a^3e^x x^{1/3} - a^2x^{1/3}}{(a^2e^x + ax)^2}\\
+        
+        &= \frac{\frac{a^3e^x}{3\sqrt[3]{x^2}} + \frac{a^2\sqrt[3]{x}}{3} - a^3e^x\sqrt[3]{x} - a^2\sqrt[3]{x}}{(a^2e^x + ax)^2}\end{align}\]
+        
+        <p>Combining like terms and factoring:</p>
+        \[\begin{align} y' &= \frac{a^3e^x\left(\frac{1}{3\sqrt[3]{x^2}} - \sqrt[3]{x}\right) + a^2\sqrt[3]{x}\left(\frac{1}{3} - 1\right)}{(a^2e^x + ax)^2}\\
+        
+        &= \frac{a^3e^x\left(\frac{1 - 3x}{3\sqrt[3]{x^2}}\right) - \frac{2a^2\sqrt[3]{x}}{3}}{(a^2e^x + ax)^2}\end{align}\]
+        
+        <p>This can be simplified further to:</p>
+        \[y' = \frac{ae^x(1 - 3x) - 2x}{3\sqrt[3]{x^2}(ae^x + x)^2}\]
+    </div>
+</div>
+
+<!-- Section 2: Derivatives of Other Trigonometric Functions -->
+<h3>9.2 Derivatives of the Other Trigonometric Functions</h3>
+
+<div class="theorem">
+    <p><strong>Derivatives of Tangent, Cotangent, Secant, and Cosecant:</strong></p>
+    <ul>
+        <li>\(\frac{d}{dx}[\tan(x)] = \sec^2(x)\)</li>
+        <li>\(\frac{d}{dx}[\cot(x)] = -\csc^2(x)\)</li>
+        <li>\(\frac{d}{dx}[\sec(x)] = \sec(x)\tan(x)\)</li>
+        <li>\(\frac{d}{dx}[\csc(x)] = -\csc(x)\cot(x)\)</li>
+    </ul>
+</div>
+
+<div class="example">
+    <h5>Example 3: Derivative of Product with Trigonometric Functions</h5>
+    <p>Suppose \(y = 11\sin(x)\tan(x)\). Find \(y'\left(\frac{\pi}{3}\right)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 11\sin(x)\) and \(g(x) = \tan(x)\). Then:</p>
+        \[f'(x) = 11\cos(x)\]
+        \[g'(x) = \sec^2(x)\]
+        
+        <p>Using the product rule:</p>
+        \[y' = 11\cos(x)\tan(x) + 11\sec^2(x)\sin(x)\]
+        
+        <p>Evaluate at \(x = \frac{\pi}{3}\):</p>
+        \[y'\left(\frac{\pi}{3}\right) = 11\cos\left(\frac{\pi}{3}\right)\tan\left(\frac{\pi}{3}\right) + 11\sec^2\left(\frac{\pi}{3}\right)\sin\left(\frac{\pi}{3}\right)\]
+        
+        <p>Using known values: \(\cos\left(\frac{\pi}{3}\right) = \frac{1}{2}\), \(\tan\left(\frac{\pi}{3}\right) = \sqrt{3}\), \(\sec\left(\frac{\pi}{3}\right) = 2\), \(\sin\left(\frac{\pi}{3}\right) = \frac{\sqrt{3}}{2}\):</p>
+        
+        \[= 11 \cdot \frac{1}{2} \cdot \sqrt{3} + 11 \cdot 2^2 \cdot \frac{\sqrt{3}}{2}\]
+        \[= \frac{11\sqrt{3}}{2} + \frac{44\sqrt{3}}{2}\]
+        \[= \frac{55\sqrt{3}}{2}\]
+    </div>
+    
+    <div class="visual-desc">
+        <p><strong>Reference Triangle Description:</strong> A right triangle with an angle of \(\frac{\pi}{3}\) (60 degrees) at the origin. The adjacent side has length 1, the opposite side has length \(\sqrt{3}\), and the hypotenuse has length 2. This is the standard 30-60-90 reference triangle used to evaluate trigonometric functions at \(\frac{\pi}{3}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4: Tangent Line to a Product of Functions</h5>
+    <p>Find the equation of the tangent line to the graph of \(y = 6x^8\sec(x)\) at \(x = \pi\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 6x^8\) and \(g(x) = \sec(x)\). Then:</p>
+        \[f'(x) = 48x^7\]
+        \[g'(x) = \sec(x)\tan(x)\]
+        
+        <p>Using the product rule:</p>
+        \[y' = 48x^7\sec(x) + 6x^8\sec(x)\tan(x)\]
+        
+        <p>Evaluate the slope at \(x = \pi\). Note that \(\sec(\pi) = \frac{1}{\cos(\pi)} = \frac{1}{-1} = -1\) and \(\tan(\pi) = 0\):</p>
+        \[y'(\pi) = 48\pi^7\cdot (-1) + 6\pi^8\cdot (-1)\cdot 0 = -48\pi^7\]
+        
+        <p>Find the \(y\)-coordinate at \(x = \pi\):</p>
+        \[y(\pi) = 6\pi^8\sec(\pi) = 6\pi^8\cdot(-1) = -6\pi^8\]
+        
+        <p>So the point is \((\pi, -6\pi^8)\).</p>
+        
+        <p>Using the point-slope form \(y - y_1 = m(x - x_1)\):</p>
+        \[y - (-6\pi^8) = -48\pi^7(x - \pi)\]
+        \[\begin{align}&\implies y + 6\pi^8 = -48\pi^7x + 48\pi^8\\
+        &\implies y = -48\pi^7x + 48\pi^8 - 6\pi^8\\
+        &\implies y = -48\pi^7x + 42\pi^8\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5: Quotient Rule with Trigonometric Functions</h5>
+    <p>Suppose \(y = \frac{4\cot(x)}{5 + 8\cos(x)}\). Find \(y'\left(\frac{\pi}{2}\right)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 4\cot(x)\) and \(g(x) = 5 + 8\cos(x)\). Then:</p>
+        \[f'(x) = -4\csc^2(x)\]
+        \[g'(x) = -8\sin(x)\]
+        
+        <p>Using the quotient rule:</p>
+        \[y' = \frac{-4\csc^2(x)(5 + 8\cos(x)) - (-8\sin(x))(4\cot(x))}{(5 + 8\cos(x))^2}\]
+        
+        <p>Evaluate at \(x = \frac{\pi}{2}\). Note that \(\cot\left(\frac{\pi}{2}\right) = 0\), \(\csc\left(\frac{\pi}{2}\right) = 1\), \(\cos\left(\frac{\pi}{2}\right) = 0\), and \(\sin\left(\frac{\pi}{2}\right) = 1\). So,:</p>
+        
+        \[y'\left(\frac{\pi}{2}\right) = \frac{-4\cdot 1^2\cdot (5 + 8 \cdot 0) - (-8 \cdot 1)\cdot(4 \cdot 0)}{(5 + 8 \cdot 0)^2}\]
+        
+        \[= \frac{-4\cdot (5 + 0) - 0}{5^2}\]
+        
+        \[= \frac{-20}{25}\]
+        
+        \[= -\frac{4}{5}\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
