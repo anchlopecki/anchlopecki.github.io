@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 10</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(60, 60, 60);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 10: The Chain Rule</h3>
+
+<!-- Section 1: Warm-up Problems -->
+<h3>10.1 Warm-up Problems</h3>
+
+<p>For each function \(y\), find functions \(f(x)\) and \(g(x)\) such that \(y = f(g(x))\).</p>
+
+<div class="example">
+    <h5>Warm-up Problem 1</h5>
+    <p>\(y = e^{5x}\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = e^x\) and \(g(x) = 5x\). Then:</p>
+        \[y = f(g(x)) = e^{g(x)} = e^{5x}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Warm-up Problem 2</h5>
+    <p>\(y = \sqrt[5]{\sin(x) + 4x}\)</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = \sqrt[5]{x} = x^{1/5}\) and \(g(x) = \sin(x) + 4x\). Then:</p>
+        \[y = f(g(x)) = \sqrt[5]{g(x)} = \sqrt[5]{\sin(x) + 4x}\]
+    </div>
+</div>
+
+<!-- Section 2: The Chain Rule -->
+<h3>10.2 The Chain Rule</h3>
+
+<div class="theorem">
+    <p><strong>The Chain Rule:</strong> Suppose \(y = f(g(x))\). Then,</p>
+    \[y' = \frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)\]
+    <p>Similarly, if we let \(u = g(x)\), then</p>
+    \[y' = \frac{d}{dx}[f(g(x))] = \frac{df}{du}\cdot \frac{du}{dx}\]
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> The chain rule is used to differentiate composite functions. The derivative of the outer function is evaluated at the inner function, then multiplied by the derivative of the inner function.</p>
+</div>
+
+<div class="example">
+    <h5>Example 1: Chain Rule with a Polynomial Inside</h5>
+    <p>Suppose \(y = 3(x^2 - x)^4\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 3x^4\) and \(g(x) = x^2 - x\). Note that \(y = f(g(x)) = 3(g(x))^4\). Also:</p>
+        \[f'(x) = 12x^3\]
+        \[g'(x) = 2x - 1\]
+        
+        <p>Using the chain rule:</p>
+        \[\begin{align}y' &= f'(g(x))\cdot g'(x)\\
+        &= 12(x^2 - x)^3(2x - 1)\\
+        &= 12(x(x - 1))^3(2x - 1)\\
+        &= 12x^3(x - 1)^3(2x - 1)\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Chain Rule with a Cube Root</h5>
+    <p>Suppose \(y = \sqrt[3]{6x^2 + 5x - 21}\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Rewrite as \(y = (6x^2 + 5x - 21)^{1/3}\).</p>
+        
+        <p>Let \(f(x) = x^{1/3}\) and \(g(x) = 6x^2 + 5x - 21\). Then:</p>
+        \[f'(x) = \frac{1}{3}x^{-2/3}\]
+        \[g'(x) = 12x + 5\]
+        
+        <p>Using the chain rule:</p>
+        \[\begin{align} y' &= f'(g(x))\cdot g'(x)\\
+        &= \frac{1}{3}(6x^2 + 5x - 21)^{-2/3}(12x + 5)\\
+        &= \frac{12x + 5}{3(6x^2 + 5x - 21)^{2/3}}\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Chain Rule with a Negative Exponent</h5>
+    <p>Suppose \(y = \frac{5}{(5 - x^4)^{3/2}}\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Rewrite as \(y = 5(5 - x^4)^{-3/2}\).</p>
+        
+        <p>Let \(f(x) = 5x^{-3/2}\) and \(g(x) = 5 - x^4\). Then:</p>
+        \[f'(x) = 5 \cdot \left(-\frac{3}{2}\right)x^{-5/2} = -\frac{15}{2}x^{-5/2}\]
+        \[g'(x) = -4x^3\]
+        
+        <p>Using the chain rule:</p>
+        \[\begin{align} y' &= f'(g(x))\cdot g'(x)\\
+        &= -\frac{15}{2}(5 - x^4)^{-5/2}(-4x^3)\\
+        &= \frac{30x^3}{(5 - x^4)^{5/2}}\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4: Chain Rule with a Quotient Inside</h5>
+    <p>Suppose \(y = \left(\frac{3x^2}{2x + 4}\right)^3\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = x^3\) and \(g(x) = \frac{3x^2}{2x + 4}\). Then:</p>
+        \[f'(x) = 3x^2\]
+        
+        <p>For \(g'(x)\), we use the quotient rule:</p>
+        \[\begin{align} g'(x) &= \frac{6x(2x + 4) - 3x^2 \cdot 2}{(2x + 4)^2}\\
+        &= \frac{12x^2 + 24x - 6x^2}{(2x + 4)^2}\\
+        &= \frac{6x^2 + 24x}{(2x + 4)^2}\end{align}\]
+        
+        <p>Using the chain rule:</p>
+        \[y' = f'(g(x))\cdot g'(x) = 3\left(\frac{3x^2}{2x + 4}\right)^2 \cdot \frac{6x^2 + 24x}{(2x + 4)^2}\]
+        
+        <p>Simplifying:</p>
+        \[\begin{align}y'&= 3 \cdot \frac{9x^4}{(2x + 4)^2} \cdot \frac{6x^2 + 24x}{(2x + 4)^2}\\
+        &= \frac{3 \cdot 9x^4(6x^2 + 24x)}{(2x + 4)^4}\\
+        &= \frac{27x^4 \cdot 6(x^2 + 4x)}{(2(x + 2))^4}\\
+        &= \frac{162x^5(x + 4)}{2^4(x + 2)^4}\\
+        &= \frac{81x^5(x + 4)}{8(x + 2)^4}\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5: Chain Rule with Exponential and Trigonometric Functions</h5>
+    <p>Suppose \(y = 6(3e^x + 2\sin(x) + 5)^3\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Let \(f(x) = 6x^3\) and \(g(x) = 3e^x + 2\sin(x) + 5\). Then:</p>
+        \[f'(x) = 18x^2\]
+        \[g'(x) = 3e^x + 2\cos(x)\]
+        
+        <p>Using the chain rule:</p>
+        \[y' = f'(g(x))\cdot g'(x) = 18(3e^x + 2\sin(x) + 5)^2(3e^x + 2\cos(x))\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
