@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 11</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 11: The Natural Logarithmic Function and (more of) the Chain Rule</h3>
+
+<!-- Main Content Section -->
+<h3>Derivative of the Natural Logarithmic Function</h3>
+
+<div class="theorem">
+    <p><strong>Theorem:</strong> The derivative of the natural logarithm function is given by</p>
+    \[\frac{d}{dx}[\ln(x)] = \frac{1}{x}\]
+</div>
+
+<p>This fundamental derivative formula, combined with the chain rule, allows us to differentiate composite functions involving natural logarithms. The following examples demonstrate various applications of the chain rule with logarithmic, exponential, polynomial, and trigonometric functions.</p>
+
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 1</h5>
+    <p>Suppose \(f(x) = 7\ln(x)\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the constant multiple rule and the derivative of the natural logarithm:</p>
+        \[f'(x) = 7 \cdot \frac{1}{x} = \frac{7}{x}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2</h5>
+    <p>Suppose \(y = \ln(x^2 + 4x + 1)\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to apply the chain rule. Let \(u = g(x)=x^2 + 4x + 1\), and so \(y=f(u) = \ln(u)\). The chain rule states that \(y'=\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}\).</p>
+        <p>Note that \(\frac{dy}{du}=\frac{d}{du}[\ln(u)] = \frac{1}{u}\) and \(\frac{du}{dx} = 2x + 4\).</p>
+        <p>Therefore:</p>
+        \[f'(x) = \frac{1}{x^2 + 4x + 1} \cdot (2x + 4) = \frac{2x + 4}{x^2 + 4x + 1}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+    <p>Suppose \(f(x) = (5x^2 - x)^2\sqrt[3]{3x}\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to use the product rule and the chain rule. Let \(h(x) = (5x^2 - x)^2\) and \(k(x) = \sqrt[3]{3x} = (3x)^{1/3}\).</p>
+        <p>The product rule states that \(f'(x) = h'(x) \cdot k(x) + h(x) \cdot k'(x)\).</p>
+        <p>For \(h'(x)\), we use the chain rule:</p>
+        \[h'(x) = 2(5x^2 - x) \cdot (10x - 1)\]
+        <p>For \(k'(x)\), we also use the chain rule:</p>
+        \[k'(x) = \frac{1}{3}(3x)^{-2/3} \cdot 3 = (3x)^{-2/3}\]
+        <p>Combining these results:</p>
+        \[f'(x) = 2(5x^2 - x)(10x - 1)\sqrt[3]{3x} + (5x^2 - x)^2(3x)^{-2/3}\]
+        <p>This can be simplified as:</p>
+        \[f'(x) = (100x^3 - 30x^2 + 2x)\sqrt[3]{3x} + \frac{(5x^2 - x)^2}{(3x)^{2/3}}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4</h5>
+    <p>Suppose \(y = 3\tan^3(3x)\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to apply the chain rule twice. First, recognize that \(y = 3[\tan(3x)]^3\).</p>
+        <p>Let \(u = g(x)= \tan(3x)\), and so \(y=f(u) = 3u^3\). Hence, \(\frac{dy}{du} = 9u^2\).</p>
+        <p>Now we need \(\frac{du}{dx}\). Since \(u = \tan(3x)\), applying the chain rule yields:</p>
+        \[\frac{du}{dx} = \sec^2(3x) \cdot 3 = 3\sec^2(3x)\]
+        <p>Combining these results (and using the chain rule):</p>
+        \[y'=\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}=9u^2\cdot3\sec^2(3x)= 9[\tan(3x)]^2\cdot 3\sec^2(3x) = 27\tan^2(3x)\sec^2(3x)\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5</h5>
+    <p>Suppose \(f(x) = e^{ex}\sin(9x)\). Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to use both the product rule and the chain rule. Let \(h(x) = e^{ex}\) and \(g(x) = \sin(9x)\).
+        The product rule states that \(f'(x) = h'(x) \cdot g(x) + h(x) \cdot g'(x)\).
+        For \(h'(x)\), we apply the chain rule. Since \(h(x) = e^{ex}\), the outer function is \(e^u\) where \(u = ex\):</p>
+        \[h'(x) = e^{ex} \cdot e=e^{ex+1}\]
+        <p>For \(g'(x)\), we apply the chain rule with the sine function:</p>
+        \[g'(x) = \cos(9x) \cdot 9 = 9\cos(9x)\]
+        <p>Therefore:</p>
+        \[f'(x) = e^{ex+1} \cdot \sin(9x) + e^{ex} \cdot 9\cos(9x)\]
+        <p>Factoring out \(e^{ex}\):</p>
+        \[f'(x) = e^{ex}[e\sin(9x) + 9\cos(9x)]\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 6</h5>
+    <p>Suppose</p>
+    \[f(x) = \ln\left(\sqrt{\frac{2x + 4}{x^2 - 4}}\right)\]
+    <p>Find \(f'(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We can simplify this function using logarithm properties before differentiating. First, note that the square root can be written as a power of one-half:</p>
+        \[f(x) = \ln\left[\left(\frac{2x + 4}{x^2 - 4}\right)^{1/2}\right]\]
+        <p>Using the logarithm property that \(\ln(a^b) = b\ln(a)\):</p>
+        \[f(x) = \frac{1}{2}\ln\left(\frac{2x + 4}{x^2 - 4}\right)=\frac{1}{2}\ln\left(\frac{2(x + 2)}{(x+2)(x-2)}\right)=\frac{1}{2}\ln\left(\frac{2}{x-2}\right)\]
+        <p>Using the logarithm property that \(\ln(a/b) = \ln(a) - \ln(b)\):</p>
+        \[f(x) = \frac{1}{2}[\ln(2) - \ln(x-2)]\]
+        <p>Now we can differentiate term by term:</p>
+        \[f'(x) = \frac{1}{2}\left(0 - \frac{1}{x-2}\right)=\frac{1}{4-2x}\]
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Alternative Approach for Example 6:</strong> We could also differentiate using the chain rule and quotient rule directly without first simplifying. If \(f(x) = \frac{1}{2}\ln\left(\frac{2x+4}{x^2-4}\right)\), then:</p>
+    \[f'(x) = \frac{1}{2} \cdot \frac{x^2-4}{2x+4} \cdot \frac{2(x^2-4) - (2x+4)(2x)}{(x^2-4)^2}\]
+    <p>After simplification, this yields the same result: \(f'(x) = \frac{1}{4-2x}\).</p>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaway:</strong> When working with logarithms of complex expressions, it is often helpful to use logarithm properties to simplify the expression before differentiating. This can make the differentiation process more straightforward and reduce algebraic errors.</p>
+</div>
+
+</main>
+</body>
+</html>
