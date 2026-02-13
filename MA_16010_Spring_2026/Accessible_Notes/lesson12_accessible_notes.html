@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 12</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 12: Higher Order Derivatives</h3>
+
+<!-- Main Content Section -->
+<h3>Higher Order Derivatives</h3>
+
+<p>Let \(y = f(x)\). We can define derivatives of various orders beyond just the first derivative.</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The first derivative of \(y\) with respect to \(x\) is</p>
+    \[y' = f'(x) = \frac{dy}{dx} = \frac{d}{dx}(f(x)) = f^{(1)}(x).\]
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The second derivative of \(y\) with respect to \(x\) is</p>
+    \[y'' = f''(x) = \frac{d^2y}{dx^2} = \frac{d^2}{dx^2}(f(x)) = f^{(2)}(x).\]
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The \(n\)th derivative of \(y\) with respect to \(x\) is</p>
+    \[\frac{d^ny}{dx^n} = \frac{d^n}{dx^n}(f(x)) = f^{(n)}(x).\]
+</div>
+
+<div class="important">
+    <p><strong>Notation:</strong> There are several equivalent notations for derivatives. The first derivative can be written as \(y'\), \(f'(x)\), \(\frac{dy}{dx}\), or \(f^{(1)}(x)\). The second derivative can be written as \(y''\), \(f''(x)\), \(\frac{d^2y}{dx^2}\), or \(f^{(2)}(x)\). For higher order derivatives, we use \(f^{(n)}(x)\) or \(\frac{d^n y}{dx^n}\).</p>
+</div>
+
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 1</h5>
+    <p>Let \(f(x) = 3x^3 + 4x^2 + 5x + 6\). Find \(f'''(x)\). What is \(f'''(0)-f''(0)\)?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to differentiate three times.</p>
+        <p>The first derivative is</p>
+        \[f'(x) = 9x^2 + 8x + 5.\]
+        <p>The second derivative is</p>
+        \[f''(x) = 18x + 8.\]
+        <p>The third derivative is</p>
+        \[f'''(x) = 18.\]
+        <p>We see that</p>
+        \[f'''(0)-f''(0) = 18-(18\cdot 0 +8)=18-8=10.\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2</h5>
+    <p>Let \(f^{(3)}(x) = 8\csc(7x - 2)\). Find \(f^{(4)}(x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We are given the third derivative and need to find the fourth derivative. This means we need to differentiate \(f^{(3)}(x)\) once more.</p>
+        <p>Using the chain rule, recall that \(\frac{d}{dx}[\csc(u)] = -\csc(u)\cot(u) \cdot \frac{du}{dx}\).</p>
+        <p>Therefore,</p>
+        \[f^{(4)}(x) = 8 \cdot (-\csc(7x-2)\cot(7x-2)) \cdot 7 = -56\csc(7x-2)\cot(7x-2).\]
+    </div>
+</div>
+
+<h3>Acceleration</h3>
+
+<p>Let \(s(t)\) denote the position function, where \(t\) represents time. Recall that the velocity function is the first derivative of the position function, i.e. \(v(t) = s'(t)\).</p>
+
+<div class="definition">
+    <p><strong>Definition:</strong> The acceleration function, denoted by \(a(t)\), is the derivative of the velocity function. Since the velocity function is the first derivative of the position function, the acceleration function is the second derivative of the position function. So,</p>
+    \[a(t) = v'(t) = s''(t).\]
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+    <p>A particle is traveling on a straight line with a position function of</p>
+    \[s(t) = \frac{2}{3}t^3 + 6t^2,\]
+    <p>where \(t\) is time in seconds and \(s(t)\) is position in feet. What is the acceleration when the velocity of the particle is 54 feet per second?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we find the velocity function by differentiating the position function. We have that</p>
+        \[v(t) = s'(t) = 2t^2 + 12t.\]
+        <p>Next, we find the acceleration function by differentiating the velocity function. So,</p>
+        \[a(t) = v'(t) = 4t + 12.\]
+        <p>We need to find the acceleration when the velocity is 54 feet per second. First, we want to find time \(t\) such that \(v(t) = 54\). We see that:</p>
+        \[54 = 2t^2 + 12t\]
+        \[\begin{align}&\implies 2t^2 + 12t - 54 = 0\\
+        &\implies t^2 + 6t - 27 = 0\\
+        &\implies (t - 3)(t + 9) = 0\end{align}\]
+        <p>Therefore, \(t = 3\) or \(t = -9\). Since time cannot be negative in this context, we have \(t = 3\) seconds.</p>
+        <p>Now we evaluate the acceleration at \(t = 3\):</p>
+        \[a(3) = 4\cdot 3 + 12 = 12 + 12 = 24 \text{ ft/s}^2\]
+    </div>
+</div>
+
+<h3>Practice Problems</h3>
+
+<div class="example">
+    <h5>Problem 1</h5>
+    <p>Find the second derivative of \(f(x) = 3x^2\ln(10x)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We need to find \(f''(x)\). First, we find the first derivative using the product and chain rule:</p>
+        \[\begin{align}f'(x) &= 6x\ln(10x) + 3x^2 \cdot \frac{1}{10x} \cdot 10\\
+        &= 6x\ln(10x) + \frac{3x^2}{x}\\
+        &= 6x\ln(10x) + 3x\end{align}\]
+        <p>Now, we find the second derivative using the product and chain rule (again):</p>
+        \[\begin{align}f''(x) &= 6\ln(10x) + 6x \cdot \frac{1}{10x} \cdot 10 + 3\\
+        &= 6\ln(10x) + \frac{6x}{x} + 3\\
+        &= 6\ln(10x) + 6 + 3\\
+        &= 6\ln(10x) + 9\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 2</h5>
+    <p>Find the second derivative of \(\displaystyle f(x) = \frac{x}{x-1}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we find the first derivative using the quotient rule:</p>
+        \[f'(x) = \frac{1\cdot(x-1) - 1\cdot x}{(x-1)^2} = \frac{x - 1 - x}{(x-1)^2} = \frac{-1}{(x-1)^2}\]
+        <p>We can rewrite this as:</p>
+        \[f'(x) = -(x-1)^{-2}\]
+        <p>Now, we find the second derivative using the chain rule:</p>
+        \[f''(x) = (-1)\cdot (-2)\cdot (x-1)^{-3}\cdot 1 = \frac{2}{(x-1)^3}\]
+        <p>Alternatively, using the quotient rule on \(f'(x) = \frac{-1}{(x-1)^2}\):</p>
+        \[f''(x) =\frac{0\cdot(x-1)^2 - 2\cdot (x-1) \cdot 1\cdot (-1)}{(x-1)^4} = \frac{2(x-1)}{(x-1)^4} = \frac{2}{(x-1)^3}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Problem 3</h5>
+    <p>Suppose \(\displaystyle f(x) = 4\sqrt{x} + \frac{8}{x}\). Find \(f''(1)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We can rewrite the function as</p>
+        \[f(x) = 4x^{1/2} + 8x^{-1}.\]
+        <p>The first derivative is</p>
+        \[f'(x) = 4 \cdot \frac{1}{2}\cdot x^{-1/2} + 8\cdot(-1)\cdot x^{-2}= 2x^{-1/2} - 8x^{-2}.\]
+        <p>The second derivative is</p>
+        \[f''(x) = 2 \cdot \left(-\frac{1}{2}\right)\cdot x^{-3/2} - 8\cdot(-2)\cdot x^{-3}= -x^{-3/2} + 16x^{-3}.\]
+        <p>So, we have that</p>
+        \[f''(1) = -(1)^{-3/2} + 16\cdot (1)^{-3} = -1 + 16 = 15.\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
