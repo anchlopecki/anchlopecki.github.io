@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 13</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 13: Implicit Differentiation</h3>
+
+<h3>Implicit Differentiation</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function is in <strong>explicit form</strong> if it is written in the form \(y = f(x)\), that is, \(y\) is isolated on one side of the equal sign and everything else that does not involve \(y\) is on the other side.</p>
+</div>
+
+<div class="example">
+    <h5>Example 1</h5>
+    <p>The function \(y = 2x + 7\) is in explicit form. Find \(y' = \frac{dy}{dx}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{dy}{dx} = \frac{d}{dx}(2x + 7) = 2\]
+        <p>Therefore, \(y' = 2\).</p>
+    </div>
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function is in <strong>implicit form</strong> if it is not in explicit form.</p>
+</div>
+
+<div class="important">
+    <p><strong>Important Note:</strong> Because \(y\) is a function of \(x\) (i.e. \(y = f(x)\)), when we take the derivative of \(y\) with respect to \(x\), we have that \(y' = \frac{dy}{dx}\), not 1. Think of \(y\) as \(y(x)\).</p>
+</div>
+
+<div class="example">
+    <h5>Example 1 (revisited)</h5>
+    <p>The function \(y - 2x = 7\) is in implicit form. Find \(y' = \frac{dy}{dx}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}(y - 2x) = \frac{d}{dx}(7)\]
+        <p>Applying the derivative to each term:</p>
+        \[\frac{dy}{dx} + \frac{d}{dx}(-2x) = \frac{d}{dx}(7)\implies\frac{dy}{dx} - 2 = 0\]
+        <p>Solving for \(\frac{dy}{dx}\):</p>
+        \[y' = \frac{dy}{dx} = 2\]
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Note:</strong> We call the technique used in the previous example <strong>implicit differentiation</strong>. The key is to take the derivative with respect to \(x\) of both sides of the equation. This technique is especially useful when we cannot put an equation into explicit form.</p>
+</div>
+
+<div class="example">
+    <h5>Example 2</h5>
+    <p>Let \(3y^2 + 2xy = 4x + 3\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}(3y^2 + 2xy) = \frac{d}{dx}(4x + 3)\implies \frac{d}{dx}(3y^2)+\frac{d}{dx}(2xy)=\frac{d}{dx}(4x)+\frac{d}{dx}(3)\]
+        <p>We use the chain rule to solve for \(\frac{d}{dx}(3y^2)\), since \(y\) is a function of \(x\), yielding \(6yy'\). To solve for \(\frac{d}{dx}(2xy)\), we apply the product rule, yielding \(2y + 2xy'\). So, we have that</p>
+        \[6yy' + (2y + 2xy') = 4 + 0.\]
+        <p>Collecting terms with \(y'\):</p>
+        \[6yy' + 2xy' = 4 - 2y\]
+        <p>Factoring out \(y'\):</p>
+        \[y'(6y + 2x) = 4 - 2y\]
+        <p>Solving for \(y'\):</p>
+        \[y' = \frac{4 - 2y}{6y + 2x}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+    <p>Let \(3\sin\left(\frac{y}{x}\right) = 7x\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}\left(3\sin\left(\frac{y}{x}\right)\right) = \frac{d}{dx}(7x)\]
+        <p>Applying the chain rule and quotient rule on the left side of the equation:</p>
+        \[3\cos\left(\frac{y}{x}\right) \cdot \frac{d}{dx}\left(\frac{y}{x}\right) = 7\]
+        <p>Using the quotient rule to solve for \(\frac{d}{dx}(\frac{y}{x})\):</p>
+        \[3\cos\left(\frac{y}{x}\right) \cdot \frac{xy' - y \cdot 1}{x^2} = 7
+        \implies 3\cos\left(\frac{y}{x}\right) \cdot \frac{xy' - y}{x^2} = 7\]
+        <p>Solving for \(y'\):</p>
+        \[\begin{align}\frac{xy' - y}{x^2} = \frac{7}{3\cos\left(\frac{y}{x}\right)}&\implies
+        xy' - y = \frac{7x^2}{3\cos\left(\frac{y}{x}\right)}\\
+        &\implies xy' = \frac{7x^2+3y\cos\left(\frac{y}{x}\right)}{3\cos\left(\frac{y}{x}\right)}\\
+        &\implies y' = \frac{7x^2 + 3y\cos\left(\frac{y}{x}\right)}{3x\cos\left(\frac{y}{x}\right)}\end{align}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4</h5>
+    <p>Let \(e^{6xy} = 7x\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\) and applying the chain rule and product rule:</p>
+        \[\frac{d}{dx}(e^{6xy}) = \frac{d}{dx}(7x)
+        \implies e^{6xy} \cdot \frac{d}{dx}(6xy) = 7
+        \implies e^{6xy} \cdot (6y + 6xy') = 7\]
+        <p>Solving for \(y'\):</p>
+        \[6y + 6xy' = \frac{7}{e^{6xy}}
+        \implies 6xy' = \frac{7}{e^{6xy}} - 6y
+        \implies y' = \frac{7 - 6ye^{6xy}}{6xe^{6xy}}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5</h5>
+    <p>Let \(8\cos(x)\sin(y) = 5\). Find \(y'\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}(8\cos(x)\sin(y)) = \frac{d}{dx}(5)\]
+        <p>Applying the product rule on the left side:</p>
+        \[8\left(-\sin(x)\sin(y) + \cos(x)\cos(y)y'\right) = 0\implies
+        -8\sin(x)\sin(y) + 8\cos(x)\cos(y)y' = 0\]
+        <p>Solving for \(y'\):</p>
+        \[8\cos(x)\cos(y)y' = 8\sin(x)\sin(y)\implies
+        y' = \frac{8\sin(x)\sin(y)}{8\cos(x)\cos(y)}\implies
+        y' = \tan(x)\tan(y)\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 6</h5>
+    <p>Find the slope of the tangent line to the graph of \(2x^4 = 3y^2 - y\) at the point \((1, 1)\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we find \(y'\) using implicit differentiation:</p>
+        \[\frac{d}{dx}(2x^4) = \frac{d}{dx}(3y^2 - y)\implies
+        8x^3 = 6yy' - y'\implies
+        8x^3 = y'(6y - 1)\implies
+        y' = \frac{8x^3}{6y - 1}\]
+        <p>Now we evaluate at the point \((1, 1)\):</p>
+        \[y'\bigg|_{(1,1)} = \frac{8\cdot 1^3}{6\cdot 1 - 1} = \frac{8}{5}\]
+        <p>Therefore, the slope of the tangent line at \((1, 1)\) is \(\frac{8}{5}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 7</h5>
+    <p>Suppose \(2\sin(6 x + 7y) = 3xy\). Find \(\frac{dy}{dx}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}\left(2\sin(6 x + 7y)\right) = \frac{d}{dx}(3xy)\]
+        <p>Applying the chain rule on the left (treating \(6 x + 7y\) as the inner function) and the product rule on the right:</p>
+        \[2\cos(6 x + 7y) \cdot \frac{d}{dx}(6 x + 7y) = 3y + 3xy'\implies
+        2\cos(6 x + 7y) \cdot (6 + 7y') = 3y + 3xy'\]
+        <p>Expanding:</p>
+        \[12\cos(6 x + 7y) + 14y'\cos(6 x + 7y) = 3y + 3xy'\]
+        <p>Collecting terms with \(y'\):</p>
+        \[14y'\cos(6 x + 7y) - 3xy' = 3y - 12\cos(6 x + 7y)\]
+        <p>Factoring out \(y'\):</p>
+        \[y'(14\cos(6 x + 7y) - 3x) = 3y - 12\cos(6 x + 7y)\]
+        <p>Solving for \(y'\):</p>
+        \[y' = \frac{3y - 12\cos(6 x + 7y)}{14\cos(6 x + 7y) - 3x}\]
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 8</h5>
+    <p>Suppose \(\frac{5}{x} + \frac{1}{6y} = 7\). Find \(\frac{dy}{dx}\bigg|_{(1, \frac{1}{12})}\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we rewrite the equation:</p>
+        \[5x^{-1} + \frac{1}{6}y^{-1} = 7\]
+        <p>Taking the derivative of both sides with respect to \(x\):</p>
+        \[\frac{d}{dx}\left(5x^{-1} + \frac{1}{6}y^{-1}\right) = \frac{d}{dx}(7)\implies
+        -5x^{-2} - \frac{1}{6}y^{-2}y' = 0\]
+        <p>Solving for \(y'\):</p>
+        \[-\frac{1}{6}y^{-2}y' = 5x^{-2}\implies
+        y' = -\frac{5x^{-2}}{\frac{1}{6}y^{-2}} = -5x^{-2} \cdot 6y^{2} = -\frac{30y^2}{x^2}\]
+        <p>Evaluating at the point \(\left(1, \frac{1}{12}\right)\):</p>
+        \[\frac{dy}{dx}\bigg|_{(1, \frac{1}{12})} = -\frac{30\left(\frac{1}{12}\right)^2}{1^2} = -\frac{30 \cdot \frac{1}{144}}{1} = -\frac{30}{144} = -\frac{5}{24}\]
+    </div>
+</div>
+
+</main>
+</body>
+</html>
