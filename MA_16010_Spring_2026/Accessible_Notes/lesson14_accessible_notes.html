@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 14</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 14: Related Rates</h3>
+
+<h3>Related Rates (Part I)</h3>
+
+<div class="example">
+    <h5>Example 1</h5>
+    <p>Assume \(x\) and \(y\) are both differentiable functions of \(t\) and that \(8x^5y = 16\). Find \(\frac{dy}{dt}\) if \(\frac{dx}{dt} = 8\) and \(x = 1\).</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We use implicit differentiation and take the derivative of both sides of the equation with respect to \(t\):</p>
+        \[\frac{d}{dt}(8x^5y) = \frac{d}{dt}(16)\]
+        <p>Applying the product rule (and chain rule too) on the left side:</p>
+        \[40x^4 \cdot \frac{dx}{dt} \cdot y + 8x^5 \cdot \frac{dy}{dt} = 0\]
+        <p>Note that if \(x = 1\), then from the original equation, \(8\cdot 1^5\cdot y = 16\), and so \(y = 2\).</p>
+        <p>Substituting \(\frac{dx}{dt} = 8\), \(x = 1\), and \(y = 2\):</p>
+        \[40\cdot 1^4 \cdot 8 \cdot 2 + 8\cdot 1^5 \cdot \frac{dy}{dt} = 0
+        \implies 640 + 8\frac{dy}{dt} = 0
+        \implies 8\frac{dy}{dt} = -640
+        \implies \frac{dy}{dt} = -80\]
+    </div>
+</div>
+
+<div class="steps">
+    <h5>General Word Problem Approach</h5>
+    <ol>
+        <li>Read the problem, and identify any numerical values.</li>
+        <li>Draw a picture to represent the problem.</li>
+        <li>Write down an equation which describes the picture in step 2. Each variable in this equation is a function of time. Time is given by the variable \(t\).</li>
+        <li>Use implicit differentiation to differentiate both sides of the equation in step 3 with respect to time (i.e., \(t\)).</li>
+        <li>Substitute the given information into the equation from step 4 and solve for what we want to find.</li>
+    </ol>
+</div>
+
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 2</h5>
+    <p>The radius of a circle is increasing at the rate of 5 ft/min.</p>
+    <p><strong>(a)</strong> Find the rate of change of the circumference of the circle when \(r = 6\) ft.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A circle with radius \(r = 6\) ft marked from the center to the edge.</p>
+        </div>
+        <p>The circumference of a circle is given by \(C = 2\pi r\), where both \(C\) and \(r\) are functions of time.</p>
+        <p>Using implicit differentiation, taking the derivative with respect to \(t\) of both sides:</p>
+        \[\frac{d}{dt}(C) = \frac{d}{dt}(2\pi r)\implies\frac{dC}{dt} = 2\pi \cdot \frac{dr}{dt}\]
+        <p>We are given that \(\frac{dr}{dt} = 5\) ft/min. Substituting:</p>
+        \[\frac{dC}{dt} = 2\pi\cdot 5 = 10\pi\]
+        <p>Therefore, the rate of change of the circumference is \(10\pi\) ft/min, or approximately 31.42 ft/min.</p>
+    </div>
+
+    <p><strong>(b)</strong> Find the rate of change of the area of the circle when \(r = 6\) ft.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A circle with radius \(r = 6\) ft marked from the center to the edge.</p>
+    </div>
+        <p>The area of a circle is given by \(A = \pi r^2\), where both \(A\) and \(r\) are functions of time.</p>
+        <p>Using implicit differentiation, taking the derivative with respect to \(t\) of both sides:</p>
+        \[\frac{d}{dt}(A) = \frac{d}{dt}(\pi r^2)
+        \implies \frac{dA}{dt} = 2\pi r \cdot \frac{dr}{dt}\]
+        <p>We are given that \(\frac{dr}{dt} = 5\) ft/min and \(r = 6\) ft. Substituting:</p>
+        \[\frac{dA}{dt} = 2\pi\cdot 6\cdot 5 = 60\pi\]
+        <p>Therefore, the rate of change of the area is \(60\pi\) ft²/min, or approximately 188.50 ft²/min.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+    <p>The length of a rectangle is decreasing at a rate of 3 in/s, and its width is decreasing at a rate of 2 in/s. When the length is 10 inches and the width is 8 inches, how fast is the area of the rectangle decreasing?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A rectangle with area \(A\), width \(w = 8\) in, and length \(\ell = 10\) in.</p>
+        </div>
+        <p>The area of a rectangle is given by \(A = \ell \cdot w\), where both \(\ell\) and \(w\) are functions of time.</p>
+        <p>Using implicit differentiation, taking the derivative with respect to \(t\) of both sides:</p>
+        \[\frac{d}{dt}(A) = \frac{d}{dt}(\ell \cdot w)\]
+        <p>Applying the product rule:</p>
+        \[\frac{dA}{dt} = \frac{d\ell}{dt} \cdot w + \ell \cdot \frac{dw}{dt}\]
+        <p>We are given that \(\frac{d\ell}{dt} = -3\) in/s (negative because decreasing), \(\frac{dw}{dt} = -2\) in/s, \(\ell = 10\) in, and \(w = 8\) in. Substituting:</p>
+        \[\frac{dA}{dt} = (-3)\cdot 8 + 10\cdot(-2)\implies
+        \frac{dA}{dt} = -24 - 20 = -44\]
+        <p>Therefore, the area of the rectangle is decreasing at a rate of 44 in²/s.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4</h5>
+    <p>The radius of a spherical balloon is decreasing at a rate of 1.9 cm/s. How fast is the volume decreasing when the radius is 16 cm? Note that the volume of a sphere is given by \(V = \frac{4}{3}\pi r^3\), where \(r\) is the radius of the sphere.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A sphere with radius \(r = 16\) cm, shown with a dashed line from the center to the edge.</p>
+        </div>
+        <p>We are given \(V = \frac{4}{3}\pi r^3\), where both \(V\) and \(r\) are functions of time.</p>
+        <p>Using implicit differentiation, taking the derivative with respect to \(t\) of both sides:</p>
+        \[\frac{d}{dt}(V) = \frac{d}{dt}\left(\frac{4}{3}\pi r^3\right)
+        \implies \frac{dV}{dt} = 4\pi r^2 \cdot \frac{dr}{dt}\]
+        <p>We are given that \(\frac{dr}{dt} = -1.9\) cm/s (negative because decreasing) and \(r = 16\) cm. Substituting:</p>
+        \[\frac{dV}{dt} = 4\pi\cdot 16^2\cdot (-1.9)\implies
+        \frac{dV}{dt} = 4\pi\cdot 256\cdot (-1.9)\implies
+        \frac{dV}{dt} = -1945.6\pi\]
+        <p>Therefore, the volume of the sphere is decreasing at a rate of \(1945.6\pi\) cm³/s, or approximately 6112.28 cm³/s.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5</h5>
+    <p>Gravel is dumped out of a truck onto the ground at 13 cm³/s, forming a conical pile with a base diameter that is always equal to the pile's altitude (i.e., height). How fast is the altitude of the pile increasing when the pile is 9 cm high? Note that the volume of a cone is \(\frac{1}{3}\pi r^2h\), where \(r\) is the radius of the base and \(h\) is the height of the cone.</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A cone with height \(h = 9\) cm and base radius \(r\). The relationship \(2r = h\) is shown, which means \(r = \frac{h}{2}\). The height is measured from the apex (top) to the base.</p>
+        </div>
+        <p>We are given \(V = \frac{1}{3}\pi r^2h\). Also, the base diameter equals the height, and so \(2r = h\), implying \(r = \frac{h}{2}\). Substituting \(r = \frac{h}{2}\) into the volume formula:</p>
+        \[V = \frac{1}{3}\pi \left(\frac{h}{2}\right)^2 h = \frac{1}{3}\pi \cdot \frac{h^2}{4} \cdot h = \frac{\pi h^3}{12}\]
+        <p>Using implicit differentiation, taking the derivative with respect to \(t\) of both sides:</p>
+        \[\frac{d}{dt}(V) = \frac{d}{dt}\left(\frac{\pi h^3}{12}\right)\implies
+        \frac{dV}{dt} = \frac{\pi}{12} \cdot 3h^2 \cdot \frac{dh}{dt} = \frac{\pi h^2}{4} \cdot \frac{dh}{dt}\]
+        <p>We are given that \(\frac{dV}{dt} = 13\) cm³/s (positive because volume is increasing) and \(h = 9\) cm. Substituting:</p>
+        \[13 = \frac{\pi\cdot 9^2}{4} \cdot \frac{dh}{dt}\implies
+        13 = \frac{81\pi}{4} \cdot \frac{dh}{dt}\implies
+        \frac{dh}{dt} = \frac{13 \cdot 4}{81\pi} = \frac{52}{81\pi}\]
+        <p>Therefore, the altitude of the pile is increasing at a rate of \(\frac{52}{81\pi}\) cm/s, or approximately 0.204 cm/s.</p>
+    </div>
+</div>
+
+</main>
+</body>
+</html>
