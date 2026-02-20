@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 15</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        /* Header Styles */
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        /* Content Containers */
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        /* List Styles */
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        /* Table Styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        /* Math Display */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        /* Skip Navigation Link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<!-- Main Title -->
+<h3>Lesson 15: Related Rates</h3>
+
+<!-- Main Content Section -->
+<h3>Related Rates (Part II)</h3>
+
+<p>Related rate problems involve finding the rate at which one quantity changes with respect to time, given the rate at which another related quantity changes. These problems typically require the use of implicit differentiation with respect to time, along with geometric relationships between variables.</p>
+
+<div class="example">
+    <h5>Example 1: Sliding Ladder Problem</h5>
+    <p>A ladder \(\sqrt{13}\) meters long rests on horizontal ground and leans against a vertical wall. The foot of the ladder moves away from the wall at a rate of 0.9 m/s. How fast is the top sliding down the wall when the foot of the ladder is 2 meters from the wall?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A right triangle is formed by the wall (vertical side), the ground (horizontal side), and the ladder (hypotenuse). 
+            The vertical side of the triangle is labeled \(y\), representing the height of the ladder on the wall. 
+            The horizontal side is labeled \(x\), representing the distance from the wall to the foot of the ladder. 
+            The ladder itself, forming the hypotenuse, is labeled as having length \(\sqrt{13}\). 
+            An arrow pointing to the right indicates the foot of the ladder is moving away from the wall at 0.9 m/s. 
+            The problem asks us to find how fast the top of the ladder is sliding down (the rate of change of \(y\)) when \(x = 2\).</p>
+        </div>
+        <p>Let \(x\) represent the distance from the wall to the foot of the ladder, and let \(y\) represent the height of the top of the ladder on the wall. By the Pythagorean theorem, we have the relationship:</p>
+        \[x^2 + y^2 = (\sqrt{13})^2 = 13\]
+        <p>We are given that \(\frac{dx}{dt} = 0.9\) m/s (the foot is moving away from the wall). We need to find \(\frac{dy}{dt}\) when \(x = 2\).</p>
+        <p>First, we find \(y\) when \(x = 2\):</p>
+        \[2^2 + y^2 = 13
+        \implies 4 + y^2 = 13
+        \implies y^2 = 9
+        \implies y = \pm 3\]
+        <p>We take \(y = 3\) since the wall length cannot be negative.</p>
+        <p>Now, we differentiate both sides of the equation \(x^2 + y^2 = 13\) with respect to time \(t\):</p>
+        \[\frac{d}{dt}(x^2 + y^2) = \frac{d}{dt}(13)
+        \implies 2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0\]
+        <p>Plugging in the known values \(x = 2\), \(y = 3\), and \(\frac{dx}{dt} = 0.9\):</p>
+        \[2\cdot 2\cdot 0.9 + 2\cdot 3\cdot \frac{dy}{dt} = 0
+        \implies 3.6 + 6\frac{dy}{dt} = 0
+        \implies \frac{dy}{dt} = \frac{-3.6}{6} = -0.6\]
+        <p>Therefore, the top of the ladder is sliding down the wall at a rate of \(0.6\) m/s. The negative sign indicates that \(y\) is decreasing (the top is moving downward).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2: Ships at Sea</h5>
+    <p>At noon, ship A is 10 km south of ship B. Ship A is sailing east at 40 km/h, and ship B is sailing north at 35 km/h. How fast is the distance between the ships changing at 2:00 pm?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> At noon, a coordinate system is shown with ship A at the origin and ship B positioned 10 km directly above (north of) ship A. 
+            Ship A is moving eastward (to the right) at 40 km/h, and ship B is moving northward (upward) at 35 km/h. 
+            At 2:00 pm (after 2 hours), a right triangle is formed where the vertical leg represents the north-south separation between the ships (labeled as \(y\)), the horizontal leg represents the east-west separation (labeled as \(x\)), and the hypotenuse represents the distance between the ships (labeled as \(z\)). 
+            The diagram shows that after 2 hours, ship B has moved 70 km north (from its noon position) and ship A has moved 80 km east.</p>
+        </div>
+        <p>Let \(x\) represent the horizontal (east-west) distance traveled by ship A, \(y\) represent the vertical (north-south) distance traveled by ship B, and \(z\) represent the distance between the two ships. These quantities are related by the Pythagorean theorem:</p>
+        \[z^2 = x^2 + y^2\]
+        <p>At 2:00 pm, 2 hours have passed since noon. In this time, ship A has traveled \(x = 2 \cdot 40 = 80\) km east, and ship B has traveled \(2 \cdot 35 = 70\) km north from its noon position. Note that the vertical separation at 2:00 pm is \(y = 10 + 2 \cdot 35 = 10 + 70 = 80\) km (the initial 10 km separation plus the 70 km that ship B traveled north).</p>
+        <p>When \(x = 80\) and \(y = 80\), we can find \(z\):</p>
+        \[z^2 = 80^2 + 80^2 = 6400 + 6400 = 12800
+        \implies z = \pm \sqrt{12800} = \pm 80\sqrt{2}\]
+        <p>We take \(x=80\sqrt{2}\), as distance cannot be negative. Now, we differentiate the equation \(z^2 = x^2 + y^2\) with respect to time:</p>
+        \[2z\frac{dz}{dt} = 2x\frac{dx}{dt} + 2y\frac{dy}{dt}\]
+        <p>We know that \(\frac{dx}{dt} = 40\) km/h and \(\frac{dy}{dt} = 35\) km/h. At 2:00 pm, \(x = 80\), \(y = 80\), and \(z = 80\sqrt{2}\). Substituting:</p>
+        \[2\cdot 80\sqrt{2}\cdot \frac{dz}{dt} = 2\cdot 80\cdot 40 + 2\cdot 80\cdot 35\implies 
+        \sqrt{2}\cdot \frac{dz}{dt} = 40 + 35\implies
+        \frac{dz}{dt} = \frac{75}{\sqrt{2}}=\frac{75\sqrt{2}}{2}\]
+        <p>Therefore, the distance between the ships is changing at a rate of \(\frac{75\sqrt{2}}{2} \approx 53.03\) km/h at 2:00 pm.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Flying Kite</h5>
+    <p>A kite 200 feet above the ground moves horizontally at a speed of 5 ft/s. At what rate is the angle (in radians) of elevation changing when the angle of elevation is \(\frac{\pi}{6}\) radians?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A right triangle is formed with the ground as the horizontal base, a vertical line representing the kite's height (200 feet), and the string connecting an observer at ground level to the kite as the hypotenuse. 
+            The horizontal distance from the observer to the point directly below the kite is labeled \(x\). 
+            The vertical height is constant at 200 feet, labeled \(y\). 
+            The angle of elevation from the observer to the kite is labeled by \(\theta\). 
+            An arrow indicates the kite is moving horizontally to the right at 5 ft/s. 
+            The problem asks for the rate of change of \(\theta\) when \(\theta = \frac{\pi}{6}\).</p>
+        </div>
+        <p>Let \(\theta\) represent the angle of elevation, \(x\) represent the horizontal distance from the observer to the point directly below the kite, and \(y = 200\) feet represent the constant height of the kite. From trigonometry, we have:</p>
+        \[\cot(\theta) = \frac{x}{y} = \frac{x}{200}\]
+        <p>Now we differentiate the equation \(\cot(\theta) = \frac{x}{200}\) with respect to time:</p>
+        \[-\csc^2(\theta)\frac{d\theta}{dt} = \frac{1}{200}\frac{dx}{dt}\]
+        <p>We are given that \(\frac{dx}{dt} = 5\) ft/s. When \(\theta = \frac{\pi}{6}\), we have that \(\csc\left(\frac{\pi}{6}\right) = 2\), and so \(\csc^2\left(\frac{\pi}{6}\right) = 4\). Substituting:</p>
+        \[-4\cdot \frac{d\theta}{dt} = \frac{1}{200}\cdot 5\implies \frac{d\theta}{dt} = -\frac{1}{160}\]
+        <p>Therefore, the angle of elevation is changing at a rate of \(-\frac{1}{160}\) radians per second. The negative sign indicates that the angle is decreasing (as the kite moves horizontally away, the angle of elevation decreases).</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Note:</strong> Example 3 can also be solved using \(\tan(\theta)\) instead of \(\cot(\theta)\), but you would need to find the value of \(x\) to complete the computation.</p>
+</div>
+
+<div class="example">
+    <h5>Example 4: Baseball Diamond</h5>
+    <p>A baseball diamond is a square with 90 feet on each side. A player runs from first base to second base at a speed of 12 ft/s. At what rate is the player's distance from home base increasing if he is halfway between first and second base?</p>
+    
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <div class="visual-desc">
+        <p><strong>Diagram Description:</strong> A square representing the baseball diamond is shown with vertices labeled as home plate, first base (1st), second base (2nd), and third base (3rd). 
+            Each side of the square is 90 feet long. 
+            A player is shown running from first base toward second base, positioned halfway between the two bases (so 45 feet from first base along the baseline). 
+            A dashed line from home plate to the player's position represents the distance \(z\) that we're interested in. 
+            The distance along the first-to-second baseline is labeled \(x\), and the constant distance from home to first base is labeled \(y = 90\) feet. 
+            An arrow indicates the player is moving at 12 ft/s toward second base.</p>
+        </div>
+        <p>Let \(x\) represent the distance the player has traveled from first base toward second base, \(y = 90\) feet represent the fixed distance from home plate to first base, and \(z\) represent the distance from home plate to the player's current position. By the Pythagorean theorem:</p>
+        \[z^2 = x^2 + y^2 = x^2 + 90^2\]
+        <p>When the player is halfway between first and second base, \(x = 45\) feet. At this point:</p>
+        \[z^2 = 45^2 + 90^2 = 2025 + 8100 = 10125
+        \implies z = \pm\sqrt{10125} = \pm45\sqrt{5}\]
+        <p>We take \(z=45\sqrt{5}\), as distance cannot be negative. Now we differentiate the equation \(z^2 = x^2 + 90^2\) with respect to time:</p>
+        \[2z\frac{dz}{dt} = 2x\frac{dx}{dt}\]
+        <p>We are given that \(\frac{dx}{dt} = 12\) ft/s. When \(x = 45\) and \(z = 45\sqrt{5}\):</p>
+        \[2\cdot 45\sqrt{5}\cdot \frac{dz}{dt} = 2\cdot 45\cdot 12\implies\frac{dz}{dt}=\frac{12}{\sqrt{5}}=\frac{12\sqrt{5}}{5}\]
+        <p>Therefore, the player's distance from home base is increasing at a rate of \(\frac{12\sqrt{5}}{5} \approx 5.37\) ft/s when the player is halfway between first and second base.</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Strategy for Related Rates Problems:</strong> Related rates problems typically follow a systematic approach: identify the variables and their relationships, write an equation relating the variables (often using geometry), differentiate both sides with respect to time using implicit differentiation, substitute the known values and rates, then solve for the unknown rate. Always be mindful of the sign of your answer, as it indicates whether a quantity is increasing or decreasing.</p>
+</div>
+
+</main>
+</body>
+</html>
