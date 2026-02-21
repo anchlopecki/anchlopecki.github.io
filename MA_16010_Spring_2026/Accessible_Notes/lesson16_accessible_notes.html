@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 16</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { 
+            margin: 8px 0; 
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+        
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<h3>Lesson 16: Relative Extrema and Critical Numbers</h3>
+
+<p>We begin by formally defining what it means for a function to have a relative (local) maximum or minimum at a point.</p>
+
+<div class="definition">
+    <p><strong>Definition (Relative Maximum):</strong> If \(f(c) \geq f(x)\) for all \(x\) in an open interval \(I\) containing \(c\), then \(f(c)\) is a <strong>relative maximum</strong> of \(f\).</p>
+</div>
+
+<div class="definition">
+    <p><strong>Definition (Relative Minimum):</strong> If \(f(c) \leq f(x)\) for all \(x\) in an open interval \(I\) containing \(c\), then \(f(c)\) is a <strong>relative minimum</strong> of \(f\).</p>
+</div>
+
+<p>Together, relative maxima and relative minima are called <strong>relative extrema</strong>.</p>
+
+<div class="visual-desc">
+    <p><strong>Graph Description:</strong> A continuous curve is plotted on an \(xy\)-plane illustrating five points of interest. 
+        The point \((-7, -2)\) is annotated with \(f'(-7) = 0\), but it is not a relative extremum, illustrating the important caveat that a zero derivative does not guarantee an extremum.
+        At \((-3, 6)\), the curve reaches a local peak (relative maximum) where \(f'(-3) = 0\). 
+        At \((1, -5)\), the curve reaches a local valley (relative minimum) where \(f'(1) = 0\). 
+        At \((3, 3)\), there is another relative maximum, but here \(f'(3)\) is <em>undefined</em> — the graph has a sharp corner or cusp at this point. 
+        At \((6, -1)\), the curve does not have a relative extremum, and \(f'(6)\) is also <em>undefined</em>. 
+    </p>
+</div>
+
+<div class="warning">
+    <p><strong>Warning:</strong> A relative maximum or minimum must occur at a point where the derivative is zero or does not exist. However, a point where \(f'(x) = 0\) or \(f'(x)\) does not exist is <em>not necessarily</em> a relative maximum or minimum. Both conditions must be checked carefully.</p>
+</div>
+
+<h4>Critical Numbers</h4>
+
+<div class="definition">
+    <p><strong>Definition (Critical Number):</strong> Let \(c\) be a number in the domain of the function \(f(x)\). If \(f'(c) = 0\) or \(f'(c)\) does not exist, then \(c\) is a <strong>critical number</strong> of \(f(x)\).</p>
+</div>
+
+<div class="important">
+    <p><strong>Key Idea:</strong> To find the relative extrema of a function, we first find all critical numbers, then test those critical numbers to determine whether each gives a relative maximum, relative minimum, or neither. The testing procedures will be covered in upcoming lessons.</p>
+</div>
+
+<h3>Examples</h3>
+
+<div class="example">
+    <h5>Example 1</h5>
+
+    <p>Find the critical numbers of \(y = x^3 + \dfrac{3}{2}x^2 - 36x\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We begin by differentiating:</p>
+        \[y' = 3x^2 + 3x - 36\]
+        <p>To find critical numbers, we solve \(y' = 0\) and check where \(y'\) does not exist (DNE).
+        Note that since \(y'\) is a polynomial, it is defined everywhere. So, we just need to find where \(y'=0\).</p>
+        \[0 = 3x^2 + 3x - 36= 3(x^2 + x - 12)\implies
+        0 = (x + 4)(x - 3)\implies x = -4,3\]
+        <p>The critical numbers are \(x = -4\) and \(x = 3\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2</h5>
+
+    <p>Find the critical numbers of \(y = 3x^2 - \dfrac{4}{x^2}\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Rewriting \(y = 3x^2 - 4x^{-2}\) and differentiating:</p>
+        \[y' = 6x + 8x^{-3} = 6x + \frac{8}{x^3}\]
+        <p>Note that \(y'\) is undefined when \(x = 0\). However, \(x = 0\) is not in the domain of the original function \(y\) (since \(\frac{4}{x^2}\) is undefined at \(x = 0\)). Therefore, \(x = 0\) is <em>not</em> a critical number.</p>
+        <p>Now, let's solve \(y'=0\):</p>
+        \[0 = 6x + \frac{8}{x^3}\implies -6x = \frac{8}{x^3}\implies x^4 = -\frac{8}{6} = -\frac{4}{3}\]
+        <p>Since \(x^4 \geq 0\) for all real \(x\), but the right-hand side is negative, this equation has no real solutions.
+        Therefore, \(y = 3x^2 - \dfrac{4}{x^2}\) has no critical numbers.</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+
+    <p>Find the critical numbers of \(y = 2x^4 e^{3x}\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the product rule:</p>
+        \[y' = 8x^3 \cdot e^{3x} + 3e^{3x} \cdot 2x^4 = 8x^3 e^{3x} + 6x^4 e^{3x}\]
+        <p>Note that \(y'\) is defined for all real \(x\).
+        Solving \(y' = 0\):</p>
+        \[0 = 8x^3 e^{3x} + 6x^4 e^{3x} = 2x^3 e^{3x}(4 + 3x)\]
+        <p>So, either \(2x^3 = 0\), \(e^{3x} = 0\), or \(4 + 3x = 0\). If \(2x^3 = 0\), we have that \(x = 0\).
+        Notice that \(e^{3x} = 0\) is impossible, since \(e^{3x} > 0\) for all \(x\).
+        If \(4 + 3x = 0\), then \(x = -\dfrac{4}{3}\).
+        So, the critical numbers are \(x = 0\) and \(x = -\dfrac{4}{3}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4</h5>
+
+    <p>Find the critical numbers of \(y = \dfrac{7x^2 + 12}{3x}\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Using the quotient rule:</p>
+        \[y' = \frac{14x \cdot 3x - 3(7x^2 + 12)}{(3x)^2} = \frac{42x^2 - 21x^2 - 36}{9x^2} = \frac{21x^2 - 36}{9x^2}\]
+        <p>Notice that \(y'\) is undefined when \(x = 0\). However, \(x = 0\) is not in the domain of the original function \(y\) (since the denominator cannot be zero). Therefore, \(x = 0\) is <em>not</em> a critical number.
+        Let's solve for \(y'=0\).</p>
+        \[0 = \frac{21x^2 - 36}{9x^2} \implies 0 = 21x^2 - 36 \implies x^2 = \frac{36}{21}\]
+        <p>Continuing,</p>
+        \[x = \pm\sqrt{\frac{36}{21}} = \pm\frac{6}{\sqrt{21}} = \pm\frac{6\sqrt{21}}{21} = \pm\frac{2\sqrt{21}}{7} = \pm\frac{2\sqrt{3}}{\sqrt{7}}.\]
+        <p>The critical numbers are \(x = \dfrac{2\sqrt{3}}{\sqrt{7}}\) and \(x = -\dfrac{2\sqrt{3}}{\sqrt{7}}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5</h5>
+
+    <p>Find the critical numbers of \(y = 2\cos(4x) + 4x\) on the interval \((0, \pi)\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Differentiating:</p>
+        \[y' = -8\sin(4x) + 4\]
+        <p>Note that \(y'\) is defined everywhere. Solving \(y' = 0\):</p>
+        \[0 = -8\sin(4x) + 4 \implies \sin(4x) = \frac{1}{2}\]
+        <p>On the unit circle, \(\sin(\theta) = \frac{1}{2}\) when \(\theta = \frac{\pi}{6}\) or \(\theta = \frac{5\pi}{6}\). So,</p>
+        \[4x = \frac{\pi}{6} \quad \Rightarrow \quad x = \frac{\pi}{24}\]
+        \[4x = \frac{5\pi}{6} \quad \Rightarrow \quad x = \frac{5\pi}{24}\]
+        <p>Both values lie in \((0, \pi)\), so the critical numbers are \(x = \dfrac{\pi}{24}\) and \(x = \dfrac{5\pi}{24}\).</p>
+
+        <div class="visual-desc">
+            <p><strong>Unit Circle Reference:</strong> The unit circle diagram shows the angles \(\frac{\pi}{6}\) and \(\frac{5\pi}{6}\). At angles \(\frac{\pi}{6}\) and \(\frac{5\pi}{6}\), the sine value equals \(\frac{1}{2}\). The cosine values are \(\frac{\sqrt{3}}{2}\) and \(-\frac{\sqrt{3}}{2}\), respectively. These are the two standard angles in \([0, \pi]\) where \(\sin(\theta) = \frac{1}{2}\).</p>
+        </div>
+    </div>
+</div>
+
+</main>
+</body>
+</html>
