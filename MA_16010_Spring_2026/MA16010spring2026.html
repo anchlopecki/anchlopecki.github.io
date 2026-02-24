@@ -57,6 +57,41 @@
         margin: auto;
       }
 
+      .accessible_text {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      .handwritten_text {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      .info_container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .notes_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        /* column-gap: 5%; */
+      }
+
+      .remark_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
     </style>
 
   </head>
@@ -78,62 +113,75 @@
     </h2>
 
     <!-- Main Page Content -->
-    <div id="Main Page" class="one_column">
+    <div class="info_container one_column">
+      <h3>Instructor Information</h3>
+        <p>
+        Anna Natalie Chlopecki <br>
+        achlopec@purdue.edu <br>
+        <!-- <b>Office:</b> MATH 1047 <br> -->
+        <b>Office Hours:</b> Tuesdays at 12:30-1:30pm in LILY 1-407 or by appointment <br>
+        <b>Feasting with Faculty:</b> Mondays at 12-1pm in Meredith Hall
+        </p>
+    </div>
+
+    <div id="Main Page" class="notes_container">
         <!-- <h3 style="text-align: center;">
             <a style="margin-right: 3.75em;" href="">Syllabus</a>
             <a style="margin-right: 3.75em;" href="">Calendar</a>
             <a href="">Extra Credit</a>
         </h3> -->
-        <!-- <h3>Instructor Information</h3>
-        <p>
-        Anna Natalie Chlopecki <br>
-        Email: achlopec@purdue.edu <br>
-        Office: MATH 1047 <br>
-        Office Hours: Tuesdays at 12:30-1:30pm in LILY 1-407 or by appointment
-        </p> -->
         <!-- <h3><a href="">Syllabus</a></h3> -->
         <!-- <h3>Course Information</h3> -->
         <!-- <h3><a href="extra_credit.pdf">Extra Credit</a></h3> -->
-        <h3>Handwritten Notes</h3>
-        <p>
-        <a href="Handwritten_Notes/lesson1_handwritten_notes.pdf" target="_blank">Lesson 1</a> <br>
-        <a href="Handwritten_Notes/lesson2_handwritten_notes.pdf" target="_blank">Lesson 2</a> <br>
-        <a href="Handwritten_Notes/lesson3_handwritten_notes.pdf" target="_blank">Lesson 3</a> <br>
-        <a href="Handwritten_Notes/lesson4_handwritten_notes.pdf" target="_blank">Lesson 4</a> <br>
-        <a href="Handwritten_Notes/lesson5_handwritten_notes.pdf" target="_blank">Lesson 5</a> <br>
-        <a href="Handwritten_Notes/lesson6_handwritten_notes.pdf" target="_blank">Lesson 6</a> <br>
-        <a href="Handwritten_Notes/lesson7_handwritten_notes.pdf" target="_blank">Lesson 7</a> <br>
-        <a href="Handwritten_Notes/lesson8_handwritten_notes.pdf" target="_blank">Lesson 8</a> <br>
-        <a href="Handwritten_Notes/lesson9_handwritten_notes.pdf" target="_blank">Lesson 9</a> <br>
-        <a href="Handwritten_Notes/lesson10_handwritten_notes.pdf" target="_blank">Lesson 10</a> <br>
-        <a href="Handwritten_Notes/lesson11_handwritten_notes.pdf" target="_blank">Lesson 11</a> <br>
-        <a href="Handwritten_Notes/lesson12_handwritten_notes.pdf" target="_blank">Lesson 12</a> <br>
-        <a href="Handwritten_Notes/lesson13_handwritten_notes.pdf" target="_blank">Lesson 13</a> <br>
-        <a href="Handwritten_Notes/lesson14_handwritten_notes.pdf" target="_blank">Lesson 14</a> <br>
-        <a href="Handwritten_Notes/lesson15_handwritten_notes.pdf" target="_blank">Lesson 15</a> <br>
-        <a href="Handwritten_Notes/lesson16_handwritten_notes.pdf" target="_blank">Lesson 16</a>
-        </p>
-        <h3>Accessible Notes</h3>
-        <p>
-        <!-- <i>Remark: Notes were created with the help of resources provided by the <a href="https://www.math.purdue.edu/~yipn/TPC/">Teaching Pit Crew</a>.</i> <br> -->
-        <a href="Accessible_Notes/lesson1_accessible_notes.html" target="_blank">Lesson 1</a> <br>
-        <a href="Accessible_Notes/lesson2_accessible_notes.html" target="_blank">Lesson 2</a> <br>
-        <a href="Accessible_Notes/lesson3_accessible_notes.html" target="_blank">Lesson 3</a> <br>
-        <a href="Accessible_Notes/lesson4_accessible_notes.html" target="_blank">Lesson 4</a> <br>
-        <a href="Accessible_Notes/lesson5_accessible_notes.html" target="_blank">Lesson 5</a> <br>
-        <a href="Accessible_Notes/lesson6_accessible_notes.html" target="_blank">Lesson 6</a> <br>
-        <a href="Accessible_Notes/lesson7_accessible_notes.html" target="_blank">Lesson 7</a> <br>
-        <a href="Accessible_Notes/lesson8_accessible_notes.html" target="_blank">Lesson 8</a> <br>
-        <a href="Accessible_Notes/lesson9_accessible_notes.html" target="_blank">Lesson 9</a> <br>
-        <a href="Accessible_Notes/lesson10_accessible_notes.html" target="_blank">Lesson 10</a> <br>
-        <a href="Accessible_Notes/lesson11_accessible_notes.html" target="_blank">Lesson 11</a> <br>
-        <a href="Accessible_Notes/lesson12_accessible_notes.html" target="_blank">Lesson 12</a> <br>
-        <a href="Accessible_Notes/lesson13_accessible_notes.html" target="_blank">Lesson 13</a> <br>
-        <a href="Accessible_Notes/lesson14_accessible_notes.html" target="_blank">Lesson 14</a> <br>
-        <a href="Accessible_Notes/lesson15_accessible_notes.html" target="_blank">Lesson 15</a> <br>
-        <a href="Accessible_Notes/lesson16_accessible_notes.html" target="_blank">Lesson 16</a>
-        <br> <br> <i>Remark: Accessible notes were created with the help of resources provided by the <a href="https://www.math.purdue.edu/~yipn/TPC/" target="_blank">Teaching Pit Crew</a>.</i>
-        </p>
+        <div class="handwritten_text">
+          <h3>Handwritten Notes</h3>
+            <p>
+              <a href="Handwritten_Notes/lesson1_handwritten_notes.pdf" target="_blank">Lesson 1</a> <br>
+              <a href="Handwritten_Notes/lesson2_handwritten_notes.pdf" target="_blank">Lesson 2</a> <br>
+              <a href="Handwritten_Notes/lesson3_handwritten_notes.pdf" target="_blank">Lesson 3</a> <br>
+              <a href="Handwritten_Notes/lesson4_handwritten_notes.pdf" target="_blank">Lesson 4</a> <br>
+              <a href="Handwritten_Notes/lesson5_handwritten_notes.pdf" target="_blank">Lesson 5</a> <br>
+              <a href="Handwritten_Notes/lesson6_handwritten_notes.pdf" target="_blank">Lesson 6</a> <br>
+              <a href="Handwritten_Notes/lesson7_handwritten_notes.pdf" target="_blank">Lesson 7</a> <br>
+              <a href="Handwritten_Notes/lesson8_handwritten_notes.pdf" target="_blank">Lesson 8</a> <br>
+              <a href="Handwritten_Notes/lesson9_handwritten_notes.pdf" target="_blank">Lesson 9</a> <br>
+              <a href="Handwritten_Notes/lesson10_handwritten_notes.pdf" target="_blank">Lesson 10</a> <br>
+              <a href="Handwritten_Notes/lesson11_handwritten_notes.pdf" target="_blank">Lesson 11</a> <br>
+              <a href="Handwritten_Notes/lesson12_handwritten_notes.pdf" target="_blank">Lesson 12</a> <br>
+              <a href="Handwritten_Notes/lesson13_handwritten_notes.pdf" target="_blank">Lesson 13</a> <br>
+              <a href="Handwritten_Notes/lesson14_handwritten_notes.pdf" target="_blank">Lesson 14</a> <br>
+              <a href="Handwritten_Notes/lesson15_handwritten_notes.pdf" target="_blank">Lesson 15</a> <br>
+              <a href="Handwritten_Notes/lesson16_handwritten_notes.pdf" target="_blank">Lesson 16</a>
+            </p>
+        </div>
+
+        <div class="accessible_text">
+          <h3>Accessible Notes</h3>
+            <p>
+              <a href="Accessible_Notes/lesson1_accessible_notes.html" target="_blank">Lesson 1</a> <br>
+              <a href="Accessible_Notes/lesson2_accessible_notes.html" target="_blank">Lesson 2</a> <br>
+              <a href="Accessible_Notes/lesson3_accessible_notes.html" target="_blank">Lesson 3</a> <br>
+              <a href="Accessible_Notes/lesson4_accessible_notes.html" target="_blank">Lesson 4</a> <br>
+              <a href="Accessible_Notes/lesson5_accessible_notes.html" target="_blank">Lesson 5</a> <br>
+              <a href="Accessible_Notes/lesson6_accessible_notes.html" target="_blank">Lesson 6</a> <br>
+              <a href="Accessible_Notes/lesson7_accessible_notes.html" target="_blank">Lesson 7</a> <br>
+              <a href="Accessible_Notes/lesson8_accessible_notes.html" target="_blank">Lesson 8</a> <br>
+              <a href="Accessible_Notes/lesson9_accessible_notes.html" target="_blank">Lesson 9</a> <br>
+              <a href="Accessible_Notes/lesson10_accessible_notes.html" target="_blank">Lesson 10</a> <br>
+              <a href="Accessible_Notes/lesson11_accessible_notes.html" target="_blank">Lesson 11</a> <br>
+              <a href="Accessible_Notes/lesson12_accessible_notes.html" target="_blank">Lesson 12</a> <br>
+              <a href="Accessible_Notes/lesson13_accessible_notes.html" target="_blank">Lesson 13</a> <br>
+              <a href="Accessible_Notes/lesson14_accessible_notes.html" target="_blank">Lesson 14</a> <br>
+              <a href="Accessible_Notes/lesson15_accessible_notes.html" target="_blank">Lesson 15</a> <br>
+              <a href="Accessible_Notes/lesson16_accessible_notes.html" target="_blank">Lesson 16</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="remark_container one_column">
+      <p>
+        <i>Remark: Accessible notes were created with the help of resources provided by the <a href="https://www.math.purdue.edu/~yipn/TPC/" target="_blank">Teaching Pit Crew</a>.</i>
+      </p>
     </div>
 
     <script>
