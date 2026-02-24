@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loads Google Fonts -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Manrope"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display|Manrope">
+
+    <style>
+
+      :root {
+        --main-color: rgb(109, 118, 139); /* main color */
+        --accent-color: rgb(146, 159, 187); /* color is cool gray */
+        --back-color: rgb(235, 233, 237); /* background color */
+      }
+
+      html * {
+        background-color: var(--back-color);
+        font-family: 'Manrope', monospace;
+        /* padding-top: 0.625em; */
+        line-height: 2;
+        color: rgb(60, 60, 60); /* color is dark gray */
+      }
+
+      h1 {
+        margin: 0;
+        padding-bottom: 0;
+      }
+
+      h2 {
+        margin: 0;
+      }
+
+      h3 {
+        margin-bottom: -.5em;
+        color: var(--main-color);
+      }
+
+      .hl {
+        color: var(--accent-color);
+      }
+
+      a:link, a:visited {
+        cursor: pointer;
+        color: var(--accent-color);
+      }
+
+      a:hover {
+        transition: .5s;
+        color: var(--main-color);
+      }
+
+      .one_column {
+        width: 45%;
+        margin: auto;
+      }
+
+      .accessible_text {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      .handwritten_text {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      .info_container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .notes_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        /* column-gap: 5%; */
+      }
+
+      .remark_container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <h1 style="font-size: 3.75em;
+        text-align: center;
+        font-family: 'Playfair Display';
+        letter-spacing: 1.25mm;">
+        Linear Algebra | Spring 2026
+    </h1>
+
+    <h2 style="font-size: 2em;
+        text-align: center;
+        font-family: 'Playfair Display';
+        letter-spacing: 1mm;">
+        Section 253
+    </h2>
+
+    <!-- Main Page Content -->
+    <div class="info_container one_column">
+      <h3>Instructor Information</h3>
+        <p>
+        Anna Natalie Chlopecki <br>
+        achlopec@purdue.edu <br>
+        <!-- <b>Office:</b> MATH 1047 <br> -->
+        <b>Office Hours:</b> TBD <br>
+        <b>Feasting with Faculty:</b> Mondays at 12-1pm in Meredith Hall
+        </p>
+    </div>
+
+    <div id="Main Page" class="notes_container">
+        <div class="handwritten_text">
+          <h3>Handwritten Notes</h3>
+            <p>
+              <!-- <a href="Handwritten_Notes/lesson1_handwritten_notes.pdf" target="_blank">Lesson 1</a> <br> -->
+            </p>
+        </div>
+
+        <div class="accessible_text">
+          <h3>Accessible Notes</h3>
+            <p>
+              <!-- <a href="Accessible_Notes/lesson1_accessible_notes.html" target="_blank">Lesson 1</a> <br> -->
+            </p>
+        </div>
+    </div>
+
+    <div class="remark_container one_column">
+      <p>
+        <i>Remark: Accessible notes were created with the help of resources provided by the <a href="https://www.math.purdue.edu/~yipn/TPC/" target="_blank">Teaching Pit Crew</a>.</i>
+      </p>
+    </div>
+
+    <script>
+
+      document.title = "Linear Algebra | Spring 2026";
+
+    </script>
+
+    <footer style="text-align: center; margin-top: 4em; font-size: .9em;">&copy; 2023 - 2026 Anna Natalie Chlopecki</footer>
+
+  </body>
+
+</html>
+
