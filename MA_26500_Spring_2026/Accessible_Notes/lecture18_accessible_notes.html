@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Algebra - Lecture 18</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+        
+        h3 { 
+            color: rgb(60, 60, 60); 
+            border-bottom: 3px solid rgb(60, 60, 60); 
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 { 
+            color: rgb(60, 60, 60); 
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 { 
+            color: rgb(60, 60, 60); 
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+        
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+        
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+        
+        ul, ol { 
+            padding-left: 25px; 
+            margin: 10px 0;
+        }
+        li { margin: 8px 0; }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+        @media print {
+            body { background-color: rgb(235, 233, 237); color: rgb(60, 60, 60); }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<h3>Lecture 18: Null Spaces</h3>
+<p>This lecture covers Section 4.2 (Part I). We introduce the concept of the null space of a matrix, prove that it forms a subspace, and develop a systematic method for finding a spanning set for it.</p>
+
+<!-- ===== NULL SPACE DEFINITION ===== -->
+<h3>The Null Space</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> Let \(A\) be an \(m \times n\) matrix. The <strong>null space</strong> of \(A\), denoted \(\text{Nul}\, A\), is the set of all solutions of the homogeneous equation \(A\mathbf{x} = \mathbf{0}\), i.e.</p>
+    \[\text{Nul}\, A = \{\mathbf{x} \mid \mathbf{x} \in \mathbb{R}^n \text{ and } A\mathbf{x} = \mathbf{0}\}.\]
+</div>
+
+<p>In other words, \(\text{Nul}\, A\) consists of every vector in \(\mathbb{R}^n\) that \(A\) maps to the zero vector. To check whether a specific vector belongs to \(\text{Nul}\, A\), we simply multiply and see if the result is \(\mathbf{0}\).</p>
+
+<div class="example">
+    <h5>Example 1: Checking Membership in the Null Space</h5>
+    <p>Let
+    \[A = \begin{bmatrix} 1 & -2 & 4 \\ 3 & 7 & 0 \end{bmatrix} \quad \text{and} \quad \mathbf{u} = \begin{bmatrix} 6 \\ 1 \\ -1 \end{bmatrix}.\]
+    Is \(\mathbf{u} \in \text{Nul}\, A\)?</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> We test whether \(A\mathbf{u} = \mathbf{0}\). Notice that</p>
+        \[A\mathbf{u} = \begin{bmatrix} 1 & -2 & 4 \\ 3 & 7 & 0 \end{bmatrix} \begin{bmatrix} 6 \\ 1 \\ -1 \end{bmatrix} = \begin{bmatrix} 1\cdot6 + (-2)\cdot1 + 4\cdot(-1) \\ 3\cdot6 + 7\cdot1 + 0\cdot(-1) \end{bmatrix} = \begin{bmatrix} 0 \\ 25 \end{bmatrix} \neq \mathbf{0}.\]
+        <p>Since \(A\mathbf{u} \neq \mathbf{0}\), we conclude that \(\mathbf{u} \notin \text{Nul}\, A\).</p>
+    </div>
+</div>
+
+<!-- ===== NULL SPACE IS A SUBSPACE ===== -->
+<h3>The Null Space Is a Subspace</h3>
+
+<div class="theorem">
+    <p><strong>Theorem:</strong> The null space of an \(m \times n\) matrix \(A\) is a subspace of \(\mathbb{R}^n\). Equivalently, the set of all solutions to a homogeneous system \(A\mathbf{x} = \mathbf{0}\) of \(m\) equations in \(n\) unknowns is a subspace of \(\mathbb{R}^n\).</p>
+</div>
+
+<div class="warning">
+    <p><strong>Warning:</strong> The theorem requires the equations to be <em>homogeneous</em> (i.e. there is no constant term). If a constant term is present, the zero vector \(\mathbf{0}\) will not satisfy the system, violating the requirement that every subspace contain \(\mathbf{0}\).</p>
+</div>
+
+<p>We now verify that \(\text{Nul}\, A\) satisfies the three conditions for a subspace.</p>
+
+<div class="steps">
+    <h5>Proof that \(\text{Nul}\, A\) is a subspace:</h5>
+    <ol>
+        <li><strong>Contains the zero vector:</strong> Since \(A\) has \(n\) columns, we have \(\text{Nul}\, A \subseteq \mathbb{R}^n\). Furthermore, \(A\mathbf{0} = \mathbf{0}\), so \(\mathbf{0} \in \text{Nul}\, A\).</li>
+        <li><strong>Closed under addition:</strong> Suppose \(\mathbf{u}, \mathbf{v} \in \text{Nul}\, A\), so \(A\mathbf{u} = \mathbf{0}\) and \(A\mathbf{v} = \mathbf{0}\). Then,
+        \[A(\mathbf{u} + \mathbf{v}) = A\mathbf{u} + A\mathbf{v} = \mathbf{0} + \mathbf{0} = \mathbf{0},\]
+        and so \(\mathbf{u} + \mathbf{v} \in \text{Nul}\, A\).</li>
+        <li><strong>Closed under scalar multiplication:</strong> For any scalar \(c\):
+        \[A(c\mathbf{u}) = c(A\mathbf{u}) = c\mathbf{0} = \mathbf{0},\]
+        and so \(c\mathbf{u} \in \text{Nul}\, A\). \(\blacksquare\)</li>
+    </ol>
+</div>
+
+<!-- ===== FINDING A SPANNING SET ===== -->
+<h3>Finding a Spanning Set for the Null Space</h3>
+
+<p>To find a spanning set for \(\text{Nul}\, A\), we solve the homogeneous system \(A\mathbf{x} = \mathbf{0}\) by row reducing the augmented matrix \([A \mid \mathbf{0}]\), identifying the free variables, and expressing each basic variable in terms of the free variables. The resulting parametric vectors form a spanning set.</p>
+
+<div class="example">
+    <h5>Example 2: Spanning Set for \(\text{Nul}\, A\) — Two Variables</h5>
+    <p>Find a spanning set for \(\text{Nul}\, A\) where
+    \[A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 5 & 7 \end{bmatrix}.\]</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> We row reduce the augmented matrix \([A \mid \mathbf{0}]\):</p>
+        \[\begin{bmatrix} 1 & 2 & 3 & 0 \\ 2 & 5 & 7 & 0 \end{bmatrix} \xrightarrow{r_2 \to r_2 - 2r_1} \begin{bmatrix} 1 & 2 & 3 & 0 \\ 0 & 1 & 1 & 0 \end{bmatrix} \xrightarrow{r_1 \to r_1 - 2r_2} \begin{bmatrix} 1 & 0 & 1 & 0 \\ 0 & 1 & 1 & 0 \end{bmatrix}.\]
+        <p>The pivot columns are columns 1 and 2, and so \(x_3\) is the only free variable. We also have that \(x_1 + x_3 = 0\) and \(x_2 + x_3 = 0\). Therefore, \(x_1 = -x_3\) and \(x_2 = -x_3\). Writing the general solution in parametric vector form, we see that</p>
+        \[\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = x_3 \begin{bmatrix} -1 \\ -1 \\ 1 \end{bmatrix}.\]
+        <p>Therefore, a spanning set for \(\text{Nul}\, A\) is \(\left\{ \begin{bmatrix} -1 \\ -1 \\ 1 \end{bmatrix} \right\}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3: Spanning Set for \(\text{Nul}\, A\) — Two Free Variables</h5>
+    <p>Find a spanning set for \(\text{Nul}\, A\) where
+    \[A = \begin{bmatrix} 2 & 4 & 3 & 9 \\ 4 & 8 & 7 & 13 \end{bmatrix}.\]</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> We row reduce \([A \mid \mathbf{0}]\):</p>
+        \[\begin{align*}\begin{bmatrix} 2 & 4 & 3 & 9 & 0 \\ 4 & 8 & 7 & 13 & 0 \end{bmatrix} &\xrightarrow{r_2 \to r_2 - 2r_1} \begin{bmatrix} 2 & 4 & 3 & 9 & 0 \\ 0 & 0 & 1 & -5 & 0 \end{bmatrix}\\
+        &\xrightarrow{r_1 \to r_1 - 3r_2} \begin{bmatrix} 2 & 4 & 0 & 24 & 0 \\ 0 & 0 & 1 & -5 & 0 \end{bmatrix}\\ &\xrightarrow{r_1 \to \frac{r_1}{2}} \begin{bmatrix} 1 & 2 & 0 & 12 & 0 \\ 0 & 0 & 1 & -5 & 0 \end{bmatrix}.\end{align*}\]
+        <p>Columns 1 and 3 contain pivots, and so \(x_2\) and \(x_4\) are free variables. We also have that \(x_1 = -2x_2 - 12x_4\) and \(x_3 = 5x_4\). In parametric vector form, we have that</p>
+        \[\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} = x_2 \begin{bmatrix} -2 \\ 1 \\ 0 \\ 0 \end{bmatrix} + x_4 \begin{bmatrix} -12 \\ 0 \\ 5 \\ 1 \end{bmatrix}.\]
+        <p>Therefore, a spanning set for \(\text{Nul}\, A\) is \(\left\{ \begin{bmatrix} -2 \\ 1 \\ 0 \\ 0 \end{bmatrix},\ \begin{bmatrix} -12 \\ 0 \\ 5 \\ 1 \end{bmatrix} \right\}\).</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4: Spanning Set for \(\text{Nul}\, A\) — Three Free Variables</h5>
+    <p>Find a spanning set for \(\text{Nul}\, A\) where
+    \[A = \begin{bmatrix} 1 & 3 & 0 & 2 & 5 \\ 2 & 6 & 1 & 7 & 13 \\ 0 & 0 & 0 & 0 & 0 \end{bmatrix}.\]</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> We row reduce \([A \mid \mathbf{0}]\):</p>
+        \[\begin{bmatrix} 1 & 3 & 0 & 2 & 5 & 0 \\ 2 & 6 & 1 & 7 & 13 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{bmatrix} \xrightarrow{r_2 \to r_2 - 2r_1} \begin{bmatrix} 1 & 3 & 0 & 2 & 5 & 0 \\ 0 & 0 & 1 & 3 & 3 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 \end{bmatrix}.\]
+        <p>Columns 1 and 3 contain pivots, and so \(x_2\), \(x_4\), and \(x_5\) are free variables. We also have that
+        \[x_1 = -3x_2 - 2x_4 - 5x_5 \quad \text{and} \quad x_3 = -3x_4 - 3x_5.\]
+        In parametric vector form, we get that</p>
+        \[\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix} = x_2 \begin{bmatrix} -3 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} + x_4 \begin{bmatrix} -2 \\ 0 \\ -3 \\ 1 \\ 0 \end{bmatrix} + x_5 \begin{bmatrix} -5 \\ 0 \\ -3 \\ 0 \\ 1 \end{bmatrix}.\]
+        <p>Therefore, a spanning set for \(\text{Nul}\, A\) is \(\left\{ \begin{bmatrix} -3 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix},\ \begin{bmatrix} -2 \\ 0 \\ -3 \\ 1 \\ 0 \end{bmatrix},\ \begin{bmatrix} -5 \\ 0 \\ -3 \\ 0 \\ 1 \end{bmatrix} \right\}\).</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Important:</strong> The number of vectors in a spanning set for \(\text{Nul}\, A\) equals the number of free variables in the equation \(A\mathbf{x} = \mathbf{0}\). This is determined by the number of non-pivot columns in the reduced row echelon form of \(A\).</p>
+</div>
+
+<!-- ===== HOMOGENEOUS REQUIREMENT ===== -->
+<h3>The Homogeneous Requirement</h3>
+
+<p>The aforementioned theorem relies critically on the system being homogeneous. The following example shows what can go wrong when a constant term is present.</p>
+
+<div class="example">
+    <h5>Example 5: A Set That Is Not a Subspace</h5>
+    <p>Let
+    \[W = \left\{ \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \;\middle|\; x_1 + 3 = x_2 - 7x_3 \right\}.\]
+    Is \(W\) a subspace of \(\mathbb{R}^3\)?</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong> Clearly \(W \subseteq \mathbb{R}^3\). However, we check whether \(\mathbf{0} \in W\). Substituting \(x_1 = x_2 = x_3 = 0\) yields \(0 + 3 = 0 - 7\cdot 0\), i.e. \(3 = 0\), which is not true. Therefore, \(\mathbf{0} \notin W\), and \(W\) is <em>not</em> a subspace of \(\mathbb{R}^3\).</p>
+        <p>The underlying equation can be rewritten as \(x_1 - x_2 + 7x_3 = -3\), which is not homogeneous (the constant \(-3\) on the right-hand side prevents the zero vector from being a solution).</p>
+    </div>
+</div>
+
+<div class="warning">
+    <p><strong>Warning:</strong> If the defining condition for a set involves a nonzero constant term, the set cannot be a subspace. If instead the condition in example 5 were \(x_1 = x_2 - 7x_3\) (i.e. \(x_1 - x_2 + 7x_3 = 0\)), the set would be a subspace of \(\mathbb{R}^3\), as the equation is homogeneous and therefore describes a null space.</p>
+</div>
+
+</main>
+</body>
+</html>
