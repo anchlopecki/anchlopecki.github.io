@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied Calculus I - Lesson 17</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        options: {
+            enableAssistiveMml: true
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgb(235, 233, 237);
+            color: rgb(60, 60, 60);
+        }
+
+        h3 {
+            color: rgb(60, 60, 60);
+            border-bottom: 3px solid rgb(60, 60, 60);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+        h4 {
+            color: rgb(60, 60, 60);
+            border-left: 4px solid rgb(60, 60, 60);
+            padding-left: 15px;
+            margin-top: 25px;
+            font-size: 1.3em;
+        }
+        h5 {
+            color: rgb(60, 60, 60);
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        .definition {
+            background-color: rgb(249, 238, 200);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+
+        .theorem {
+            background-color: rgb(215, 225, 234);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+
+        .example {
+            background-color: rgb(227, 230, 219);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+
+        .important {
+            background-color: rgb(255, 233, 214);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+
+        .warning {
+            background-color: rgb(251, 203, 197);
+            padding: 15px;
+            border: 1px solid rgb(60, 60, 60);
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid rgb(60, 60, 60);
+        }
+
+        .visual-desc {
+            background-color: rgb(243, 226, 238);
+            padding: 12px;
+            border-left: 4px solid rgb(60, 60, 60);
+            font-style: italic;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .steps {
+            background-color: rgb(221, 208, 217);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .solution {
+            background-color: rgb(245, 245, 245);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid rgb(60, 60, 60);
+        }
+
+        ul, ol {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid rgb(143, 143, 143);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: rgb(216, 219, 226);
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: rgb(245, 245, 245);
+        }
+
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            background: rgb(60, 60, 60);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            left: 0;
+            top: 0;
+        }
+
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgb(60, 60, 60);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            h3 { font-size: 1.3em; }
+            h4 { font-size: 1.2em; }
+            h5 { font-size: 1.1em; }
+        }
+
+        @media print {
+            body {
+                background-color: rgb(235, 233, 237);
+                color: rgb(60, 60, 60);
+            }
+            .definition, .theorem, .example, .important, .warning {
+                border: 1px solid rgb(60, 60, 60);
+                background-color: rgb(235, 233, 237);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content">
+
+<h3>Lesson 17: Increasing and Decreasing Functions; First Derivative Test</h3>
+
+<p><strong>Last time:</strong> Critical numbers provide us with candidates for relative extrema. In this lesson, we use the sign of the first derivative to determine where a function is increasing or decreasing, and then apply the first derivative test to classify relative extrema.</p>
+
+<!-- ============================================================ -->
+<h3>17.1 Increasing and Decreasing Functions</h3>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f\) is <strong>increasing</strong> on an interval if \(x &lt; y\) implies \(f(x) &lt; f(y)\). That is, as the input increases, the output also increases.</p>
+</div>
+
+<div class="definition">
+    <p><strong>Definition:</strong> A function \(f\) is <strong>decreasing</strong> on an interval if \(x &lt; y\) implies \(f(x) &gt; f(y)\). That is, as the input increases, the output decreases.</p>
+</div>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description:</strong> Two side-by-side curve sketches illustrate the definitions. On the left, an increasing curve rises from lower-left to upper-right; tangent lines drawn at several points along the curve all have <em>positive slope</em>. On the right, a decreasing curve falls from upper-left to lower-right; tangent lines at several points all have <em>negative slope</em>. This reinforces the link between the sign of the derivative and whether the function increases or decreases.</p>
+</div>
+
+<div class="theorem">
+    <p><strong>Theorem:</strong> Let \(f(x)\) be a continuous and differentiable function on an open interval \(I\).</p>
+    <ul>
+        <li>If \(f'(x) &gt; 0\) for all \(x\) in \(I\), then \(f(x)\) is <strong>increasing</strong> on \(I\).</li>
+        <li>If \(f'(x) &lt; 0\) for all \(x\) in \(I\), then \(f(x)\) is <strong>decreasing</strong> on \(I\).</li>
+    </ul>
+</div>
+
+<div class="steps">
+    <h5>General Strategy for Finding Intervals of Increase/Decrease:</h5>
+    <ol>
+        <li>Compute \(f'(x)\).</li>
+        <li>Find all critical numbers (where \(f'(x) = 0\) or \(f'(x)\) is undefined).</li>
+        <li>Use the critical numbers to divide the real line into open intervals.</li>
+        <li>Pick a test value in each interval and evaluate \(f'\) at that value.</li>
+        <li>If \(f' &gt; 0\) on the interval, \(f\) is increasing; if \(f' &lt; 0\), \(f\) is decreasing.</li>
+    </ol>
+</div>
+
+<div class="example">
+    <h5>Example 1: Finding Intervals of Increase and Decrease</h5>
+    <p>Suppose \(f(x) = x^3 - 9x^2 - 21x\). Find the open intervals on which \(f(x)\) is increasing or decreasing.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we compute the derivative of \(f(x)\):</p>
+        \[f'(x) = 3x^2 - 18x - 21 = 3(x^2 - 6x - 7)\]
+
+        <p>Next, we set \(f'(x) = 0\) to find the critical numbers:</p>
+        \[3(x^2 - 6x - 7) = 0 \implies 3(x-7)(x+1) = 0 \implies x = 7, \; x = -1\]
+
+        <p>These two critical numbers divide the real line into three intervals: \((-\infty, -1)\), \((-1, 7)\), and \((7, \infty)\). We test a \(x\)-value from each interval by plugging the \(x\)-value into \(f'(x)\).</p>
+
+        <table>
+            <caption>Sign of \(f'(x)\) on each interval</caption>
+            <thead>
+                <tr>
+                    <th>Interval</th>
+                    <th>Test Value</th>
+                    <th>\(f'(\text{test value})\)</th>
+                    <th>Sign</th>
+                    <th>Conclusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\((-\infty, -1)\)</td>
+                    <td>\(x = -2\)</td>
+                    <td>\(3\cdot (4 + 12 - 7) = 3\cdot 9 = 27 &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+                <tr>
+                    <td>\((-1, 7)\)</td>
+                    <td>\(x = 0\)</td>
+                    <td>\(f'(0) = -21 &lt; 0\)</td>
+                    <td>\(-\)</td>
+                    <td>Decreasing</td>
+                </tr>
+                <tr>
+                    <td>\((7, \infty)\)</td>
+                    <td>\(x = 8\)</td>
+                    <td>\(3\cdot (64 - 48 - 7) = 3\cdot 9 = 27 &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="visual-desc">
+            <p><strong>Sign Chart Description:</strong> A number line is marked with the critical numbers \(-1\) and \(7\). To the left of \(-1\) the sign of \(f'\) is \(+\) (arrow pointing up-right). Between \(-1\) and \(7\) the sign is \(-\) (arrow pointing down-right). To the right of \(7\) the sign is \(+\) (arrow pointing up-right).</p>
+        </div>
+
+        <p><strong>Increasing interval:</strong> \((-\infty, -1)\cup (7, \infty)\)</p>
+        <p><strong>Decreasing interval:</strong> \((-1, 7)\)</p>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<h3>17.2 The First Derivative Test</h3>
+
+<p>Now that we can determine intervals of increase and decrease, we can classify the critical numbers as relative maxima, relative minima, or neither.</p>
+
+<div class="theorem">
+    <p><strong>First Derivative Test:</strong> Let \(c\) be a critical number of a function \(f(x)\) that is continuous on an open interval \(I\) containing \(c\). We examine the sign of \(f'(x)\) on each side of \(x = c\).</p>
+
+    <ul>
+        <li><strong>Scenario 1 (Relative Maximum):</strong> If \(f'(x) &gt; 0\) to the left of \(c\) and \(f'(x) &lt; 0\) to the right of \(c\), then \(f\) has a relative maximum at \(x = c\).</li>
+        <li><strong>Scenario 2 (Relative Minimum):</strong> If \(f'(x) &lt; 0\) to the left of \(c\) and \(f'(x) &gt; 0\) to the right of \(c\), then \(f\) has a relative minimum at \(x = c\).</li>
+        <li><strong>Scenario 3 (No Extremum):</strong> If \(f'(x) &gt; 0\) on both sides of \(c\), then \(f\) has no relative extremum at \(x = c\).</li>
+        <li><strong>Scenario 4 (No Extremum):</strong> If \(f'(x) &lt; 0\) on both sides of \(c\), then \(f\) has no relative extremum at \(x = c\).</li>
+    </ul>
+</div>
+
+<div class="visual-desc">
+    <p><strong>Diagram Description (Four Scenarios):</strong> Four pairs of sketches illustrate each scenario. 
+        In Scenario 1, the curve rises to a peak at \((c, f(c))\) and then falls — a classic hill shape, labeled "rel. max. at \(x = c\)." 
+        In Scenario 2, the curve falls to a valley at \((c, f(c))\) and then rises — a classic valley shape, labeled "rel. min. at \(x = c\)." 
+        In Scenarios 3 and 4, the curve passes through \((c, f(c))\) without changing direction (continuing to increase or continuing to decrease, respectively), so no extremum occurs.</p>
+</div>
+
+<div class="example">
+    <h5>Example 1 (Revisited)</h5>
+    <p>Find the relative extrema of \(f(x) = x^3 - 9x^2 - 21x\).</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>From Example 1, the critical numbers are \(x = -1\) and \(x = 7\), and the sign chart shows \(f'\) changes from \(+\) to \(-\) at \(x = -1\), and from \(-\) to \(+\) at \(x = 7\).</p>
+
+        <div class="visual-desc">
+            <p><strong>Sign Chart Description:</strong> The number line from Example 1 is reused. At \(x = -1\), the sign changes from \(+\) (increasing) to \(-\) (decreasing), indicating a relative maximum. At \(x = 7\), the sign changes from \(-\) (decreasing) to \(+\) (increasing), indicating a relative minimum. A small sketch shows a hill at the left critical number and a valley at the right.</p>
+        </div>
+
+        <p>
+        By the first derivative test, \(f'\) changes from \(+\) to \(-\) at \(x = -1\), and so we have a relative maximum at \((-1,\; f(-1))\).
+        Additionally, \(f'\) changes from \(-\) to \(+\) at \(x = 7\), and so we have a relative minimum at \((7,\; f(7))\).
+        </p>
+
+        <p>Computing the function outputs at these \(x\)-values:</p>
+        \[f(-1) = (-1)^3 - 9\cdot (-1)^2 - 21\cdot (-1) = -1 - 9 + 21 = 11\]
+        \[f(7) = 7^3 - 9\cdot 7^2 - 21\cdot 7 = 343 - 441 - 147 = -245\]
+
+        <p><strong>Relative maximum:</strong> \((-1,\; 11)\)</p>
+        <p><strong>Relative minimum:</strong> \((7,\; -245)\)</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 2</h5>
+    <p>Suppose \(f(x) = 10x^2 - 4x\). Find the open intervals on which \(f(x)\) is increasing or decreasing, as well as the relative extrema, if any exist.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>First, we compute the derivative:</p>
+        \[f'(x) = 20x - 4\]
+
+        <p>Next, we set \(f'(x) = 0\):</p>
+        \[20x - 4 = 0 \implies x = \frac{1}{5}\]
+
+        <p>So, \(x = \frac{1}{5}\) is the only critical number, dividing the real line into \(\left(-\infty, \frac{1}{5}\right)\) and \(\left(\frac{1}{5}, \infty\right)\). Testing:</p>
+
+        <table>
+            <caption>Sign of \(f'(x)\) on each interval</caption>
+            <thead>
+                <tr>
+                    <th>Interval</th>
+                    <th>Test Value</th>
+                    <th>\(f'(\text{test value})\)</th>
+                    <th>Sign</th>
+                    <th>Conclusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(\left(-\infty, \frac{1}{5}\right)\)</td>
+                    <td>\(x = 0\)</td>
+                    <td>\(f'(0) = -4 &lt; 0\)</td>
+                    <td>\(-\)</td>
+                    <td>Decreasing</td>
+                </tr>
+                <tr>
+                    <td>\(\left(\frac{1}{5}, \infty\right)\)</td>
+                    <td>\(x = 1\)</td>
+                    <td>\(f'(1) = 16 &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Since \(f'\) changes from \(-\) to \(+\) at \(x = \frac{1}{5}\), the first derivative test implies that we have a relative minimum at \(x=\frac{1}{5}\). Note that:</p>
+        \[f\!\left(\tfrac{1}{5}\right) = 10\cdot \left(\tfrac{1}{5}\right)^{\!2} - 4\cdot \left(\tfrac{1}{5}\right) = \frac{10}{25} - \frac{4}{5} = \frac{2}{5} - \frac{4}{5} = -\frac{2}{5}\]
+        <p><strong>Increasing:</strong> \(\left(\frac{1}{5}, \infty\right)\)</p>
+        <p><strong>Decreasing:</strong> \(\left(-\infty, \frac{1}{5}\right)\)</p>
+        <p><strong>Relative minimum:</strong> \(\left(\frac{1}{5},\; -\frac{2}{5}\right)\)</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 3</h5>
+    <p>Suppose \(f(x) = x^3 e^{2x+6}\). Find the open intervals on which \(f(x)\) is increasing or decreasing, as well as the relative extrema, if any exist.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Applying the Product Rule, we have that:</p>
+        \[f'(x) = 3x^2 e^{2x+6} + 2e^{2x+6} x^3 = x^2 e^{2x+6}(3 + 2x)\]
+
+        <p>Setting \(f'(x) = 0\):</p>
+        \[x^2 e^{2x+6}(3 + 2x) = 0 \implies x = 0 \quad \text{or} \quad x = -\frac{3}{2}\]
+
+        <p>These are the critical numbers. They divide the real line into three intervals. Testing:</p>
+
+        <table>
+            <caption>Sign of \(f'(x)\) on each interval</caption>
+            <thead>
+                <tr>
+                    <th>Interval</th>
+                    <th>Test Value</th>
+                    <th>\(f'(\text{test value})\)</th>
+                    <th>Sign</th>
+                    <th>Conclusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(\left(-\infty, -\frac{3}{2}\right)\)</td>
+                    <td>\(x = -2\)</td>
+                    <td>\(4\cdot e^{2}\cdot (-1)<0\)</td>
+                    <td>\(-\)</td>
+                    <td>Decreasing</td>
+                </tr>
+                <tr>
+                    <td>\(\left(-\frac{3}{2}, 0\right)\)</td>
+                    <td>\(x = -1\)</td>
+                    <td>\(1\cdot e^4\cdot 1>0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+                <tr>
+                    <td>\((0, \infty)\)</td>
+                    <td>\(x = 1\)</td>
+                    <td>\(1\cdot e^8\cdot 5>0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+        At \(x = -\frac{3}{2}\), \(f'\) changes from \(-\) to \(+\), and so we have a relative minimum.
+        At \(x = 0\), \(f'\) does not change sign (positive on both sides), and so we have no extremum.
+        We see that:
+        </p>
+        \[f\!\left(-\tfrac{3}{2}\right) = \left(-\tfrac{3}{2}\right)^{\!3} \cdot e^{2(-3/2)+6} = -\frac{27}{8}\, e^{3}\]
+
+        <p><strong>Increasing:</strong> \(\left(-\frac{3}{2}, \infty\right)\)</p>
+        <p><strong>Decreasing:</strong> \(\left(-\infty, -\frac{3}{2}\right)\)</p>
+        <p><strong>Relative minimum:</strong> \(\left(-\dfrac{3}{2},\; -\dfrac{27}{8}e^3\right)\)</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 4</h5>
+    <p>Suppose \(f'(x) = e^{11x}(2x^2 - 26)\). Find the open intervals on which \(f(x)\) is increasing or decreasing, as well as the \(x\)-values of the relative extrema, if any exist.</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>We set \(f'(x) = 0\):</p>
+        \[e^{11x}(2x^2 - 26)=0\implies 2x^2 - 26 = 0 \implies x^2 = 13 \implies x = \pm\sqrt{13}\]
+
+        <p>These critical numbers divide the real line into three intervals. Testing:</p>
+
+        <table>
+            <caption>Sign of \(f'(x)\) on each interval</caption>
+            <thead>
+                <tr>
+                    <th>Interval</th>
+                    <th>Test Value</th>
+                    <th>\(f'(\text{test value})\)</th>
+                    <th>Sign</th>
+                    <th>Conclusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\((-\infty, -\sqrt{13})\)</td>
+                    <td>\(x = -4\)</td>
+                    <td>\(2\cdot 16-26 = 6 &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+                <tr>
+                    <td>\((-\sqrt{13}, \sqrt{13})\)</td>
+                    <td>\(x = 0\)</td>
+                    <td>\(2\cdot 0-26 = -26 &lt; 0\)</td>
+                    <td>\(-\)</td>
+                    <td>Decreasing</td>
+                </tr>
+                <tr>
+                    <td>\((\sqrt{13}, \infty)\)</td>
+                    <td>\(x = 4\)</td>
+                    <td>\(2\cdot 16-26 = 6 &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+        At \(x = -\sqrt{13}\), \(f'\) changes from \(+\) to \(-\), and so we have a relative maximum at \(x = -\sqrt{13}\).
+        At \(x = \sqrt{13}\), \(f'\) changes from \(-\) to \(+\), and so we have a relative minimum at \(x = \sqrt{13}\).</p>
+
+        <p><strong>Increasing interval:</strong> \(\left(-\infty, -\sqrt{13}\right) \cup \left(\sqrt{13}, \infty\right)\)</p>
+        <p><strong>Decreasing interval:</strong> \(\left(-\sqrt{13}, \sqrt{13}\right)\)</p>
+        <p><strong>Relative maximum</strong> at \(x = -\sqrt{13}\)</p>
+        <p><strong>Relative minimum</strong> at \(x = \sqrt{13}\)</p>
+    </div>
+</div>
+
+<div class="example">
+    <h5>Example 5</h5>
+    <p>The critical numbers of \(f(x) = 5\sin(x)\) on the interval \((0, 2\pi)\) are \(x = \dfrac{\pi}{2}\) and \(x = \dfrac{3\pi}{2}\). What are the \(x\)-values on \((0, 2\pi)\) at which \(f(x)\) has a relative maximum?</p>
+
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Compute the derivative:</p>
+        \[f'(x) = 5\cos(x)\]
+
+        <p>The critical numbers \(x = \frac{\pi}{2}\) and \(x = \frac{3\pi}{2}\) divide \((0, 2\pi)\) into three intervals. Test a value from each:</p>
+
+        <table>
+            <caption>Sign of \(f'(x)\) on each sub-interval of \((0,2\pi)\)</caption>
+            <thead>
+                <tr>
+                    <th>Interval</th>
+                    <th>Test Value</th>
+                    <th>\(f'(\text{test value})\)</th>
+                    <th>Sign</th>
+                    <th>Conclusion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(\left(0, \frac{\pi}{2}\right)\)</td>
+                    <td>\(x = \frac{\pi}{4}\)</td>
+                    <td>\(5\cos\!\left(\frac{\pi}{4}\right) = \frac{5\sqrt{2}}{2} &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+                <tr>
+                    <td>\(\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)\)</td>
+                    <td>\(x = \pi\)</td>
+                    <td>\(5\cos(\pi) = -5 &lt; 0\)</td>
+                    <td>\(-\)</td>
+                    <td>Decreasing</td>
+                </tr>
+                <tr>
+                    <td>\(\left(\frac{3\pi}{2}, 2\pi\right)\)</td>
+                    <td>\(x = \frac{7\pi}{4}\)</td>
+                    <td>\(5\cos\!\left(\frac{7\pi}{4}\right) = \frac{5\sqrt{2}}{2} &gt; 0\)</td>
+                    <td>\(+\)</td>
+                    <td>Increasing</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="visual-desc">
+            <p><strong>Sign Chart Description:</strong> A number line over the interval \((0, 2\pi)\) is marked at \(\frac{\pi}{2}\) and \(\frac{3\pi}{2}\). The sign of \(f'\) is \(+\) on \(\left(0, \frac{\pi}{2}\right)\), then \(-\) on \(\left(\frac{\pi}{2}, \frac{3\pi}{2}\right)\), then \(+\) again on \(\left(\frac{3\pi}{2}, 2\pi\right)\). Arrows pointing up-right and down-right indicate direction of the function.</p>
+        </div>
+
+        <p>At \(x = \frac{\pi}{2}\), \(f'\) changes from \(+\) to \(-\), and so we have a relative maximum.
+        At \(x = \frac{3\pi}{2}\), \(f'\) changes from \(-\) to \(+\), and so we have a relative minimum.</p>
+
+        <p><strong>Relative maximum</strong> at \(x = \dfrac{\pi}{2}\)</p>
+    </div>
+</div>
+
+<div class="important">
+    <p><strong>Key Takeaways:</strong> The sign of \(f'(x)\) completely determines where \(f\) is increasing or decreasing. Critical numbers are where the sign of \(f'\) can change -- checking the sign on each side via a sign chart lets us classify each critical number as a relative maximum, relative minimum, or neither using the first derivative test. Remember that a critical number can occur without producing an extremum if the sign of \(f'\) does not change at that critical number.</p>
+</div>
+
+</main>
+</body>
+</html>
